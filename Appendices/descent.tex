@@ -1,4 +1,83 @@
-\section{Descent theory}
-    \subsection{Sieves and sites}
+\section{Descent theory and topos theory}
+    \subsection{Coverages and sites}
+        \begin{definition}[Coverages and sites] \label{def: coverages_and_sites}
+            A \textbf{coverage} on a category $\C$ is a function $J: \Ob(\C) \to \Cov(\C)$ which maps each object $U \in \Ob(\C)$ to a so-called \textbf{covering family} $\{f_i: U_i \to U\}_{i \in I}$ which are sets of arrows in $\C$ with codomain $U$. These covering families are required to satisfy the following property: for all covering families $\{f_i: U_i \to U\}_{i \in I}$ and all arrows $\varphi: V \to U$ in $\C$, there must exists a covering family $\{g_j: V_j \to V\}_{j \in J}$ in $\C$ such that there exist arrows $\varphi_{ij}: V_j \to U_i$ making diagrams of the following form commute for all indices $i \in I$ and $j \in J$:
+                $$
+                    \begin{tikzcd}
+                    	{V_j} & {U_i} \\
+                    	V & U
+                    	\arrow["{f_i}", from=1-2, to=2-2]
+                    	\arrow["\varphi", from=2-1, to=2-2]
+                    	\arrow["{g_j}"', from=1-1, to=2-1]
+                    	\arrow["{\varphi_{ij}}", dashed, from=1-1, to=1-2]
+                    \end{tikzcd}
+                $$
+            A category $\C$ equipped with a coverage $J$ is a \textbf{site}, and is typically written as a pair $(\C, J)$.
+        \end{definition}
+        \begin{remark}
+            While it is certainly that one can put a coverage on any category regardless of the set-theoretic size thereof, sites are commonly assumed to be small. This is done to avoid certain issues later down the line, such as the existence of sheafifications or whether or not the sheaf topos over the site at play is a Grothendieck topos.
+        \end{remark}
+        
+        \begin{definition}[Sieves] \label{def: sieves}
+            Let $\C$ be a category and let $U \in \Ob(\C)$ be some object thereof. A \textbf{sieve} on an object $U$ is a covering family $\{f_i: U_i \to U\}_{i \in I}$ such that  
+        \end{definition}
     
     \subsection{Descent data, sheaves, and stacks}
+        \subsubsection{A bit of \texorpdfstring{$3$}{}-category theory}
+            \begin{definition}[Lax natural transformations] \label{def: lax_natural_transfomrations}
+                
+            \end{definition}
+        
+            \begin{definition}[Natural modifications] \label{def: natural_modifications}
+                
+            \end{definition}
+            
+        \subsubsection{Descent data}
+            Suppose that $p: \S \to \C$ is a fibration with a fixed choice of pullbacks and consider the following commutative diagram in $\C$:
+                $$
+                    \begin{tikzcd}
+                    	{V'} & V \\
+                    	{U'} & U
+                    	\arrow["{f'}"', from=1-1, to=2-1]
+                    	\arrow["u", from=2-1, to=2-2]
+                    	\arrow["v", from=1-1, to=1-2]
+                    	\arrow["f", from=1-2, to=2-2]
+                    \end{tikzcd}
+                $$
+            From remark \ref{remark: fibres_of_prefibrations} and proposition \ref{prop: 2_functoriality_of_fibrations}, we know that such a commutative square induces a diagram of categories and functors as follows:
+                $$
+                    \begin{tikzcd}
+                    	{\S_{V'}} & {\S_V} \\
+                    	{\S_{U'}} & {\S_U}
+                    	\arrow["u^*"', from=2-2, to=2-1]
+                    	\arrow["f^*"', from=2-2, to=1-2]
+                    	\arrow["v^*"', from=1-2, to=1-1]
+                    	\arrow["{(f')^*}", from=2-1, to=1-1]
+                    \end{tikzcd}
+                $$
+            Ideally, we would like such a diagram to be commutative, or at least $2$-commutative, but this is not always the case. 
+            \begin{definition}[Descent data] \label{def: descent_data}
+                Let $p: \S \to \C$ be a fibration over a category $\C$ with enough pullbacks, and choose a choice of pullbacks with respect to $p$; in addition, suppose that $\{f_i: U_i \to U\}_{i \in I}$ is a family of arrows in $\C$, and that $\calU$ is the $1$-category whose objects are the arrows $f_i: U_i \to U$ and whose morphisms\footnote{Compositions of these morphisms are well-defined as they are spans in $\C_{/U}$ (cf. definition \ref{def: spans}).} are the pullbacks $U_i \x_{f_i, U, f_j} U_j$. The category of \textbf{descent data} relative to $\calU$, which we denote by $\Desc(\calU)$, can then be defined to be the category wherein:
+                    \begin{itemize}
+                        \item objects are $2$-commutative diagrams of the following form (or rather, natural transformations $\varphi_{ij}: \pr_1^*f_j^* \Rightarrow \pr_2^*f_j^*$) such that for all $(i, j, k) \in I^3$, the so-called \textbf{cocyle condition} is satisfied, i.e. $\varphi_{ij} \circ \varphi_{jk} = \varphi_{ik}$:
+                            $$
+                                \begin{tikzcd}
+                                	{\S_{U_i \x_{f_i, U, f_j} U_j}} & {\S_{U_j}} \\
+                                	{\S_{U_i}} & {\S_U}
+                                	\arrow["{\pr_1^*}", from=2-1, to=1-1]
+                                	\arrow["{f_i^*}"', from=2-2, to=2-1]
+                                	\arrow["{f_j^*}"', from=2-2, to=1-2]
+                                	\arrow["{\pr_2^*}"', from=1-2, to=1-1]
+                                	\arrow["{\varphi_{ij}}", shorten <=11pt, shorten >=11pt, Rightarrow, from=2-1, to=1-2]
+                                \end{tikzcd}
+                            $$
+                        \item and morphisms are 
+                    \end{itemize}
+            \end{definition}
+            \begin{remark}[A more concrete description of descent data] \label{remark: concrete_descent_data}
+                
+            \end{remark}
+            
+        \subsubsection{Sheaves and stacks}
+    
+    \subsection{Topoi}

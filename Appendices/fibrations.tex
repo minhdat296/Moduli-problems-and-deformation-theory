@@ -457,49 +457,49 @@
             \end{example}
         
         \subsubsection{\texorpdfstring{$2$}{}-categorical constructions}
-        \begin{definition}[$2$-categories and $2$-functors] \label{def: 2_categories_and_2_functors}
+            \begin{definition}[$2$-categories and $2$-functors] \label{def: 2_categories_and_2_functors}
+                
+            \end{definition}
+            \begin{definition}[$(2, k)$-categories] \label{def: (2, k)_categories} 
+                A $(2, k)$-category (for $0 \leq k \leq 2$) is a $2$-category wherein all $(k + 1)$-morphisms are invertible.
+            \end{definition}
             
-        \end{definition}
-        \begin{definition}[$(2, k)$-categories] \label{def: (2, k)_categories} 
-            A $(2, k)$-category (for $0 \leq k \leq 2$) is a $2$-category wherein all $(k + 1)$-morphisms are invertible.
-        \end{definition}
-        
-        \begin{definition}[$2$-commutative diagrams] \label{def: 2_commutative_diagrams}
-            Let $\calK$ be a $2$-category. A $2$-commutative diagram therein is thus a square as follows, wherein there exists a $2$-isomorphism $\eta: p'f \Rightarrow pg$:
-                $$
-                    \begin{tikzcd}
-                    	{y'} & y \\
-                    	{x'} & x
-                    	\arrow["{p'}"', from=1-1, to=2-1]
-                    	\arrow["f", from=2-1, to=2-2]
-                    	\arrow["g", from=1-1, to=1-2]
-                    	\arrow["p", from=1-2, to=2-2]
-                    	\arrow["\exists \eta", shorten <=8pt, shorten >=8pt, Rightarrow, from=2-1, to=1-2]
-                    \end{tikzcd}
-                $$
-        \end{definition}
-        
-        \begin{definition}[Strict and weak $2$-categories] \label{def: strict_and_weak_2_categories}
-            \noindent
-            \begin{enumerate}
-                \item \textbf{(Strict and weak $2$-categories):} Let $\calK$ be a $2$-category. One says that it is \textbf{strict} if compositions of (pairs of) $1$-morphisms are unique up to (necessarily unique) $2$-equalities, and \textbf{weak} if compositions of (pairs of) $1$-morphisms are unique only up to $2$-isomorphisms.
-                \item \textbf{(Strict, weak, and lax $2$-functors):}
-            \end{enumerate}
-        \end{definition}
-        \begin{example}
+            \begin{definition}[$2$-commutative diagrams] \label{def: 2_commutative_diagrams}
+                Let $\calK$ be a $2$-category. A $2$-commutative diagram therein is thus a square as follows, wherein there exists a $2$-isomorphism $\eta: p'f \Rightarrow pg$:
+                    $$
+                        \begin{tikzcd}
+                        	{y'} & y \\
+                        	{x'} & x
+                        	\arrow["{p'}"', from=1-1, to=2-1]
+                        	\arrow["f", from=2-1, to=2-2]
+                        	\arrow["g", from=1-1, to=1-2]
+                        	\arrow["p", from=1-2, to=2-2]
+                        	\arrow["\exists \eta", shorten <=8pt, shorten >=8pt, Rightarrow, from=2-1, to=1-2]
+                        \end{tikzcd}
+                    $$
+            \end{definition}
             
-        \end{example}
-        
-        Strictly speaking, the following notion ought to be known as that of $(2, 1)$-pullbacks, but since we shall not be encountering so-called \say{\textit{lax} $2$-pullbacks} (or any lax $2$-(co)limits for that matter), we shall be lazy and simply write \say{$2$-pullbacks} to mean \say{$(2, 1)$-pullbacks}.
-        \begin{definition}[$2$-pullbacks] \label{def: 2_pullbacks}
+            \begin{definition}[Strict and weak $2$-categories and $2$-functors] \label{def: strict_and_weak_2_categoriesand_2_functors}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Strict and weak $2$-categories):} Let $\calK$ be a $2$-category. One says that it is \textbf{strict} if compositions of (pairs of) $1$-morphisms are unique up to (necessarily unique) $2$-equalities, and \textbf{weak} if compositions of (pairs of) $1$-morphisms are unique only up to $2$-isomorphisms.
+                    \item \textbf{(Strict and weak $2$-functors):}
+                \end{enumerate}
+            \end{definition}
+            \begin{example}
+                
+            \end{example}
             
-        \end{definition}
-        \begin{example}[$2$-pullbacks in $1\-\Cat_2$] \label{example: 2_pullbacks_in_the_2_category_of_categories}
-            The $2$-category $1\-\Cat_2$ whose objects are $1$-categories, whose $1$-morphisms are functors, and whose $2$-morphisms are natural transformations, has all $2$-pullbacks.
-        \end{example}
+            Strictly speaking, the following notion ought to be known as that of $(2, 1)$-pullbacks, but since we shall not be encountering so-called \say{\textit{lax} $2$-pullbacks} (or any lax $2$-(co)limits for that matter), we shall be lazy and simply write \say{$2$-pullbacks} to mean \say{$(2, 1)$-pullbacks}.
+            \begin{definition}[$2$-pullbacks] \label{def: 2_pullbacks}
+                
+            \end{definition}
+            \begin{example}[$2$-pullbacks in $1\-\Cat_2$] \label{example: 2_pullbacks_in_the_2_category_of_categories}
+                The $2$-category $1\-\Cat_2$ whose objects are $1$-categories, whose $1$-morphisms are functors, and whose $2$-morphisms are natural transformations, has all $2$-pullbacks.
+            \end{example}
     
     \subsection{(Co)fibred categories}
-        \subsubsection{Slice \texorpdfstring{$2$}{}-categories}
+        \subsubsection{Slice \texorpdfstring{$2$}{}-categories and prefibrations}
             \begin{definition}[Slice $2$-categories] \label{def: slice_2_categories}
                 Let $\calK$ be a $2$-category and let $x \in \Ob(\calK)$ be an object therein. Then, we define the \textbf{slice} $2$-category $\calK_{/x}$ to be the $2$-category wherein:
                     \begin{itemize}
