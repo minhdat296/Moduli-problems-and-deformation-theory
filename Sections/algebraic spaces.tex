@@ -1,1 +1,118 @@
 \section{Algebraic spaces}
+    \subsection{The category of algebraic spaces}
+        \subsubsection{Algebraic spaces and their formal properties}
+            \begin{convention}[Big sites of schemes] \label{conv: big_sites_of_schemes}
+                From this point onwards, we shall be writing $(\Sch_{/S})_{\fppf}$ for the \textit{big} fppf site of a given scheme $S$. In the presence of small sites, which we denote by $\Sch_{/S, \fppf}^{\petit}$, we might write $\Sch_{/S, \fppf}^{\gros}$ for the sake of distinction. Likewise for the \'etale topology.
+            \end{convention}
+            \begin{convention}[Diagonals] \label{conv: algebraic_spaces_diagonals}
+                Let $S$ be a scheme and $F$ be a presheaf of sets on $\Sch_{/S, \fppf}$. We shall be denoting its \textbf{diagonal} by $\Delta_{F/S}: F \to F \x_S F$. This is the morphism of sheaves which is as follows, for all $T \in \Ob(\Sch_{/S, \fppf})$:
+                    $$\Delta_{F/S}(T): F(T) \to F(T) \x_{S(T)} F(T)$$
+                    $$t \mapsto (t, t)$$
+            \end{convention}
+            
+            \begin{definition}[Properties of representable morphisms] \label{def: properties_of_representable_morphisms_of_fppf_sheaves}
+                Denote by $\calP$ an fppf-local\footnote{Cf. \cite[\href{https://stacks.math.columbia.edu/tag/02KO}{Tag 02KO}]{stacks}.} property of morphisms of schemes that is stable under base-changes\footnote{See \cite[\href{https://stacks.math.columbia.edu/tag/02WE}{Tag 02WE}]{stacks} for a list of such properties.}. Then, one says that a representable morphism of presheaves $\varphi: F \to G$ on $\Sch_{/S, \fppf}$ (for some base scheme $S$) has property $\calP$ if and only if for all schemes $U \in \Ob(\Sch_{/S})$, the canonical projection $\pr_2: F \x_G U \to U$ has property $\calP$ (note that by representability, the pullback $F \x_G U$ is an object of $\Sch_{/S}$).
+            \end{definition}
+            \begin{proposition}[Permanence of properties of representable morphisms] \label{prop: permanence_of_properties_of_representable_morphisms}
+                
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{lemma}[A representability criterion for diagonals] \label{lemma: representability_criterion_for_diagonals}
+                Let $S$ be a scheme and let $F$ be a presheaf of sets on $\Sch_{/S, \fppf}$. In addition, suppose that $U, V \in \Ob(\Sch_{/S})$ are two arbitrary $S$-schemes equipped with morphisms $u: U \to F$ and $v: V \to F$, and that the pullback $U_{u, F, v} V$ is representable by some $S$-scheme $T \in \Ob(\Sch_{/S})$. If the canonical morphism $T \to U \x_S V$ has a property $\calP$ that is fppf-local and stable under base-changes, then the diagonal $\Delta_{F/S}: F \to F \x_S F$ must be representable and have property $\calP$.
+            \end{lemma}
+                \begin{proof}
+                            
+                \end{proof}
+                
+            \begin{definition}[Atlases] \label{def: atlases}
+                Let $S$ be a scheme and let $F$ be a presheaf of sets on $\Sch_{/S, \fppf}$. An fppf (respectively, \'etale) \textbf{atlas} of $F$ is thus an \'etale surjection $U \to F$ from some scheme $U \in \Ob(\Sch_{/S})$.
+            \end{definition}
+            \begin{definition}[Algebraic spaces] \label{def: algebraic_spaces}
+                An \textbf{algebraic space} over a scheme $S$ is a sheaf of sets on $\Sch_{/S, \fppf}$ with an \'etale atlas and representable diagonal.
+            \end{definition}
+            \begin{remark}[Algebraic spaces are algebraic stacks]
+                Later on, we shall see that algebraic spaces are the same as so-called \textbf{$0$-algebraic stacks}. More on this later, once we have discussed algebraic stacks.
+            \end{remark}
+            \begin{proposition}[The category of algebraic spaces] \label{prop: the_category_of_algebraic_spaces}
+                For any given scheme $S$, there is a category of algebraic spaces over $S$, denoted by $\Alg\Spc_{/S}$, which is a full subcategory of $\Sh(\Sch_{S, \fppf})$. 
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+                
+            \begin{proposition}[(Co)limits of algebraic spaces] \label{prop: (co)limits_of_algebraic_spaces}
+                For any given scheme $S$, the category $\Alg\Spc_{/S}$ of algebraic spaces over $S$ has the following (co)limits:
+                    \begin{enumerate}
+                        \item \textbf{(Limits):} terminal objects and finite pullbacks (and hence finite products),
+                        \item \textbf{(Colimits):} finite coproducts.
+                    \end{enumerate}
+            \end{proposition}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(Limits):} 
+                        \item \textbf{(Colimits):} 
+                    \end{enumerate}
+                \end{proof}
+            \begin{corollary}[Schemes are algebraic spaces] \label{coro: schemes_are_algebraic_spaces}
+                For any given scheme $S$, the category $\Sch_{/S}$ of $S$-schemes is a full subcategory of $\Alg\Spc_{/S}$ which is closed under finite pullbacks.
+            \end{corollary}
+            \begin{proposition}[More on coproducts of algebraic spaces] \label{prop: more_on_coproducts_of_algebraic_spaces}
+                
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+                
+            \begin{remark}[Why do we need algebraic spaces] \label{remark: why_algebraic_spaces}
+                Originally, the point in introducing the notion of algebraic spaces to algebraic geometry was so that one would have a category containing the category of schemes as a full subcategory that is closed under quotients by \'etale equivalence relations internal to the category of schemes, such as quotients by free group scheme actions; for now, see \cite[\href{https://stacks.math.columbia.edu/tag/02Z0}{Tag 02Z0}]{stacks} for a list of explicit examples. As such, one important task during the establishment of the theory of algebraic spaces is the investigation of the interaction between algebraic spaces and \'etale equivalence relations internal to the category of schemes. In particular, we shall be showing that not only is the category of algebraic spaces closed under quotients by \'etale equivalence relations but also, every algebraic spaces can be realised as the quotient of a scheme by some \'etale equivalence relation. In fact, since algebraic spaces are required to admit \'etale atlases (of schemes) by definition, it is reasonable to suspect the aforementioned relationship between algebraic spaces and \'etale equivalence relations to be true, as after all, surjections of spaces tend to arise from quotients of free group actions\footnote{Recall how given a Hausdorff topological space $X$ with a free action of a finite group $G$, the quotient map $\pi_G: X \to X/G$ is covering map, which is the topological version of an (\'etale) atlas.}. 
+            \end{remark}
+            \begin{definition}[\'Etale equivalence relations] \label{def: etale_equivalence_relations}
+                Let $S$ be a scheme. An \textbf{\'etale equivalence relation} internal to the category $\Sch_{/S}$ of $S$-schemes (which we note to have all finite pullbacks) is thus an internal equivalence relation (in the sense of definition \ref{def: equivalence_relations}) whose source and target morphisms are both \'etale.
+            \end{definition}
+            \begin{proposition}[Quotients of algebraic spaces by \'etale equivalence relations are algebraic spaces] \label{prop: quotients_of_algebraic_spaces_by_etale_equivalence_relations_are_algebraic_spaces}
+                Let $S$ be a scheme. The category $\Alg\Spc_{/S}$ of algebraic spaces over $S$ is closed under taking quotients\footnote{In the sense of definition \ref{def: equivalence_relations}.} by \'etale equivalence relations.
+            \end{proposition}
+                \begin{proof}
+                    
+                \end{proof}
+            \begin{corollary}[Quotients of schemes by \'etale equivalence relations are algebraic spaces] \label{prop: quotients_of_schemes_by_etale_equivalence_relations_are_algebraic_spaces}
+                Since the category of schemes is a full subcategory of the category of algebraic spaces (cf. corollary \ref{coro: schemes_are_algebraic_spaces}), quotients of schemes by \'etale equivalence relations are algebraic spaces.
+            \end{corollary}
+            \begin{definition}[\'Etale presentations of algebraic spaces] \label{def: etale_presentations_of_algebraic_spaces}
+                An \textbf{\'etale presentation} of an algebraic space $X$ over some scheme $S$, should it exist, is the quotient of an $S$-scheme $U$ by an \'etale equivalence relation $R$ on $U$ such that we have an isomorphism $X \cong U/R$ of sheaves on $\Sch_{/S, \fppf}$. Phrased differently, an \'etale presentation of an algebraic space $X$ over some scheme $S$ is a coequaliser in $\Sh(\Sch_{/S, \fppf})$ of the following form, wherein $U$ and $R$ are as above:
+                    $$
+                        \begin{tikzcd}
+                        	R & U & X
+                        	\arrow[shift right=2, from=1-1, to=1-2]
+                        	\arrow[shift left=2, from=1-1, to=1-2]
+                        	\arrow["\coeq", two heads, from=1-2, to=1-3]
+                        \end{tikzcd}
+                    $$
+            \end{definition}
+            \begin{lemma}[Existence of \'etale presentation of algebraic spaces] \label{lemma: existence_of_etale_presentations_of_algebraic_spaces}
+                Let $S$ be a scheme and $X$ be an algebraic space over $S$, and suppose that $X$ admits an \'etale atlas $u: U \to X$ by an $S$-scheme $U$ (cf. definition \ref{def: algebraic_spaces}). Then, we have the following \'etale presentation for $X$, wherein the two arrows $U \x_{u, X, u} U \toto U$ come from the canonical morphism $U \x_{u, X, u} U \to U \x_S U$:
+                    $$
+                        \begin{tikzcd}
+                        	{U \x_{u, X, u} U} & U & X
+                        	\arrow[shift right=2, from=1-1, to=1-2]
+                        	\arrow[shift left=2, from=1-1, to=1-2]
+                        	\arrow["\coeq", two heads, from=1-2, to=1-3]
+                        \end{tikzcd}
+                    $$
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
+    
+        \subsubsection{Properties of algebraic spaces and their morphisms}
+        
+        \subsubsection{Topologies on algebraic spaces; descent-theoretic results}
+        
+        \subsubsection{Criteria for sheaves being algebraic spaces}
+    
+    \subsection{Algebraic spaces over fields}
+
+    \subsection{Cohomology of algebraic spaces and derived categories of coherent sheaves}

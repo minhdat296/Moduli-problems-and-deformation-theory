@@ -23,60 +23,37 @@
         \end{definition}
     
     \subsection{Descent data, sheaves, and stacks}
-        \subsubsection{A bit of \texorpdfstring{$3$}{}-category theory}
-            \begin{definition}[Lax natural transformations] \label{def: lax_natural_transfomrations}
-                
-            \end{definition}
-        
-            \begin{definition}[Natural modifications] \label{def: natural_modifications}
-                
-            \end{definition}
-            
         \subsubsection{Descent data}
-            Suppose that $p: \S \to \C$ is a fibration with a fixed choice of pullbacks and consider the following commutative diagram in $\C$:
-                $$
-                    \begin{tikzcd}
-                    	{V'} & V \\
-                    	{U'} & U
-                    	\arrow["{f'}"', from=1-1, to=2-1]
-                    	\arrow["u", from=2-1, to=2-2]
-                    	\arrow["v", from=1-1, to=1-2]
-                    	\arrow["f", from=1-2, to=2-2]
-                    \end{tikzcd}
-                $$
-            From remark \ref{remark: fibres_of_prefibrations} and proposition \ref{prop: 2_functoriality_of_fibrations}, we know that such a commutative square induces a diagram of categories and functors as follows:
-                $$
-                    \begin{tikzcd}
-                    	{\S_{V'}} & {\S_V} \\
-                    	{\S_{U'}} & {\S_U}
-                    	\arrow["u^*"', from=2-2, to=2-1]
-                    	\arrow["f^*"', from=2-2, to=1-2]
-                    	\arrow["v^*"', from=1-2, to=1-1]
-                    	\arrow["{(f')^*}", from=2-1, to=1-1]
-                    \end{tikzcd}
-                $$
-            Ideally, we would like such a diagram to be commutative, or at least $2$-commutative, but this is not always the case. 
+            \begin{convention}
+                Suppose that $\C$ is a category with enough pullbacks, and that $\{f_i: U_i \to U\}_{i \in I}$ is a family of arrows therein. Henceforth, we shall be denoting projections from pullbacks in the following manner:
+                    $$
+                        \begin{tikzcd}
+                        	& {U_i \x_{f_i, U, f_j} U_j \x_{f_j, U, f_k} U_k} & {U_j \x_{f_j, U, f_k} U_k} & {U_k} \\
+                        	{} & {U_i \x_{f_i, U, f_j} U_j} & {U_j} & U \\
+                        	& {U_i} & U
+                        	\arrow["{f_i}", from=3-2, to=3-3]
+                        	\arrow["{f_j}", from=2-3, to=3-3]
+                        	\arrow["{f_j}", from=2-3, to=2-4]
+                        	\arrow["{f_k}", from=1-4, to=2-4]
+                        	\arrow["{\pr_{ij \to i}}"', from=2-2, to=3-2]
+                        	\arrow["{\pr_{ij \to j}}", from=2-2, to=2-3]
+                        	\arrow["{\pr_{jk \to j}}"', from=1-3, to=2-3]
+                        	\arrow["{\pr_{jk \to k}}", from=1-3, to=1-4]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-3, to=2-4]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=3-3]
+                        	\arrow["{\pr_{ijk \to ij}}"', from=1-2, to=2-2]
+                        	\arrow["{\pr_{ijk \to jk}}", from=1-2, to=1-3]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=2-3]
+                        \end{tikzcd}
+                    $$
+            \end{convention}
             \begin{definition}[Descent data] \label{def: descent_data}
-                Let $p: \S \to \C$ be a fibration over a category $\C$ with enough pullbacks, and choose a choice of pullbacks with respect to $p$; in addition, suppose that $\{f_i: U_i \to U\}_{i \in I}$ is a family of arrows in $\C$, and that $\calU$ is the $1$-category whose objects are the arrows $f_i: U_i \to U$ and whose morphisms\footnote{Compositions of these morphisms are well-defined as they are spans in $\C_{/U}$ (cf. definition \ref{def: spans}).} are the pullbacks $U_i \x_{f_i, U, f_j} U_j$. The category of \textbf{descent data} relative to $\calU$, which we denote by $\Desc(\calU)$, can then be defined to be the category wherein:
+                Let $p: \S \to \C$ be a fibration over a category $\C$ with enough pullbacks, and choose a choice of pullbacks with respect to $p$; in addition, suppose that $\calU := \{f_i: U_i \to U\}_{i \in I}$ is a family of arrows in $\C$, which we denote by $\Desc(\calU)$, can then be defined to be the category wherein:
                     \begin{itemize}
-                        \item objects are $2$-commutative diagrams of the following form (or rather, natural transformations $\varphi_{ij}: \pr_1^*f_j^* \Rightarrow \pr_2^*f_j^*$) such that for all $(i, j, k) \in I^3$, the so-called \textbf{cocyle condition} is satisfied, i.e. $\varphi_{ij} \circ \varphi_{jk} = \varphi_{ik}$:
-                            $$
-                                \begin{tikzcd}
-                                	{\S_{U_i \x_{f_i, U, f_j} U_j}} & {\S_{U_j}} \\
-                                	{\S_{U_i}} & {\S_U}
-                                	\arrow["{\pr_1^*}", from=2-1, to=1-1]
-                                	\arrow["{f_i^*}"', from=2-2, to=2-1]
-                                	\arrow["{f_j^*}"', from=2-2, to=1-2]
-                                	\arrow["{\pr_2^*}"', from=1-2, to=1-1]
-                                	\arrow["{\varphi_{ij}}", shorten <=11pt, shorten >=11pt, Rightarrow, from=2-1, to=1-2]
-                                \end{tikzcd}
-                            $$
-                        \item and morphisms are 
+                        \item objects are families of isomorphisms $\{\varphi: \pr_1^*X_i \to \pr_2^*X_j\}_{(i, j) \in I^2}$ in $\S_{U_i \x_{f_i, U, f_j} U_j}$, wherein $X_i, X_j$ are objects of $\S_{U_i}$ and $\S_{U_j}$ respectively, such that they satisfy the so-called \textbf{cocycle condition}, under which commutative triangles of the following form commute in $\S_{U_i \x_{f_i, U, f_j} U_j \x_{f_j, U, f_k} U_k}$ for all $(i, j, k) \in I^3$:
+                        \item and morphisms are commutative diagrams 
                     \end{itemize}
             \end{definition}
-            \begin{remark}[A more concrete description of descent data] \label{remark: concrete_descent_data}
-                
-            \end{remark}
             
         \subsubsection{Sheaves and stacks}
     
