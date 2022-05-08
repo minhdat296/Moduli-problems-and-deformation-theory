@@ -46,7 +46,7 @@
                 For any given scheme $S$, the category $\Alg\Spc_{/S}$ of algebraic spaces over $S$ has the following (co)limits:
                     \begin{enumerate}
                         \item \textbf{(Limits):} terminal objects and finite pullbacks (and hence finite products),
-                        \item \textbf{(Colimits):} finite coproducts.
+                        \item \textbf{(Colimits):} arbitrary small coproducts.
                     \end{enumerate}
             \end{proposition}
                 \begin{proof}
@@ -59,28 +59,95 @@
             \begin{corollary}[Schemes are algebraic spaces] \label{coro: schemes_are_algebraic_spaces}
                 For any given scheme $S$, the category $\Sch_{/S}$ of $S$-schemes is a full subcategory of $\Alg\Spc_{/S}$ which is closed under finite pullbacks.
             \end{corollary}
-            \begin{proposition}[More on coproducts of algebraic spaces] \label{prop: more_on_coproducts_of_algebraic_spaces}
-                
-            \end{proposition}
-                \begin{proof}
-                    
-                \end{proof}
-                
-            \begin{remark}[Why do we need algebraic spaces] \label{remark: why_algebraic_spaces}
-                Originally, the point in introducing the notion of algebraic spaces to algebraic geometry was so that one would have a category containing the category of schemes as a full subcategory that is closed under quotients by \'etale equivalence relations internal to the category of schemes, such as quotients by free group scheme actions; for now, see \cite[\href{https://stacks.math.columbia.edu/tag/02Z0}{Tag 02Z0}]{stacks} for a list of explicit examples. As such, one important task during the establishment of the theory of algebraic spaces is the investigation of the interaction between algebraic spaces and \'etale equivalence relations internal to the category of schemes. In particular, we shall be showing that not only is the category of algebraic spaces closed under quotients by \'etale equivalence relations but also, every algebraic spaces can be realised as the quotient of a scheme by some \'etale equivalence relation. In fact, since algebraic spaces are required to admit \'etale atlases (of schemes) by definition, it is reasonable to suspect the aforementioned relationship between algebraic spaces and \'etale equivalence relations to be true, as after all, surjections of spaces tend to arise from quotients of free group actions\footnote{Recall how given a Hausdorff topological space $X$ with a free action of a finite group $G$, the quotient map $\pi_G: X \to X/G$ is covering map, which is the topological version of an (\'etale) atlas.}. 
-            \end{remark}
-            \begin{definition}[\'Etale equivalence relations] \label{def: etale_equivalence_relations}
-                Let $S$ be a scheme. An \textbf{\'etale equivalence relation} internal to the category $\Sch_{/S}$ of $S$-schemes (which we note to have all finite pullbacks) is thus an internal equivalence relation (in the sense of definition \ref{def: equivalence_relations}) whose source and target morphisms are both \'etale.
+            \begin{definition}[Clopen immersions of ringed spaces] \label{def: clopen_immersions_of_ringed_spaces}
+                An immersion of ringed spaces is said to be \textbf{clopen} whenever it is simultaneously closed and open.
             \end{definition}
-            \begin{proposition}[Quotients of algebraic spaces by \'etale equivalence relations are algebraic spaces] \label{prop: quotients_of_algebraic_spaces_by_etale_equivalence_relations_are_algebraic_spaces}
-                Let $S$ be a scheme. The category $\Alg\Spc_{/S}$ of algebraic spaces over $S$ is closed under taking quotients\footnote{In the sense of definition \ref{def: equivalence_relations}.} by \'etale equivalence relations.
+            \begin{remark}[Clopen immersions of fppf sheaves] \label{remark: clopen_immersions_of_fppf_sheaves}
+                Given definition \ref{def: clopen_immersions_of_ringed_spaces}, we can define a clopen immersion of 
+            \end{remark}
+            \begin{lemma}[Representability by schemes and algebraic spaces of disjoint summands] \label{lemma: representability_by_schemes_and_algebraic_spaces_of_disjoint_summands}
+                Throughout, we work over a base scheme $S$.
+                \begin{enumerate}
+                    \item Let $F, G$ be sheaves of sets on $\Sch_{/S, \fppf}$. Then, the cannical morphism of sheaves $\iota_1: F \to F \sqcup G$ (or equivalently, $\iota_2: G \to F \sqcup G$) is a clopen immersion.
+                    \item Let $X$ be a $S$-scheme (respectively, an algebraic space over $S$) and suppose that there exists a disjoint set $\{F_i\}_{i \in I}$ of sheaves on $\Sch_{/S, \fppf}$ such that $X \cong \coprod_{i \in I} F_i$. Then, each of the disjoint summand $F_i$ will be a clopen subscheme of $X$ (respectively, an algebraic space over $S$ such that the canonical morphism of sheaves $\iota_i: F_i \to X$ is a clopen immersion).
+                    \item Let $F$ be a sheaf on $\Sch_{/S, \fppf}$ such that there exists a set $\{F_i\}_{i \in I}$ of open\footnote{In the sense that the inclusions $F_i \hookrightarrow F$ are open immersions. Note that open immersions are fppf-local by virtue of being \'etale, and the reader is invited to check that indeed, open immersions are stable under base change (this is simple consequence of the fact that tensor products and localisations commute).} algebraic subspaces of $F$ such that $\coprod_{i \in I} F_i$ is an algebraic space over $S$ and that the canonically induced morphism of sheaves $\coprod_{i \in I} F_i \to F$ is surjective. In such a situation, $F$ will also be an algebraic space over $S$.
+                \end{enumerate}
+            \end{lemma}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item 
+                        \item 
+                        \item 
+                    \end{enumerate}
+                \end{proof}
+                
+            \begin{definition}[\'Etale equivalence relations] \label{def: etale_equivalence_relations}
+                Let $S$ be a scheme. An \textbf{\'etale equivalence relation} internal to the category $\Sch_{/S}$ of $S$-schemes (respectively, the category $\Alg\Spc_{/S}$ of algebraic spaces over $S$)\footnote{Note that both categories have all finite pullbacks.} is thus an internal equivalence relation (in the sense of definition \ref{def: equivalence_relations}) whose source and target morphisms are both \'etale.
+            \end{definition}
+            \begin{lemma}[Base-changing \'etale and flat equivalence relations in schemes] \label{lemma: base_changing_etale_and_flat_equivalence_relations_in_schemes}
+                Let $S$ be a scheme, let $U$ be an $S$-scheme, and let $s, t: R \toto U$ be an \'etale equivalence relation on $U$ over $S$.
+                    \begin{enumerate}
+                        \item \textbf{(\'Etale base-changes):} Suppose that $f: U' \to U$ is an \'etale morphism of $S$-schemes and that $s', t': R' \toto U'$ is the pullback of $s, t: R \toto U$ along $f$. Then, $s', t': R' \toto U'$ will be an \'etale equivalence relation\footnote{Recall that pullbacks of internal equivalence relations are also internal equivalence relations, so $s', t': R' \toto U'$ is \textit{a priori} an equivalence relation on $U'$ over $S$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/02V8}{Tag 02V8}]{stacks}). Out task here is simply to establish geometric properties of the pullback $s', t': R' \toto U'$, such as whether or not it is \'etale.} on $U'$ over $S$.
+                        \item \textbf{(Flat base-changes):} Suppose that the source and target morphisms $s, t: R \toto U$ are surjective, flat, and locally of finite presentation and that $f: U' \to U$ is a morphism of $S$-schemes that is flat and locally of finite presentation; in addition, denote by $s', t': R' \toto U'$ the pullback\footnote{We leave the verification of the fact that being surjective, flat, and locally of finite presentation are properties of morphisms of ($S$-)schemes which are stable under base-changes and are fppf-local up to our readers. } along $f$ of $s, t: R \toto U$. Then, the canonically induced morphism of sheaves $U'R/' \to U/R$ will be an open immersion. 
+                    \end{enumerate}
+            \end{lemma}
+                \begin{proof}
+                    \noindent
+                    \begin{enumerate}
+                        \item \textbf{(\'Etale base-changes):} Consider the following pullback diagrams in $\Sch_{/S}$:
+                            $$
+                                \begin{tikzcd}
+                                	{R'} & {U'} \\
+                                	R & U
+                                	\arrow["{t'}"', shift right=2, from=1-1, to=1-2]
+                                	\arrow["t"', shift right=2, from=2-1, to=2-2]
+                                	\arrow["{f_s}"', shift right=2, from=1-1, to=2-1]
+                                	\arrow["f", from=1-2, to=2-2]
+                                	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                	\arrow["s", shift left=2, from=2-1, to=2-2]
+                                	\arrow["{s'}", shift left=2, from=1-1, to=1-2]
+                                	\arrow["{f_t}", shift left=2, from=1-1, to=2-1]
+                                \end{tikzcd}
+                            $$
+                        \'Etale morphisms are stable under base-changes so the canonical projections $f_s, f_t: R' \to\to R$ must be \'etale as a consequence of $f: U' \to U$ being \'etale by assumption. Compositions of \'etale morphisms are also \'etale themselves, and since $s, t: R \toto U$ are \'etale morphisms by assumption, the compositions $s \circ f_s$ and $t \circ f_t$ must also be \'etale. As such, the equivalence relation $s', t': R' \toto U'$ is \'etale. 
+                        \item \textbf{(Flat base-changes):} By arguing as above and using the fact that surjectivity, flatness, and being locally of finite presentation are properties of morphisms of schemes which are stable under base-changes
+                    \end{enumerate}
+                \end{proof}
+            \begin{proposition}[Base-chaning \'etale and flat equivalence relations in algebraic spaces] \label{prop: base_changing_etale_and_flat_equivalence_relations_in_algebraic_spaces}
+                Let $S$ be a scheme, let $X$ be an algebraic space over $S$, and let $s, t: R \toto X$ be an \'etale equivalence relation on $X$ over $S$.
+                    \begin{enumerate}
+                        \item \textbf{(\'Etale base-changes):} Suppose that $f: X' \to X$ is an \'etale morphism of algebraic spaces over $X$ and that $s', t': R' \toto X'$ is the pullback of $s, t: R \toto X$ along $f$. Then, $s', t': R' \toto X'$ will be an \'etale equivalence relation on $X'$ over $S$.
+                        \item \textbf{(Flat base-changes):} Suppose that the source and target morphisms $s, t: R \toto X$ are surjective, flat, and locally of finite presentation and that $f: X' \to X$ is a morphism of algebraic spaces over $S$ that is flat and locally of finite presentation; in addition, denote by $s', t': R' \toto X'$ the pullback along $f$ of $s, t: R \toto X$. Then, the canonically induced morphism of sheaves $X'R/' \to X/R$ will be an open immersion. 
+                    \end{enumerate}
             \end{proposition}
+            \begin{lemma}[Quotients of schemes by \'etale equivalence relations are algebraic spaces] \label{lemma: quotients_of_schemes_by_etale_equivalence_relations_are_algebraic_spaces}
+                If $U$ is an $S$-scheme and $R$ is an \'etale equivalence relation on $U$, then not only will the sheaf $U/R$ be an algebraic space, but furthermore, the quotient morphism $U \to U/R$ will be \'etale\footnote{Because the quotient morphism $U \to U/R$ is \'etale, the \'etale presentation $R \toto U$ determines an \'etale atlas $U \to U/R$ of the algebraic space $U/R$.} surjection of sheaves on $\Sch_{/S, \fppf}$. 
+            \end{lemma}
                 \begin{proof}
                     
                 \end{proof}
-            \begin{corollary}[Quotients of schemes by \'etale equivalence relations are algebraic spaces] \label{prop: quotients_of_schemes_by_etale_equivalence_relations_are_algebraic_spaces}
-                Since the category of schemes is a full subcategory of the category of algebraic spaces (cf. corollary \ref{coro: schemes_are_algebraic_spaces}), quotients of schemes by \'etale equivalence relations are algebraic spaces.
-            \end{corollary}
+            \begin{theorem}[Quotients of algebraic spaces by \'etale equivalence relations are algebraic spaces] \label{prop: quotients_of_algebraic_spaces_by_etale_equivalence_relations_are_algebraic_spaces}
+                Let $S$ be a scheme. The category $\Alg\Spc_{/S}$ of algebraic spaces over $S$ is closed under taking quotients\footnote{In the sense of definition \ref{def: equivalence_relations}.} by \'etale internal equivalence relations.
+            \end{theorem}
+                \begin{proof}
+                    Let $X$ be an algebraic space over $S$ and $s_X: t_X: R \toto X$ be an \'etale equivalence relation on $X$ over $S$. Next, pick an \'etale atlas $u: U \to X$ and consider the following pullback squares:
+                        $$
+                            \begin{tikzcd}
+                            	{R_U} & U \\
+                            	R & X
+                            	\arrow["u", two heads, from=1-2, to=2-2]
+                            	\arrow["{t_X}"', shift right=2, from=2-1, to=2-2]
+                            	\arrow["{s_X}", shift left=2, from=2-1, to=2-2]
+                            	\arrow["{u_{s_X}}", shift left=2, from=1-1, to=2-1]
+                            	\arrow["{u_{t_X}}"', shift right=2, from=1-1, to=2-1]
+                            	\arrow["{t_U}"', shift right=2, from=1-1, to=1-2]
+                            	\arrow["{s_U}", shift left=2, from=1-1, to=1-2]
+                            	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                            \end{tikzcd}
+                        $$
+                    By using proposition \ref{prop: base_changing_etale_and_flat_equivalence_relations_in_algebraic_spaces}, it is easy to see that 
+                \end{proof}
             \begin{definition}[\'Etale presentations of algebraic spaces] \label{def: etale_presentations_of_algebraic_spaces}
                 An \textbf{\'etale presentation} of an algebraic space $X$ over some scheme $S$, should it exist, is the quotient of an $S$-scheme $U$ by an \'etale equivalence relation $R$ on $U$ such that we have an isomorphism $X \cong U/R$ of sheaves on $\Sch_{/S, \fppf}$. Phrased differently, an \'etale presentation of an algebraic space $X$ over some scheme $S$ is a coequaliser in $\Sh(\Sch_{/S, \fppf})$ of the following form, wherein $U$ and $R$ are as above:
                     $$
@@ -92,8 +159,8 @@
                         \end{tikzcd}
                     $$
             \end{definition}
-            \begin{lemma}[Existence of \'etale presentation of algebraic spaces] \label{lemma: existence_of_etale_presentations_of_algebraic_spaces}
-                Let $S$ be a scheme and $X$ be an algebraic space over $S$, and suppose that $X$ admits an \'etale atlas $u: U \to X$ by an $S$-scheme $U$ (cf. definition \ref{def: algebraic_spaces}). Then, we have the following \'etale presentation for $X$, wherein the two arrows $U \x_{u, X, u} U \toto U$ come from the canonical morphism $U \x_{u, X, u} U \to U \x_S U$:
+            \begin{proposition}[Existence of \'etale presentation of algebraic spaces] \label{prop: existence_of_etale_presentations_of_algebraic_spaces}
+                Let $S$ be a scheme, let $X$ be an algebraic space over $S$, and suppose that $X$ admits an \'etale atlas $u: U \to X$ by an $S$-scheme $U$ (cf. definition \ref{def: algebraic_spaces}). Then, we have the following \'etale presentation for $X$, wherein the two arrows $U \x_{u, X, u} U \toto U$ come from the canonical morphism $U \x_{u, X, u} U \to U \x_S U$:
                     $$
                         \begin{tikzcd}
                         	{U \x_{u, X, u} U} & U & X
@@ -101,11 +168,15 @@
                         	\arrow[shift left=2, from=1-1, to=1-2]
                         	\arrow["\coeq", two heads, from=1-2, to=1-3]
                         \end{tikzcd}
-                    $$
-            \end{lemma}
+                    $$ 
+            \end{proposition}
                 \begin{proof}
                     
                 \end{proof}
+                
+            \begin{proposition}[Pushouts of algebraic spaces] \label{prop: puhsouts_of_algebraic_spaces}
+                
+            \end{proposition}
     
         \subsubsection{Properties of algebraic spaces and their morphisms}
         
