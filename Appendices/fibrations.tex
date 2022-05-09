@@ -427,7 +427,7 @@
             \end{remark}
             
             \begin{definition}[$2$-commutative diagrams] \label{def: 2_commutative_diagrams}
-                Let $\calK$ be a $2$-category. A $2$-commutative diagram therein is thus a square as follows, wherein there exists a $2$-isomorphism $\eta: p'f \Rightarrow pg$:
+                Let $\scrK$ be a $2$-category. A $2$-commutative diagram therein is thus a square as follows, wherein there exists a $2$-isomorphism $\eta: p'f \Rightarrow pg$:
                     $$
                         \begin{tikzcd}
                         	{y'} & y \\
@@ -444,7 +444,7 @@
             \begin{definition}[Strict and weak $2$-categories and $2$-functors] \label{def: strict_and_weak_2_categoriesand_2_functors}
                 \noindent
                 \begin{enumerate}
-                    \item \textbf{(Strict and weak $2$-categories):} Let $\calK$ be a $2$-category. One says that it is \textbf{strict} if compositions of (pairs of) $1$-morphisms are unique up to (necessarily unique) $2$-equalities, and \textbf{weak} if compositions of (pairs of) $1$-morphisms are unique only up to $2$-isomorphisms.
+                    \item \textbf{(Strict and weak $2$-categories):} Let $\scrK$ be a $2$-category. One says that it is \textbf{strict} if compositions of (pairs of) $1$-morphisms are unique up to (necessarily unique) $2$-equalities, and \textbf{weak} if compositions of (pairs of) $1$-morphisms are unique only up to $2$-isomorphisms.
                     \item \textbf{(Strict and weak $2$-functors):}
                 \end{enumerate}
             \end{definition}
@@ -463,10 +463,10 @@
     \subsection{(Co)fibred categories}
         \subsubsection{Slice \texorpdfstring{$2$}{}-categories and prefibrations}
             \begin{definition}[Slice $2$-categories] \label{def: slice_2_categories}
-                Let $\calK$ be a $2$-category and let $x \in \Ob(\calK)$ be an object therein. Then, we define the \textbf{slice} $2$-category $\calK_{/x}$ to be the $2$-category wherein:
+                Let $\scrK$ be a $2$-category and let $x \in \Ob(\scrK)$ be an object therein. Then, we define the \textbf{slice} $2$-category $\scrK_{/x}$ to be the $2$-category wherein:
                     \begin{itemize}
-                        \item the objects are $1$-morphisms $(f: y \to x) \in 1\-\Mor(\calK)$,
-                        \item the $1$-morphisms $\varphi: (y', f') \to (y, f)$ are $1$-commutative triangles of $1$-morphisms $(f': y' \to x), (f: y \to x) \in 1\-\Mor(\calK)$ in $\calK$ of the following form:
+                        \item the objects are $1$-morphisms $(f: y \to x) \in 1\-\Mor(\scrK)$,
+                        \item the $1$-morphisms $\varphi: (y', f') \to (y, f)$ are $1$-commutative triangles of $1$-morphisms $(f': y' \to x), (f: y \to x) \in 1\-\Mor(\scrK)$ in $\scrK$ of the following form:
                             $$
                                 \begin{tikzcd}
                                 	{y'} && y \\
@@ -476,7 +476,7 @@
                                 	\arrow["f", from=1-3, to=2-2]
                                 \end{tikzcd}
                             $$
-                        \item and the $2$-morphisms between $1$-morphisms $\varphi, \psi: (y', f') \to (y, f)$ are $2$-morphisms $(\eta: \psi \Rightarrow \varphi) \in 2\-\Mor(\calK)$ such that the following diagram is $2$-commutative:
+                        \item and the $2$-morphisms between $1$-morphisms $\varphi, \psi: (y', f') \to (y, f)$ are $2$-morphisms $(\eta: \psi \Rightarrow \varphi) \in 2\-\Mor(\scrK)$ such that the following diagram is $2$-commutative:
                             $$
                                 \begin{tikzcd}
                                 	{y'} && y \\
@@ -491,7 +491,7 @@
                     \end{itemize}
             \end{definition}
             \begin{example}[Over-categories] \label{example: over_categories}
-                Let $\C$ be a category and let $1\-\Cat_2$ be the $2$-category with $1$-categories, functors, and natural transformations as objects, $1$-morphisms, and $2$-morphisms respectively. Then, there is a natural slice $2$-category $(1\-\Cat_2)_{/\C}$ wherein the objects are functors $p: \S \to \C$, $1$-morphisms are the evident $1$-commutative triangles of functors, and $2$-morphisms between $1$-morphisms $F, G: (\S', p') \to (\S, p)$ are natural transformations $\eta \in \Nat(F, G)$ such that $p(\eta_y) \cong \id_{p'(y)}$ for all $y \in \Ob(\S')$, i.e. such that the following square is $2$-commutative:
+                Let $\C$ be a category and let $1\-\Cat_2$ be the $2$-category with $1$-categories, functors, and natural transformations as objects, $1$-morphisms, and $2$-morphisms respectively. Then, there is a natural slice $2$-category $(1\-\Cat_2)_{/\C}$ wherein the objects are functors $p: \scrS \to \C$, $1$-morphisms are the evident $1$-commutative triangles of functors, and $2$-morphisms between $1$-morphisms $F, G: (\scrS', p') \to (\scrS, p)$ are natural transformations $\eta \in \Nat(F, G)$ such that $p(\eta_y) \cong \id_{p'(y)}$ for all $y \in \Ob(\scrS')$, i.e. such that the following square is $2$-commutative:
                     $$
                         \begin{tikzcd}
                         	{p'(y)} & {p(F(y))} \\
@@ -505,7 +505,7 @@
                     $$
             \end{example}
             \begin{proposition}[$2$-pullbacks in slice $2$-categories] \label{prop: 2_pullbacks_in_slice_2_categories}
-                Let $\calK$ be a $2$-category with $2$-pullbacks. Then for any $x \in \Ob(\calK)$, the slice $2$-category $\calK_{/x}$ shall also possess all $2$-pullbacks.
+                Let $\scrK$ be a $2$-category with $2$-pullbacks. Then for any $x \in \Ob(\scrK)$, the slice $2$-category $\scrK_{/x}$ shall also possess all $2$-pullbacks.
             \end{proposition}
                 \begin{proof}
                             
@@ -515,60 +515,60 @@
             \end{corollary}
             
             \begin{definition}[Prefibrations] \label{def: prefibrations}
-                Consider a $1$-functor $p: \S \to \C$ between $1$-categories $\S$ and $\C$ is a \textbf{prefibration} if and only if it is surjective on the level of both objects and ($1$-)morphisms. 
+                Consider a $1$-functor $p: \scrS \to \C$ between $1$-categories $\scrS$ and $\C$ is a \textbf{prefibration} if and only if it is surjective on the level of both objects and ($1$-)morphisms. 
             \end{definition}
             \begin{remark}[Op-prefibrations] \label{remark: op_prefibrations}
-                It is easy to see that every prefibration $p: \S \to \C$ defines a so-called \textbf{op-prefibration} $p^{\op}: \S^{\op} \to \C^{\op}$, which is nothing but the functor $p^{\op}$ viewed as a prefibration of $\S^{\op}$ over $\C^{\op}$.
+                It is easy to see that every prefibration $p: \scrS \to \C$ defines a so-called \textbf{op-prefibration} $p^{\op}: \scrS^{\op} \to \C^{\op}$, which is nothing but the functor $p^{\op}$ viewed as a prefibration of $\scrS^{\op}$ over $\C^{\op}$.
             \end{remark}
             \begin{remark}[Fibres of prefibrations] \label{remark: fibres_of_prefibrations}
-                Consider a prefibration $p: \S \to \C$, viewed as a $1$-morphism of $1\-\Cat_2$, and recall that $1\-\Cat_2$ admits $1$-terminal objects, namely categories that are equivalent to the singleton category $\pt$, as well as $2$-pullbacks. By viewing objects $U \in \Ob(\C)$ as functors $U: \pt \to \C$, one can define \textbf{fibres} of the prefibration $p: \S \to \C$ as $2$-pullbacks of the following kind:
+                Consider a prefibration $p: \scrS \to \C$, viewed as a $1$-morphism of $1\-\Cat_2$, and recall that $1\-\Cat_2$ admits $1$-terminal objects, namely categories that are equivalent to the singleton category $\pt$, as well as $2$-pullbacks. By viewing objects $U \in \Ob(\C)$ as functors $U: \pt \to \C$, one can define \textbf{fibres} of the prefibration $p: \scrS \to \C$ as $2$-pullbacks of the following kind:
                     $$
                         \begin{tikzcd}
-                        	{\S_U} & \S \\
+                        	{\scrS_U} & \scrS \\
                         	\pt & \C
-                        	\arrow["p", from=1-2, to=2-2]
                         	\arrow["U", from=2-1, to=2-2]
+                        	\arrow["p", from=1-2, to=2-2]
                         	\arrow["{p_U}"', from=1-1, to=2-1]
                         	\arrow[from=1-1, to=1-2]
-                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                        	\arrow["2"{description}, "\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
                         \end{tikzcd}
                     $$
-                It is then easy to see that $\S_U$ is the category wherein the objects are objects $x \in \S$ such that $p(x) = U$ and the morphisms are morphisms $(\varphi: y \to x) \in \Mor(\S)$ such that $p(\varphi) = \id_U$, and as such one ought to view $p_U: \S_U \to \pt$ as the unique functor from $\S_U$ to the singleton category whose only object is $U$ and whose only morphism is $\id_U$. Therefore, one can instead define prefibrations as functors $p: \S \to \C$ with non-empty fibres in the sense above and identify them by the families of $2$-pullbacks $\{\S \x^2_{p, \C, U} \pt\}_{U \in \Ob(\C)}$.
+                It is then easy to see that $\scrS_U$ is the category wherein the objects are objects $x \in \scrS$ such that $p(x) = U$ and the morphisms are morphisms $(\varphi: y \to x) \in \Mor(\scrS)$ such that $p(\varphi) = \id_U$, and as such one ought to view $p_U: \scrS_U \to \pt$ as the unique functor from $\scrS_U$ to the singleton category whose only object is $U$ and whose only morphism is $\id_U$. Therefore, one can instead define prefibrations as functors $p: \scrS \to \C$ with non-empty fibres in the sense above and identify them by the families of $2$-pullbacks $\{\scrS \x^2_{p, \C, U} \pt\}_{U \in \Ob(\C)}$.
             \end{remark}
             \begin{remark}[The $2$-category of prefibrations]
-                By definition, prefibrations $p: \S \to \C$ are objects of the $2$-category $(1\-\Cat_2)_{/\C}$, and so we might be tempted to declare that there is a $2$-full subcategory $\Pre\Fib(\C) \overset{2}{\subset} (1\-\Cat_2)_{/\C}$ spanned by prefibrations over $\C$, and indeed there is. To check that this is the case, one can verify that given any $1$-morphism $(F: (\S', p') \to (\S, p)) \in 1\-\Mor((1\-\Cat_2)_{/\C})$ and any object $U \in \C$, there exists a functor $F_U: \S'_U \to \S_U$ making the following diagram $1$-commutative in $1\-\Cat_2$:
+                By definition, prefibrations $p: \scrS \to \C$ are objects of the $2$-category $(1\-\Cat_2)_{/\C}$, and so we might be tempted to declare that there is a $2$-full subcategory $\Pre\Fib(\C) \overset{2}{\subset} (1\-\Cat_2)_{/\C}$ spanned by prefibrations over $\C$, and indeed there is. To check that this is the case, one can verify that given any $1$-morphism $(F: (\scrS', p') \to (\scrS, p)) \in 1\-\Mor((1\-\Cat_2)_{/\C})$ and any object $U \in \C$, there exists a functor $F_U: \scrS'_U \to \scrS_U$ making the following diagram $2$-commutative in $1\-\Cat_2$:
                     $$
                         \begin{tikzcd}
-                        	{\S'_U} &&&& {\S_U} \\
-                        	{\S'} &&&& \S \\
+                        	{\scrS'_U} &&&& {\scrS_U} \\
+                        	{\scrS'} &&&& \scrS \\
                         	&& \pt \\
                         	&& \C
                         	\arrow["{p'}"', from=2-1, to=4-3]
                         	\arrow["U", from=3-3, to=4-3]
                         	\arrow["{p'_U}"', from=1-1, to=3-3]
-                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=4-3]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=4-3, "2"{description}]
                         	\arrow[from=1-1, to=2-1]
                         	\arrow["{p_U}", from=1-5, to=3-3]
                         	\arrow[from=1-5, to=2-5]
                         	\arrow["p", from=2-5, to=4-3]
                         	\arrow["F", from=2-1, to=2-5]
                         	\arrow["{F_U}", from=1-1, to=1-5, dashed]
-                        	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=-90}, draw=none, from=1-5, to=4-3]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=-90}, draw=none, from=1-5, to=4-3, "2"{description}]
                         \end{tikzcd}
                     $$
                 and similarly for $2$-morphisms in $\Pre\Fib(\C)$. We leave this as an exercise for the reader, for which they may make use of proposition \ref{prop: 2_pullbacks_in_slice_2_categories}. Via the Pasting Lemma for $2$-pullbacks, we also see that:
-                    $$\S'_U \cong \S' \x^2_{F, \S} \S_U$$
+                    $$\scrS'_U \cong \scrS' \x^2_{F, \scrS} \scrS_U$$
                 from which it is easy to deduce that $\Pre\Fib(\C)$ has all $2$-pullbacks.
             \end{remark}
         
         \subsubsection{(Co)cartesian arrows and (co)fibrations of categories; prestacks}
             \begin{definition}[(Co)cartesian arrows] \label{def: (co)cartesian_arrows}
-                Consider a prefibration $p: \S \to \C$. Then, an arrow $(\varphi: y \to x) \in \Mor(\S)$ is said to be \textbf{$p$-cartesian} if and only if for all objects $z \in \Ob(\S)$, one has a ($1$-)pullback square of the following form:
+                Consider a prefibration $p: \scrS \to \C$. Then, an arrow $(\varphi: y \to x) \in \Mor(\scrS)$ is said to be \textbf{$p$-cartesian} if and only if for all objects $z \in \Ob(\scrS)$, one has a ($1$-)pullback square of the following form:
                     $$
                         \begin{tikzcd}
-                        	{\S(z, y)} & {\C(p(z), p(y))} \\
-                        	{\S(z, x)} & {\C(p(z), p(x))}
-                        	\arrow["{\S(z, \varphi)}"', from=1-1, to=2-1]
+                        	{\scrS(z, y)} & {\C(p(z), p(y))} \\
+                        	{\scrS(z, x)} & {\C(p(z), p(x))}
+                        	\arrow["{\scrS(z, \varphi)}"', from=1-1, to=2-1]
                         	\arrow[from=2-1, to=2-2]
                         	\arrow["{\C(p(z), p(\varphi))}", from=1-2, to=2-2]
                         	\arrow[from=1-1, to=1-2]
@@ -581,12 +581,12 @@
                 
             \end{remark}
             \begin{proposition}[Properties of (co)cartesian arrows in a prefibration] \label{prop: properties_of_(co)cartesian_arrows_in_a_prefibration}
-                Let $p: \S \to \C$ be a prefibration. Then:
+                Let $p: \scrS \to \C$ be a prefibration. Then:
                     \begin{enumerate}
                         \item compositions of $p$-(co)cartesian arrows are also $p$-(co)cartesian,
-                        \item isomorphisms in $\S$ are $p$-(co)cartesian, 
-                        \item if a $p$-(co)cartesian arrow $(\varphi: y \to x) \in \Mor(\S)$ is such that $p(\varphi)$ is an isomorphism in $\C$, then $\varphi$ itself will be an isomorphism, and
-                        \item if we have a diagram in $\S$ as follows, wherein $\varphi: y \to x$ is $p$-(co)cartesian:
+                        \item isomorphisms in $\scrS$ are $p$-(co)cartesian, 
+                        \item if a $p$-(co)cartesian arrow $(\varphi: y \to x) \in \Mor(\scrS)$ is such that $p(\varphi)$ is an isomorphism in $\C$, then $\varphi$ itself will be an isomorphism, and
+                        \item if we have a diagram in $\scrS$ as follows, wherein $\varphi: y \to x$ is $p$-(co)cartesian:
                             $$
                                 \begin{tikzcd}
                                 	& y \\
@@ -595,7 +595,7 @@
                                 	\arrow["f", from=2-1, to=2-2]
                                 \end{tikzcd}
                             $$
-                        such that the pullback $p(y) \x_{p(\varphi), p(x), p(f)} p(x')$ exists in $\C$, then the pullback $y \x_{\varphi, x, f} x'$ exists in $\S$, and moreover, the canonical projection $\pr_1: y \x_{\varphi, x, f} x' \to x'$ is also $p$-(co)cartesian.
+                        such that the pullback $p(y) \x_{p(\varphi), p(x), p(f)} p(x')$ exists in $\C$, then the pullback $y \x_{\varphi, x, f} x'$ exists in $\scrS$, and moreover, the canonical projection $\pr_1: y \x_{\varphi, x, f} x' \to x'$ is also $p$-(co)cartesian.
                     \end{enumerate}
             \end{proposition}
                 \begin{proof}
@@ -611,32 +611,32 @@
                 Let $\C$ be a base category and consider a $1$-morphism in $\Pre\Fib(\C)$ as follows:
                     $$
                         \begin{tikzcd}
-                        	{\S'} && \S \\
+                        	{\scrS'} && \scrS \\
                         	& \C
                         	\arrow["{p'}"', from=1-1, to=2-2]
                         	\arrow["p", from=1-3, to=2-2]
                         	\arrow["F", from=1-1, to=1-3]
                         \end{tikzcd}
                     $$
-                If $(\psi: z \to t) \in \Mor(\S')$ is a $p'$-(co)cartesian arrow such that $F(\psi)$ is $p$-(co)cartesian, then $\psi$ will be $(F \circ p)$-(co)cartesian. 
+                If $(\psi: z \to t) \in \Mor(\scrS')$ is a $p'$-(co)cartesian arrow such that $F(\psi)$ is $p$-(co)cartesian, then $\psi$ will be $(F \circ p)$-(co)cartesian. 
             \end{proposition}
                 \begin{proof}
                     Immediate from definition \ref{def: (co)cartesian_arrows}.
                 \end{proof}
             
             \begin{definition}[(Op)fibrations] \label{def: (op)fibrations}
-                A \textbf{fibration}\footnote{Also called a \textbf{fibred category} or \textbf{cartesian fibration}.} is a prefibration $p: \S \to \C$ such that for all arrows $(f: V \to U) \in \Mor(\C)$, there exists a corresponding cartesian arrow $(\varphi: f^*x \to x) \in \Mor(\S)$ (which may or may not be uniquely determined) such that $p(\varphi) = f$; we refer to the cartesian arrow $\varphi: f^*x \to x$ lying over $f: V \to U$ as a \textbf{choice of pullback} along $f$. Dually, an \textbf{op-fibration}\footnote{Also called a \textbf{cofibred category, cocartesian fibration}, or \textbf{cartesian op-fibration}.} is a prefibration $p: \S \to \C$ such that the corresponding op-prefibration $p^{\op}: \S^{\op} \to \C^{\op}$ is a fibration\footnote{For op-fibrations, it is customary to refer to the cocartesian arrows $(\psi: y \to f_*y) \in \Mor(\S)$ lying over arrows $(f: V \to U) \in \Mor(\C)$ as \textbf{choices of pushforwards}.} of $\S^{\op}$ over $\C^{\op}$ via the functor $p^{\op}$.
+                A \textbf{fibration}\footnote{Also called a \textbf{fibred category} or \textbf{cartesian fibration}.} is a prefibration $p: \scrS \to \C$ such that for all arrows $(f: V \to U) \in \Mor(\C)$, there exists a corresponding cartesian arrow $(\varphi: f^*x \to x) \in \Mor(\scrS)$ (which may or may not be uniquely determined) such that $p(\varphi) = f$; we refer to the cartesian arrow $\varphi: f^*x \to x$ lying over $f: V \to U$ as a \textbf{choice of pullback} along $f$. Dually, an \textbf{op-fibration}\footnote{Also called a \textbf{cofibred category, cocartesian fibration}, or \textbf{cartesian op-fibration}.} is a prefibration $p: \scrS \to \C$ such that the corresponding op-prefibration $p^{\op}: \scrS^{\op} \to \C^{\op}$ is a fibration\footnote{For op-fibrations, it is customary to refer to the cocartesian arrows $(\psi: y \to f_*y) \in \Mor(\scrS)$ lying over arrows $(f: V \to U) \in \Mor(\C)$ as \textbf{choices of pushforwards}.} of $\scrS^{\op}$ over $\C^{\op}$ via the functor $p^{\op}$.
             \end{definition}
             \begin{remark}[On choosing pullbacks]
-                Usually, one says that \say{choices of pullbacks are given} with respect to some fibration $p: \S \to \C$ to mean that for all arrows $(f: V \to U) \in \Mor(\C)$, one has implicitly chosen some domain $f^*x$ such that $p(f^*x) = V$ along with a morphism $(\varphi: f^*x \to x) \in \Mor(\S)$ such that $p(\varphi) = f$. Usually, it is also implicitly assumed that pullbacks along identities are identities, i.e. for all objects $U \in \Ob(\C)$, one assumes that $\id_U^*x = x$ for all objects $x \in \S$ such that $p(x) = U$.
+                Usually, one says that \say{choices of pullbacks are given} with respect to some fibration $p: \scrS \to \C$ to mean that for all arrows $(f: V \to U) \in \Mor(\C)$, one has implicitly chosen some domain $f^*x$ such that $p(f^*x) = V$ along with a morphism $(\varphi: f^*x \to x) \in \Mor(\scrS)$ such that $p(\varphi) = f$. Usually, it is also implicitly assumed that pullbacks along identities are identities, i.e. for all objects $U \in \Ob(\C)$, one assumes that $\id_U^*x = x$ for all objects $x \in \scrS$ such that $p(x) = U$.
                 
                 Now, it should be noted that in choosing pulbacks along arrows $(f: V \to U) \in \Mor(\C)$, one is in fact choosing assignments:
-                    $$f^*: \S_U \to \S_V$$
+                    $$f^*: \scrS_U \to \scrS_V$$
                     $$x \mapsto f^*x$$
-                between the corresponding fibres over the codomain and domain of $f$ ($U$ and $V$ respectively) of the (pre)fibration $p: \S \to \C$ (cf. remark \ref{remark: fibres_of_prefibrations}). As it turns out, these assignments are functorial in weak sense (cf. proposition \ref{prop: 2_functoriality_of_fibrations}), but to show that they are, we shall need to show that 
+                between the corresponding fibres over the codomain and domain of $f$ ($U$ and $V$ respectively) of the (pre)fibration $p: \scrS \to \C$ (cf. remark \ref{remark: fibres_of_prefibrations}). As it turns out, these assignments are functorial in weak sense (cf. proposition \ref{prop: 2_functoriality_of_fibrations}), but to show that they are, we shall need to show that 
             \end{remark}
             \begin{proposition}[$2$-functoriality of fibrations] \label{prop: 2_functoriality_of_fibrations}
-                Suppose that $p: \S \to \C$ is a fibration and that:
+                Suppose that $p: \scrS \to \C$ is a fibration and that:
                     $$
                         \begin{tikzcd}
                         	W & V & U
@@ -676,7 +676,7 @@
                 Sometimes, we might wish to put emphasis on the fact that objects of $\Pre\Fib(\C)$ and $\Fib(\C)$ (for some fixed $1$-category $\C$) are fibred in generic categories, and denote them instead by $\Pre\Fib_{1\-\Cat_2}(\C)$ and $\Fib_{1\-\Cat_2}(\C)$ respectively.
             \end{convention}
             \begin{definition}[Categories fibred in groupoids] \label{def: categories_fibred_in_groupoids}
-                A \textbf{category fibred in groupoids} is a fibration $p: \S \to \C$ such that all the fibres $\S_U$ over objects $U \in \Ob(\C)$ are groupoids. 
+                A \textbf{category fibred in groupoids} is a fibration $p: \scrS \to \C$ such that all the fibres $\scrS_U$ over objects $U \in \Ob(\C)$ are groupoids. 
             \end{definition}
             \begin{remark}[$2$-categories of categories fibred in groupoids]
                 Since the $2$-category $1\-\Grpd_2$ of groupoids, functors between them, and natural transformations between said functors is a full $2$-subcategory of $1\-\Cat_2$ that is closed under all $2$-pullbacks, there is a natural full $2$-subcategory $\Fib_{1\-\Grpd_2}(\C) \overset{2}{\subset} \Fib_{1\-\Cat_2}(\C)$ of categories fibred in groupoids which is closed under $2$-pullbacks taken inside $\Fib_{1\-\Cat_2}(\C)$ (or for that matter, $(1\-\Cat_2)_{/\C}$).
@@ -685,12 +685,12 @@
             \end{remark}
             
             \begin{convention}[$1$-opposite and $2$-opposite categories] \label{conv: 1_opposite_and_2_opposite_categories}
-                Let $\calK$ be a $2$-category. Then, we define its $1$-opposite, denoted by $\calK^{1\-\op}$ or simply $\calK^{\op}$, to be the $2$-category with the same objects and $2$-morphisms as those of $\calK$, but with $1$-morphisms in the opposite direction. The $2$-opposite category $\calK^{2\-\op}$ is defined similarly. There is also the $(1, 2)$-opposite $\calK^{(1, 2)\-\op}$, which is the $2$-category with the same objects as $\calK$, but with opposite $1$-morphisms and $2$-morphisms.
+                Let $\scrK$ be a $2$-category. Then, we define its $1$-opposite, denoted by $\scrK^{1\-\op}$ or simply $\scrK^{\op}$, to be the $2$-category with the same objects and $2$-morphisms as those of $\scrK$, but with $1$-morphisms in the opposite direction. The $2$-opposite category $\scrK^{2\-\op}$ is defined similarly. There is also the $(1, 2)$-opposite $\scrK^{(1, 2)\-\op}$, which is the $2$-category with the same objects as $\scrK$, but with opposite $1$-morphisms and $2$-morphisms.
             \end{convention}
             \begin{definition}[Prestacks] \label{def: prestacks}
-                A \textbf{prestack}\footnote{Also known as \textbf{pseudo-functors}.} on a weak $2$-category $\calK$ is a weak $2$-functor:
-                    $$F: \calK^{1\-\op} \to 1\-\Cat_{(2, 1)}$$
-                There is an evident weak $2$-category $\Pre\Stk(\calK)$ of prestacks on any given weak $2$-category $\calK$, wherein the objects are prestacks on $\calK$, the $1$-morphisms are weak $2$-natural transformations, and the $2$-morphisms are $2$-natural modifications between them.
+                A \textbf{prestack}\footnote{Also known as \textbf{pseudo-functors}.} on a weak $2$-category $\scrK$ is a weak $2$-functor:
+                    $$F: \scrK^{1\-\op} \to 1\-\Cat_{(2, 1)}$$
+                There is an evident weak $2$-category $\Pre\Stk(\scrK)$ of prestacks on any given weak $2$-category $\scrK$, wherein the objects are prestacks on $\scrK$, the $1$-morphisms are weak $2$-natural transformations, and the $2$-morphisms are $2$-natural modifications between them.
             \end{definition}
             \begin{theorem}[The Grothendieck Construction] \label{theorem: grothendieck_construction}
                 Fix a $1$-category $\C$. There is a strict $2$-equivalence of $2$-categories
@@ -710,7 +710,7 @@
                 is a fibration over $\C$, commonly called the \textbf{domain fibration}; in particular, $\C_{/U}$ is fibred in sets over $\C$ via the forgetful functor $p_U$. Furthermore, it is easy to see that its corresponding prestack is nothing but the representable presheaf:
                     $$\C(-, U): \C^{\op} \to \Sets$$
                     $$X \mapsto \{\text{Arrows in $\C$ with domain $X$ and codomain $U$}\}$$
-                As such, any fibration $p: \S \to \C$ that is $1$-isomorphic\footnote{Technically, it is not necessaary to specify that the isomorphism at play here is a $1$-isomorphism, since domain fibrations are fibred in sets.} to a domain fibration $p_U: \C_{/U} \to \C$ is said to be \textbf{representable}.
+                As such, any fibration $p: \scrS \to \C$ that is $1$-isomorphic\footnote{Technically, it is not necessaary to specify that the isomorphism at play here is a $1$-isomorphism, since domain fibrations are fibred in sets.} to a domain fibration $p_U: \C_{/U} \to \C$ is said to be \textbf{representable}.
             \end{example}
             \begin{example}[Fibred categories of quasi-coherent sheaves] \label{example: fibred_categories_of_quasi_coherent_sheaves}
                 

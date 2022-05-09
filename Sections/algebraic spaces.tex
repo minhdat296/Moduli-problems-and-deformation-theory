@@ -69,11 +69,14 @@
             \begin{corollary}[Schemes are algebraic spaces] \label{coro: schemes_are_algebraic_spaces}
                 For any given scheme $S$, the category $\Sch_{/S}$ of $S$-schemes is a full subcategory of $\Alg\Spc_{/S}$ which is closed under finite pullbacks.
             \end{corollary}
+            \begin{remark}[A sheaf-theoretic definition of schemes] \label{remark: sheaf_theoretic_definition_of_schemes}
+                In fact, it is easy to see - using the fact that the fppf topology is subcanonical - that \textit{schemes are fppf sheaves $X$ on the category of affine schemes such that their diagonals $\Delta_X$ are representable and such that they admit so-called Zariski atlases, i.e. a jointly surjective family of open immersions $U_i \hookrightarrow X$ from affine schemes $U_i$}. Note that this definition is not circular since one can define schemes either as objects of $\Cring^{\op}$ or as certain kinds of locally ringed spaces, which is a definition that makes use of only the Zariski topology on prime spectra of commutative rings and the notion of structure sheaves.
+            \end{remark}
             \begin{definition}[Clopen immersions of ringed spaces] \label{def: clopen_immersions_of_ringed_spaces}
                 An immersion of ringed spaces is said to be \textbf{clopen} whenever it is simultaneously closed and open.
             \end{definition}
             \begin{remark}[Clopen immersions of fppf sheaves] \label{remark: clopen_immersions_of_fppf_sheaves}
-                Given definition \ref{def: clopen_immersions_of_ringed_spaces}, we can define a \textbf{clopen immersion of sheaves} on $(\Sch_{/S})_{\fppf}$ (with $S$ being some scheme) as a morphism that is representable by clopen immersions of schemes. Note that this is a well-defined notion, as open immersions and closed immersions are stable under base change (since tensor products commute with localisations and quotients) and are fppf local (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01JY}{Tag 01JY}]{stacks}).
+                Given definition \ref{def: clopen_immersions_of_ringed_spaces}, we can define a \textbf{clopen immersion of sheaves} on $(\Sch_{/S})_{\fppf}$ (with $S$ being some scheme) as a morphism that is representable by clopen immersions of schemes. Note that this is a well-defined notion, as open immersions and closed immersions are stable under base change (since tensor products commute with localisations and quotients) and are fppf-local (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01JY}{Tag 01JY}]{stacks}).
             \end{remark}
             \begin{lemma}[Representability by schemes and algebraic spaces of disjoint summands] \label{lemma: representability_by_schemes_and_algebraic_spaces_of_disjoint_summands}
                 Throughout, we work over a base scheme $S$.
@@ -125,17 +128,17 @@
                     \end{enumerate}
                 \end{proof}
             \begin{proposition}[Base-chaning \'etale and flat equivalence relations in algebraic spaces] \label{prop: base_changing_etale_and_flat_equivalence_relations_in_algebraic_spaces}
-                Let $S$ be a scheme, let $X$ be an algebraic space over $S$, and let $s, t: R \toto X$ be an \'etale equivalence relation on $X$ over $S$.
+                Let $S$ be a scheme, let $\calX$ be an algebraic space over $S$, and let $s, t: R \toto \calX$ be an \'etale equivalence relation on $\calX$ over $S$.
                     \begin{enumerate}
-                        \item \textbf{(\'Etale base-changes):} Suppose that $f: X' \to X$ is an \'etale morphism of algebraic spaces over $X$ and that $s', t': R' \toto X'$ is the pullback of $s, t: R \toto X$ along $f$. Then, $s', t': R' \toto X'$ will be an \'etale equivalence relation on $X'$ over $S$.
-                        \item \textbf{(Flat base-changes):} Suppose that the source and target morphisms $s, t: R \toto X$ are surjective, flat, and locally of finite presentation and that $f: X' \to X$ is a morphism of algebraic spaces over $S$ that is flat and locally of finite presentation; in addition, denote by $s', t': R' \toto X'$ the pullback along $f$ of $s, t: R \toto X$. Then, the canonically induced morphism of sheaves $X'R/' \to X/R$ will be an open immersion. 
+                        \item \textbf{(\'Etale base-changes):} Suppose that $f: \calX' \to \calX$ is an \'etale morphism of algebraic spaces over $\calX$ and that $s', t': R' \toto \calX'$ is the pullback of $s, t: R \toto \calX$ along $f$. Then, $s', t': R' \toto \calX'$ will be an \'etale equivalence relation on $\calX'$ over $S$.
+                        \item \textbf{(Flat base-changes):} Suppose that the source and target morphisms $s, t: R \toto \calX$ are surjective, flat, and locally of finite presentation and that $f: \calX' \to \calX$ is a morphism of algebraic spaces over $S$ that is flat and locally of finite presentation; in addition, denote by $s', t': R' \toto \calX'$ the pullback along $f$ of $s, t: R \toto \calX$. Then, the canonically induced morphism of sheaves $\calX'/R' \to \calX/R$ will be an open immersion. 
                     \end{enumerate}
             \end{proposition}
             \begin{definition}[\'Etale presentations of algebraic spaces] \label{def: etale_presentations_of_algebraic_spaces}
-                An \textbf{\'etale presentation} of an algebraic space $X$ over some scheme $S$, should it exist, is the quotient of an $S$-scheme $U$ by an \'etale equivalence relation $R$ on $U$ such that we have an isomorphism $X \cong U/R$ of sheaves on $(\Sch_{/S})_{\fppf}$. Phrased differently, an \'etale presentation of an algebraic space $X$ over some scheme $S$ is a coequaliser in $\Sh((\Sch_{/S})_{\fppf})$ of the following form, wherein $U$ and $R$ are as above:
+                An \textbf{\'etale presentation} of an algebraic space $\calX$ over some scheme $S$, should it exist, is the quotient of an $S$-scheme $U$ by an \'etale equivalence relation $R$ on $U$ such that we have an isomorphism $\calX \cong U/R$ of sheaves on $(\Sch_{/S})_{\fppf}$. Phrased differently, an \'etale presentation of an algebraic space $\calX$ over some scheme $S$ is a coequaliser in $\Sh((\Sch_{/S})_{\fppf})$ of the following form, wherein $U$ and $R$ are as above:
                     $$
                         \begin{tikzcd}
-                        	R & U & X
+                        	R & U & \calX
                         	\arrow[shift right=2, from=1-1, to=1-2]
                         	\arrow[shift left=2, from=1-1, to=1-2]
                         	\arrow["\coeq", two heads, from=1-2, to=1-3]
@@ -143,13 +146,13 @@
                     $$
             \end{definition}
             \begin{proposition}[Existence of \'etale presentation of algebraic spaces] \label{prop: existence_of_etale_presentations_of_algebraic_spaces}
-                Let $S$ be a scheme, let $X$ be an algebraic space over $S$, and suppose that $X$ admits an \'etale atlas $u: U \to X$ by an $S$-scheme $U$ (cf. definition \ref{def: algebraic_spaces}). Then, we have the following \'etale presentation for $X$, wherein the two arrows $U \x_{u, X, u} U \toto U$ come from the canonical morphism $U \x_{u, X, u} U \to U \x_S U$:
+                Let $S$ be a scheme, let $\calX$ be an algebraic space over $S$, and suppose that $\calX$ admits an \'etale atlas $u: U \to \calX$ by an $S$-scheme $U$ (cf. definition \ref{def: algebraic_spaces}). Then, we have the following \'etale presentation for $\calX$, wherein the two arrows $U \x_{u, \calX, u} U \toto U$ come from the canonical morphism $U \x_{u, \calX, u} U \to U \x_S U$:
                     $$
                         \begin{tikzcd}
-                        	{U \x_{u, X, u} U} & U & X
+                        	{U \x_{u, \calX, u} U} & U & \calX
                         	\arrow[shift right=2, from=1-1, to=1-2]
                         	\arrow[shift left=2, from=1-1, to=1-2]
-                        	\arrow["\coeq", two heads, from=1-2, to=1-3]
+                        	\arrow["{\coeq(u, u)}", two heads, from=1-2, to=1-3]
                         \end{tikzcd}
                     $$ 
             \end{proposition}
