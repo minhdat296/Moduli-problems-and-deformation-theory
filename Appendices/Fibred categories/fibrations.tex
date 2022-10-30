@@ -625,7 +625,21 @@
                 \end{proof}
             
             \begin{definition}[(Op)fibrations] \label{def: (op)fibrations}
-                A \textbf{fibration}\footnote{Also called a \textbf{fibred category} or \textbf{cartesian fibration}.} is a prefibration $p: \scrS \to \C$ such that for all arrows $(f: V \to U) \in \Mor(\C)$, there exists a corresponding cartesian arrow $(\varphi: f^*x \to x) \in \Mor(\scrS)$ (which may or may not be uniquely determined) such that $p(\varphi) = f$; we refer to the cartesian arrow $\varphi: f^*x \to x$ lying over $f: V \to U$ as a \textbf{choice of pullback} along $f$. Dually, an \textbf{op-fibration}\footnote{Also called a \textbf{cofibred category, cocartesian fibration}, or \textbf{cartesian op-fibration}.} is a prefibration $p: \scrS \to \C$ such that the corresponding op-prefibration $p^{\op}: \scrS^{\op} \to \C^{\op}$ is a fibration\footnote{For op-fibrations, it is customary to refer to the cocartesian arrows $(\psi: y \to f_*y) \in \Mor(\scrS)$ lying over arrows $(f: V \to U) \in \Mor(\C)$ as \textbf{choices of pushforwards}.} of $\scrS^{\op}$ over $\C^{\op}$ via the functor $p^{\op}$.
+                A \textbf{fibration}\footnote{Also called a \textbf{fibred category} or \textbf{cartesian fibration}.} is a prefibration:
+                    $$p: \scrS \to \C$$
+                such that for all arrows:
+                    $$(f: V \to U) \in \Mor(\C)$$
+                there exists a corresponding cartesian arrow:
+                    $$(\varphi: f^*x \to x) \in \Mor(\scrS)$$
+                (which may or may not be uniquely determined) such that:
+                    $$p(\varphi) = f$$
+                We refer to the cartesian arrow $\varphi: f^*x \to x$ lying over $f: V \to U$ as a \textbf{choice of pullback} along $f$.
+                
+                Dually, an \textbf{op-fibration}\footnote{Also called a \textbf{cofibred category, cocartesian fibration}, or \textbf{cartesian op-fibration}.} is a prefibration:
+                    $$p: \scrS \to \C$$
+                such that the corresponding op-prefibration:
+                    $$p^{\op}: \scrS^{\op} \to \C^{\op}$$
+                is a fibration\footnote{For op-fibrations, it is customary to refer to the cocartesian arrows $(\psi: y \to f_*y) \in \Mor(\scrS)$ lying over arrows $(f: V \to U) \in \Mor(\C)$ as \textbf{choices of pushforwards}.} of $\scrS^{\op}$ over $\C^{\op}$ via the functor $p^{\op}$.
             \end{definition}
             \begin{remark}[On choosing pullbacks]
                 Usually, one says that \say{choices of pullbacks are given} with respect to some fibration $p: \scrS \to \C$ to mean that for all arrows $(f: V \to U) \in \Mor(\C)$, one has implicitly chosen some domain $f^*x$ such that $p(f^*x) = V$ along with a morphism $(\varphi: f^*x \to x) \in \Mor(\scrS)$ such that $p(\varphi) = f$. Usually, it is also implicitly assumed that pullbacks along identities are identities, i.e. for all objects $U \in \Ob(\C)$, one assumes that $\id_U^*x = x$ for all objects $x \in \scrS$ such that $p(x) = U$.

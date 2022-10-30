@@ -1,7 +1,6 @@
 \section{Algebraic stacks}
     \subsection{The \texorpdfstring{$2$}{}-category of algebraic stacks}
         \subsubsection{Algebraic stacks and their formal properties}
-            
     
         \subsubsection{Properties of algebraic stacks and their morphisms}
         
@@ -66,7 +65,7 @@
                 \begin{proof}
                     
                 \end{proof}
-            \begin{lemma}[A reduction step] \label{lemma: keel_mori_reduction_step}
+            \begin{lemma}[A reduction step for the Keel-Mori Theorem] \label{lemma: keel_mori_reduction_step}
                 Let $\scrX$ be an algebraic stack Zariski-locally of finite presentation, whose diagonal $\Delta_{\scrX/S}$ is quasi-compact and separated, both over some given scheme $S$. Suppose furthermore that the diagonal $\Delta_{\scrX/S}$ is quasi-finite over $S$. In such a setting, there exists a covering of $\scrX$ by a set $\{\scrX_i\}_{i \in I}$ of open algebraic substacks such that each $\scrX_i$ admits a quasi-finite, flat, and finitely presented scheme atlas $U_i \to \scrX_i$.
             \end{lemma}
                 \begin{proof}
@@ -96,9 +95,22 @@
             \begin{remark}[Inertia and automorphisms] \label{remark: inertia_and_automorphisms}
                 Fix an algebraic stack $\scrX$ over a given base scheme $S$ and consider the evident full $2$-category\footnote{Defined in the manner of definition \ref{def: slice_2_categories}.} $\Alg\Spc_{/\scrX} \overset{2}{\subset} \Alg\Stk_{/\scrX}$ of algebraic spaces over $\scrX$. Observe that this category is $2$-equivalent to the $2$-category 
             \end{remark}
-            \begin{lemma}
-                Suppose that $f: \scrX' \to \scrX$ is an \'etale morphism of between well-nigh affine algebraic stacks over a fixed base scheme $S$, such that 
-            \end{lemma}
+            \begin{proposition}
+                Suppose that $\scrX$ is a well-nigh affine algebraic stack and $f: \scrX' \to \scrX$ is an \'etale (respectively, \'etale and separated) morphism of between well-nigh affine algebraic stacks, both over a fixed base scheme $S$. Suppose furthermore that $f$ induces isomorphisms on automorphism groups, and recall that by virtue of being well-nigh affine, the algebraic stack $\scrX$ admit a coarse moduli space $\pi: \scrX \to \calX$ over $S$ whose formation is stable under flat base-changes and such that the morphism $\pi$ is separated, quasi-compact, and universally homeomorphic over $S$.
+                
+                In such a situation, there exists an \'etale (respectively, \'etale and separated) morphism $g: \calX' \to \calX$ of algebraic spaces over $S$ such that the following diagram is a $2$-pullback square of algebraic stacks over $S$:
+                    $$
+                        \begin{tikzcd}
+                        	{\scrX'} & \scrX \\
+                        	{\calX'} & \calX
+                        	\arrow["\pi", from=1-2, to=2-2]
+                        	\arrow["g", from=2-1, to=2-2]
+                        	\arrow[from=1-1, to=2-1]
+                        	\arrow["f", from=1-1, to=1-2]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                        \end{tikzcd}
+                    $$
+            \end{proposition}
                 \begin{proof}
                     
                 \end{proof}
@@ -112,5 +124,3 @@
         
         \subsubsection{Tame algebraic stacks}
             One of the issues with the notion of (coarse) moduli spaces of algebraic stacks is that it is not very stable. For instance, it is not always the case that the formation of coarse moduli spaces - especially in positive characteristics - commutes with base-changes. As such, it is worthwhile to single out a class of algebraic stacks (so-called \say{tame algebraic stacks}) for which the formation of coarse moduli spaces is actually stable under base-changes; these algebraic stacks also behave well in other ways, but these are rather technical properties, so we thought it best to discuss them later on, once we have had all the definitions in place. 
-
-    \subsection{Cohomology of algebraic stacks and derived categories of coherent sheaves}

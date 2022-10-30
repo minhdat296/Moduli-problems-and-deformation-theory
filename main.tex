@@ -1,4 +1,4 @@
-\input{article preambles}
+\input{book preambles}
 
 \setcounter{section}{-1}
 
@@ -6,7 +6,7 @@
 
 \begin{document}
 
-	\title{Schemes, algebraic spaces, and algebraic stacks}
+	\title{Moduli theory and deformation theory}
 	
 	\author{Dat Minh Ha}
 	\maketitle
@@ -17,23 +17,48 @@
 	
 	{
       \hypersetup{} 
-      %\dominitoc
+      \dominitoc
       \tableofcontents %sort sections alphabetically
     }
     
-    \input{Sections/introduction}
-    
-    \input{Sections/schemes}
-    
-    \input{Sections/algebraic spaces}
-    
-    \input{Sections/algebraic stacks}
-    
-    \begin{appendices}
-        \input{Appendices/fibrations}
+    \chapter{Schemes, algebraic spaces, and algebraic stacks}
+        \begin{abstract}
+            
+        \end{abstract}
         
-        \input{Appendices/descent}
-    \end{appendices}
+        \minitoc
+    
+        \input{Chapters/Schemes and algebraic stacks/schemes}
+        
+        \input{Chapters/Schemes and algebraic stacks/algebraic spaces}
+        
+        \input{Chapters/Schemes and algebraic stacks/algebraic stacks}
+        
+        \begin{appendices}
+            \input{Appendices/Fibred categories/fibrations}
+            
+            \input{Appendices/Fibred categories/descent}
+        \end{appendices}
+        
+    \chapter{Deformation theory}
+        \begin{abstract}
+            
+        \end{abstract}
+        
+        \minitoc
+    
+        \input{Chapters/Deformation theory and representability/deformation functors}
+        
+        \input{Chapters/Deformation theory and representability/cotangent complexes}
+        
+        \input{Chapters/Deformation theory and representability/criteria for representability}
+        
+    \chapter{Algebraisation}
+        \begin{abstract}
+            
+        \end{abstract}
+        
+        \minitoc
 	
 	\addcontentsline{toc}{section}{References}
 	\printbibliography
