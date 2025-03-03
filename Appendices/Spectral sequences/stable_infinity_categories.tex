@@ -1,0 +1,209 @@
+\section{Some generalities on stable \texorpdfstring{$\infty$}{}-categories}
+    \subsection{Triangles and stability}
+        \begin{definition}[Stable $\infty$-categories] \label{def: stable_infinity_categories} \index{$\infty$-categories! stable}
+            
+            \begin{enumerate}
+                \item \textbf{(Triangles):} Let $\C$ be an $\infty$-category with zero objects $0$ (i.e. let $\C$ be a so-called \textbf{pointed category}). A \textbf{triangle} in $\C$ is just a commutative square of the form:
+                    $$
+                        \begin{tikzcd}
+                            x & y \\
+                            0 & z
+                            \arrow[from=1-1, to=2-1]
+                            \arrow[from=1-1, to=1-2]
+                            \arrow[from=1-2, to=2-2]
+                            \arrow[from=2-1, to=2-2]
+                        \end{tikzcd}
+                    $$
+                If it is in addition a pullback square (i.e. the limit of a diagram $\simp[1] \x \simp[1] \to \C$), then it will be commonly referred to as a \textbf{fibre sequence}; the dual notion (i.e. a colimit of a diagram $\simp[1] \x \simp[1] \to \C$) is that of \textbf{cofibre sequences}; one speaks also of \textbf{(co)fibres} of morphisms, which are nothing more than pullbacks/pushouts along the canonical morphism from/to the zero object $0$ to the domain of said morphisms (e.g. in the situation above, should the square be a pullback square then it will be a fibre of $y \to z$). Thanks to the universal property of zero objects, one can image triangles in $\C$ as diagrams of shape $\simp[1] \x \simp[1]$.
+                \item \textbf{(Stable $\infty$-categories):} An $\infty$-category $\C$ is \textbf{stable} if and only if:
+                    \begin{enumerate}
+                        \item it is pointed,
+                        \item all morphisms in $\C$ admit fibres and cofibres, and
+                        \item a triangle in $\C$ is a fibre sequence if and only if it is also a cofibre sequence.
+                    \end{enumerate}
+            \end{enumerate}
+        \end{definition}
+        \begin{example}
+            
+            \begin{itemize}
+                \item The $\infty$-category of spectra (sequences of topological spaces indexed by $\N$ along with loopings and suspensions) is stable.
+                \item As we shall eventually see, the derived category of an abelian category is stable as an $\infty$-category.
+            \end{itemize}
+        \end{example}
+        
+        \begin{definition}[Triangulated $\infty$-categories] \label{def: triangulated_infinity_categories} \index{$\infty$-categories! triangulated}
+            
+            \begin{enumerate}
+                \item \textbf{(Distinguished triangles):} Within a pointed $\infty$-category, we define \textbf{distinguished triangles} to be a cofibre sequence (cf. definition \ref{def: stable_infinity_categories}):
+                    $$
+                        \begin{tikzcd}
+                            x & y \\
+                            0 & z
+                            \arrow[from=1-1, to=2-1]
+                            \arrow[from=1-1, to=1-2]
+                            \arrow[from=1-2, to=2-2]
+                            \arrow[from=2-1, to=2-2]
+                            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                        \end{tikzcd}
+                    $$
+                which admits an extension by another cofibre sequence $y \to z \to \suspension x$ into:
+                    $$
+                        \begin{tikzcd}
+                            x & y & 0 \\
+                            0 & z & {\suspension x}
+                            \arrow[from=1-1, to=2-1]
+                            \arrow[from=1-1, to=1-2]
+                            \arrow[from=1-2, to=2-2]
+                            \arrow[from=2-1, to=2-2]
+                            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                            \arrow[from=2-2, to=2-3]
+                            \arrow[from=1-2, to=1-3]
+                            \arrow[from=1-3, to=2-3]
+                            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
+                        \end{tikzcd}
+                    $$
+                Note that by the universal property of zero objects, giving an extension in the above fashion the same as giving a right-exact functor (called a \textbf{suspension functor}):
+                    $$\suspension: \C^{\simp[1] \x \simp[1]} \to \C^{\simp[2] \x \simp[1]}$$
+                that pastes onto a triangle:
+                    $$
+                        \begin{tikzcd}
+                            x & y \\
+                            0 & z
+                            \arrow[from=1-1, to=2-1]
+                            \arrow[from=1-1, to=1-2]
+                            \arrow[from=1-2, to=2-2]
+                            \arrow[from=2-1, to=2-2]
+                        \end{tikzcd}
+                    $$
+                a so-called right-extension via pushing out along the canonical map $y \to 0$:
+                    $$
+                        \begin{tikzcd}
+                            x & y & 0 \\
+                            0 & z & w
+                            \arrow[from=1-1, to=2-1]
+                            \arrow[from=1-1, to=1-2]
+                            \arrow[from=1-2, to=2-2]
+                            \arrow[from=2-1, to=2-2]
+                            \arrow[from=1-2, to=1-3]
+                            \arrow[from=1-3, to=2-3]
+                            \arrow[from=2-2, to=2-3]
+                            \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
+                        \end{tikzcd}
+                    $$
+                \item \textbf{(Triangulated categories):} A pointed $\infty$-category admitting all cofibre sequences will naturally have all distinguish triangles, and thus shall be called \textbf{triangulated}.
+            \end{enumerate}
+        \end{definition}
+        \begin{remark}[Elementary properties of triangulated $\infty$-categories] \label{remark: elementary_properties_of_triangulated_categories} \index{$\infty$-categories! triangulated! properties} \index{$\infty$-categories! stable! properties}
+            
+            \begin{enumerate}
+                \item Clearly, stable $\infty$-categories are triangulated.
+                \item It is not hard to see how the opposite of a stable $\infty$-category is necessarily stable too. The opposite of a triangulated $\infty$-category is not necessary triangulated; this happens if and only if the $\infty$-category is stable.
+                \item 
+                    \begin{enumerate}
+                        \item Full subcategories of triangulated $\infty$-categories that are stable under taking cofibre sequences are triangulated themselves; these subcategories are known as \textbf{stable $\infty$-subcategories}. So-called \textbf{Serre $\infty$-subcategories} - stable subcategories of abelian $\infty$-categories (which are \textit{a priori} stable) - are special cases of these stable $\infty$-categories. These Serre $\infty$-subcategories are themselves special cases of (left-)exact reflective localisations of stable $\infty$-categories, which are stable $\infty$-categories whose associated fully faithful embeddings into their ambient stbale $\infty$-categories admit (left-)exact left-adjoints.
+                        \item Let $\C$ be a stable $\infty$-category and let $\C_0$ be a triangulated full $\infty$-subcategory. $\C_0$ is thus also stable.
+                    \end{enumerate}
+                \item If $K$ is a simplicial set and $\C$ is any stable $\infty$-category, then the functor category $\C^K$ is also stable.
+            \end{enumerate}
+        \end{remark}
+        
+        \begin{proposition}[Stability criteria for pointed $\infty$-categories] \label{prop: stability_criteria_for_pointed_infinity_categories} \index{$\infty$-categories! stable! criteria}
+            A pointed $\infty$-category $\C$ is stable if and only if the following equivalent criteria are satisfied:
+                \begin{enumerate}
+                    \item $\C$ is finitely complete and finitely cocomplete.
+                    \item Finite pushouts and pullbakcs in $\C$ coincide (i.e. $\C$ admits all finite fibred biproducts).
+                \end{enumerate}
+        \end{proposition}
+            \begin{proof}
+                
+                \begin{enumerate}
+                    \item \textbf{(Proof of equivalence):} 
+                        \begin{enumerate}
+                            \item Assume that $\C$ is finitely complete and finitely cocomplete. This implies that pushouts and pullbacks exist in $\C$, and hence $\C$ admits all cofibre and fibre sequences. It thus remains to show that cofibres and fibres in $\C$ are the same; one can then make use of the universal property of zero objects and base change to show the existence of finite fibred biproducts. However, note that again thanks to the universal property of zero objects, the following triangle is simultaneously a fibre sequence:
+                                $$
+                                    \begin{tikzcd}
+                                        0 & x \\
+                                        0 & x
+                                        \arrow[from=1-1, to=2-1]
+                                        \arrow[from=1-2, to=2-2]
+                                        \arrow[from=2-1, to=2-2]
+                                        \arrow[from=1-1, to=1-2]
+                                        \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                    \end{tikzcd}
+                                $$
+                            and the following a cofibre sequence:
+                                $$
+                                    \begin{tikzcd}
+                                        x & 0 \\
+                                        x & 0
+                                        \arrow[from=1-2, to=2-2]
+                                        \arrow[from=2-1, to=2-2]
+                                        \arrow[from=1-1, to=2-1]
+                                        \arrow[from=1-1, to=1-2]
+                                        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                    \end{tikzcd}
+                                $$
+                            for all objects $x$ of $\C$; one can them simply base change to see how cofibre and fibre sequences must coincide.
+                            \item Conversely, assume that all finite pushouts and pullbacks in $\C$ coincide. This in particular tells us that cofibre sequences and fibre sequences are the same, and also, that one can build monos and epis using the zero object $0$ using biproducts of the following form:
+                                $$
+                                    \begin{tikzcd}
+                                        x & 0 \\
+                                        y & z
+                                        \arrow[from=1-2, to=2-2]
+                                        \arrow[two heads, from=2-1, to=2-2]
+                                        \arrow[tail, from=1-1, to=2-1]
+                                        \arrow[from=1-1, to=1-2]
+                                        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                        \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                    \end{tikzcd}
+                                $$
+                        \end{enumerate}
+                    \item \textbf{(Proof of stability):} By definition \ref{def: stable_infinity_categories}, pointed $\infty$-categories that satisfy the second criterion are stable. Conversely, suppose that our pointed $\infty$-category $\C$ is stable. Then, one can simply make use of the universal property of zero objects and base change (co)fibre sequences to show that all finite pullbacks and all finite pushouts must exist in $\C$. 
+                \end{enumerate}
+            \end{proof}
+        \begin{convention}
+            Often, finite biproducts in stable $\infty$-categories shall be denoted by $\oplus$, especially when the category is abelian.
+        \end{convention}  
+        
+        \begin{remark}[Regular cardinals]
+            From now on we will be using the notion of regular cardinals often. For details on the notion, see definition \ref{def: limit_cardinal}.
+        \end{remark}
+        
+        \begin{proposition}[Accessible stable $\infty$-category] \label{prop: accessible_stable_infinity_categories} \index{$\infty$-categories! stable! accessible} \index{$\infty$-categories! stable! ind-completions}
+            Let $\kappa$ be a regular cardinal and let $\C$ be a $\kappa$-small stable $\infty$-category. Then, its $\kappa$-ind-completion is stable as well.
+        \end{proposition}
+            \begin{proof}
+                This is an easy consequence of the fact that filtered colimits preserve finite coproducts, and that $\C$ embeds fully faithfully into $\Ind_{\kappa}(\C)$ as a subcategory closed under finite limits and colimits. 
+            \end{proof}
+        \begin{remark} \index{$\infty$-categories! stable! accessible} \index{$\infty$-categories! stable! pro-completions}
+            If we were to replace $\Ind_{\kappa}(\C)$ in proposition \ref{prop: accessible_stable_infinity_categories} by $\Pro_{\kappa}(\C)$, we would also get a stable $\infty$-category through an application of the following equivalence of categories and remark \ref{remark: elementary_properties_of_triangulated_categories}:
+                $$\Pro_{\kappa}(\C) \cong \Ind_{\kappa}(\C^{\op})^{\op}$$
+        \end{remark}
+        
+        \begin{proposition}[Homotopy category of triangulated categories] \label{prop: homotopy_category_of_triangulated_categories} \index{$\infty$-categories! stable! homotopy categories}
+            Let $\C$ be a triangulated $\infty$-category (or better, a stable $\infty$-category) and suppose that the suspension functor thereon:
+                $$\suspension: \C^{\simp[1] \x \simp[1]} \to \C^{\simp[2] \x \simp[1]}$$
+            is fully faithful. Then, the homotopy category $h\C$ can also be endowed with the structure of a triangulated category (however this time with all trivial higher morphisms).
+        \end{proposition}
+            \begin{proof}
+                This is straightforward from the universal property of homotopy categories. 
+            \end{proof}
+                
+    \subsection{Exact functors}
+        \begin{remark}[Functors between stable $\infty$-categories] \label{remark: functors_between_stable_infinity_categories} \index{$\infty$-categories! stable! limits} \index{$\infty$-categories! stable! exact functors}
+            
+            \begin{enumerate}
+                \item It is a straight-forward consequence of proposition \ref{prop: stability_criteria_for_pointed_infinity_categories} that a functor (i.e. one that preserves finite limits and finite colimits):
+                    $$F: \C \to \D$$
+                between two stable $\infty$-categories is exact if and only if it preserves distinguished triangles.
+                \item Exact functors between them from a stable $\infty$-category $\C$ to another $\D$ span a full $\infty$-subcategory of the functor category $\infty\-\Cat(\C, \D)$.
+                \item Stable $\infty$-categories and exact functors between them form a \textit{locally non-full} $(\infty, 2)$-subcategory of $\infty\-\Cat$, which shall be denoted by $\infty\-\Stab\Cat$ or $\Stab\Cat$. 
+            \end{enumerate}
+        \end{remark}
+        
+        \begin{proposition}[(Co)limits of stable $\infty$-categories] \label{prop: (co)limits_of_stable_infinity_categories} \index{$\infty$-categories! stable! limits} \index{$\infty$-categories! stable! colimits}
+            Let $\kappa$ be a regular cardinal. Then, the $(\infty, 1)$-category $\Stab\Cat^{< \kappa}$ of $\kappa$-small stable $\infty$-categories is complete and closed under $\kappa$-small limits. Additionally, it admits all $\kappa$-small filtered and is closed under these colimits. 
+        \end{proposition}
+            \begin{proof}
+                
+            \end{proof}

@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{book}
+\documentclass[a4paper, 12pt]{book}
 
 %\usepackage[center]{titlesec}
 
@@ -12,9 +12,9 @@
 %\pdfrender{StrokeColor=black,LineWidth=.4pt,TextRenderingMode=2}
 
 \usepackage{minitoc}
-\setcounter{tocdepth}{5}
-\setcounter{minitocdepth}{5}
-\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{4}
+\setcounter{minitocdepth}{4}
+\setcounter{secnumdepth}{4}
 
 \usepackage{graphicx}
 
@@ -56,13 +56,13 @@
 
 \usepackage[backend=biber, style=alphabetic, sorting=nty]{biblatex}
     \addbibresource{bibliography.bib}
+\renewbibmacro{in:}{}
 
 \raggedbottom
 
 \usepackage{mathrsfs}
 \usepackage{mathtools} 
-\mathtoolsset{showonlyrefs} 
-%\usepackage{amssymb}
+\mathtoolsset{showonlyrefs}
 %\usepackage{amsthm}
 \renewcommand\qedsymbol{$\blacksquare$}
 \usepackage{tikz-cd}
@@ -133,7 +133,7 @@
 \newtheorem{claim}{Claim}[section]
     \numberwithin{claim}{subsection}
 \newtheorem{question}{Question}[section]
-    \numberwithin{question}{section}
+    \numberwithin{question}{subsection}
 
 \theoremstyle{definition}
     \newtheorem{definition}{Definition}[section]
@@ -148,3 +148,5 @@
         \numberwithin{convention}{subsection}
     \newtheorem{corollary}{Corollary}[section]
         \numberwithin{corollary}{subsection}
+
+\numberwithin{equation}{chapter}

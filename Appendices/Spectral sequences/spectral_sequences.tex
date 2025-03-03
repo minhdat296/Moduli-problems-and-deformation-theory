@@ -1,0 +1,277 @@
+\section{Homological algebra in stable \texorpdfstring{$\infty$}{}-categories}
+    \subsection{t-structures and their sweet little hearts}
+        \begin{remark}[Suspensions and loops] \label{remark: suspensions_and_loops}
+            Let $\C$ be a triangulated $\infty$-category and let:
+                $$\suspension: \C^{\simp[1] \x \simp[1]} \to \C^{\simp[2] \x \simp[1]}$$
+            be the suspension functor on $\C$. By definition \ref{def: triangulated_infinity_categories}, it is the functor which extends a triangle:
+                $$
+                    \begin{tikzcd}
+                        x & y \\
+                        0 & z
+                        \arrow[from=1-1, to=2-1]
+                        \arrow[from=1-1, to=1-2]
+                        \arrow[from=1-2, to=2-2]
+                        \arrow[from=2-1, to=2-2]
+                    \end{tikzcd}
+                $$
+            via the construction of the pushout of $y \to z$ along $y \to 0$:
+                $$
+                    \begin{tikzcd}
+                        x & y & 0 \\
+                        0 & z & w
+                        \arrow[from=1-1, to=2-1]
+                        \arrow[from=1-1, to=1-2]
+                        \arrow[from=1-2, to=2-2]
+                        \arrow[from=2-1, to=2-2]
+                        \arrow[from=1-2, to=1-3]
+                        \arrow[from=1-3, to=2-3]
+                        \arrow[from=2-2, to=2-3]
+                        \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
+                    \end{tikzcd}
+                $$
+            Now, thanks to the universal property of pushouts, we can instead view the suspension functor as the functor:
+                $$\suspension: \C^{\simp[1] \x \simp[1]} \to \C$$
+            that sends triangles $x \to y \to z$ to the suspension $\suspension x$ of its first vertex $x$ (note that this version is still right-exact, and this is crucial fact). Then, by some abstract nonsense (see \cite[Section 3]{nlab:infinity-1-limit} for instance), $\suspension$ ought to fit into the following adjoint triple:
+                $$
+                    \begin{tikzcd}
+                        {\C^{\simp[1] \x \simp[1]}} && {\C^{\simp[1] \x \simp[1]}}
+                        \arrow[""{name=0, anchor=center, inner sep=0}, "\loopspace"', shift right=5, from=1-1, to=1-3]
+                        \arrow[""{name=1, anchor=center, inner sep=0}, "\suspension", shift left=5, from=1-1, to=1-3]
+                        \arrow[""{name=2, anchor=center, inner sep=0}, "\const"{description}, hook', from=1-3, to=1-1]
+                        \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=2]
+                        \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=2, to=0]
+                    \end{tikzcd}
+                $$
+            Here, we take $\const: \C \to \C^{\simp[1] \x \simp[1]}$ to be the functor given by:
+                $$
+                    x \mapsto 
+                    \begin{tikzcd}
+                        x & x \\
+                        0 & x
+                        \arrow[from=1-1, to=2-1]
+                        \arrow[from=2-1, to=2-2]
+                        \arrow["\cong", from=1-1, to=1-2]
+                        \arrow["\cong", from=1-2, to=2-2]
+                    \end{tikzcd}
+                $$
+            and $\loopspace: \C^{\simp[1] \x \simp[1]} \to \C$ (called the \textbf{loop space functor}) to be the one determined by:
+                $$
+                    \begin{tikzcd}
+                        {\loopspace z} & x & 0 \\
+                        0 & y & z
+                        \arrow[from=1-2, to=1-3]
+                        \arrow[from=1-2, to=2-2]
+                        \arrow[from=1-3, to=2-3]
+                        \arrow[from=2-2, to=2-3]
+                        \arrow[from=1-1, to=2-1]
+                        \arrow[from=2-1, to=2-2]
+                        \arrow[from=1-1, to=1-2]
+                        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                    \end{tikzcd}
+                $$
+            One thing to note is that $\loopspace$ actually only exists if $\C$ is stable, not just when it is merely triangulated, as triangulated $\infty$-categories are not assumed to have any sort of limits aside from initial objects. Another is that by the composability of adjoint pairs, we have the following induced adjunction:
+                $$
+                    \begin{tikzcd}
+                        {\C^{\simp[1] \x \simp[1]}} && {\C^{\simp[1] \x \simp[1]}}
+                        \arrow[""{name=0, anchor=center, inner sep=0}, "{\loopspace \circ \const}"', shift right=2, from=1-1, to=1-3]
+                        \arrow[""{name=1, anchor=center, inner sep=0}, "{\const \circ \suspension}", shift left=2, from=1-1, to=1-3]
+                        \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                    \end{tikzcd}
+                $$
+        \end{remark}
+    
+        \begin{definition}[t-structures] \label{def: t_structures} \index{$\infty$-categories! stable! t-structures} \index{$\infty$-categories! stable! t-structures! hearts} \index{Short exact sequences}
+            \begin{enumerate}
+                \item \textbf{(t-structures):} The \textbf{t-structure} on a \textit{stable} $\infty$-category $\C$ is a pair of \textit{isomorphism-stable} full subcategories $\C^{\leq 0}$ and $\C^{\geq 0}$ containing the zero object $0$ such that:
+                    \begin{enumerate}
+                        \item \textbf{(Orthogonality):} For all $x \in \C^{\geq 0}$ and all $y \in \C^{\leq 0}$, the space $\C(x, \loopspace y)$ is contractible (i.e. homotopic to $0$). 
+                        
+                        Objects $y \in \C^{\leq 0}$ such that $\C(x, \loopspace y)$ is contractible for all $x \in \C_{> 0}$ span a full $\infty$-subcategory of $\C^{\leq 0}$, which we shall denote by $\C_{< 0}$. By applying the adjoint triple $(\suspension \ladjoint \const \ladjoint \loopspace)$ (cf. remark \ref{remark: suspensions_and_loops}), we can see that objects $x \in \C^{\geq 0}$ such that the space $\C(\suspension x, y)$ is contractible for all $y \in \C_{< 0}$ similarly span a full subcategory of $\C^{\geq 0}$, which is written $\C_{> 0}$. 
+                        
+                        By the definition of stable $\infty$-subcategories (cf. remark \ref{remark: elementary_properties_of_triangulated_categories}), $\C^{\leq 0}$ and $\C_{< 0}$ are stable $\infty$-subcategories of $\C$, but $\C^{\geq 0}$ and $\C_{> 0}$ are not. 
+                        \item \textbf{(Translational retro-invariance):} If a right-extension:
+                            $$
+                                \begin{tikzcd}
+                                    x & y & 0 \\
+                                    0 & z & w
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                    \arrow[from=2-2, to=2-3]
+                                    \arrow[from=1-2, to=1-3]
+                                    \arrow[from=1-3, to=2-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
+                                \end{tikzcd}
+                            $$
+                        of a cofibre sequence is an object of $(\C^{\geq 0})^{\simp[2] \x \simp[1]}$, then the cofibre sequence:
+                            $$
+                                \begin{tikzcd}
+                                    x & y \\
+                                    0 & z
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                \end{tikzcd}
+                            $$
+                        itself is an object of $(\C^{\geq 0})^{\simp[1] \x \simp[1]}$ (actually, this extends to all right-extensions of triangles, because they all factor through cofibre sequences thanks to the universal property of colimits). 
+                        
+                        Dually, if the left-extension of a fibre sequence:
+                            $$
+                                \begin{tikzcd}
+                                    {\loopspace z} & x & 0 \\
+                                    0 & y & z
+                                    \arrow[from=1-3, to=2-3]
+                                    \arrow[from=2-2, to=2-3]
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=1-2, to=1-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=2-3]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                \end{tikzcd}
+                            $$
+                        is an object of $(\C^{\leq 0})^{\simp[2] \x \simp[1]}$, then that fibre sequence itself:
+                            $$
+                                \begin{tikzcd}
+                                    x & 0 \\
+                                    y & z
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                \end{tikzcd}
+                            $$
+                        is an object of $(\C^{\leq 0})^{\simp[1] \x \simp[1]}$. This also applies to triangles which may not be fibre sequences. 
+                        \item \textbf{(Torsion):} For all objects $x \in \C$, there exists a (co)fibre sequence in $\C^{\simp[1] \x \simp[1]}$:
+                            $$
+                                \begin{tikzcd}
+                                    {x'} & 0 \\
+                                    x & {x''}
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                \end{tikzcd}
+                            $$
+                        wherein $x' \in \C^{\geq 0}$, whose left and right-extensions are both zero:
+                            $$
+                                \begin{tikzcd}
+                                    0 & {x'} & 0 \\
+                                    0 & x & {x''} \\
+                                    & 0 & 0
+                                    \arrow[from=1-3, to=2-3]
+                                    \arrow[from=2-2, to=2-3]
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=1-2, to=1-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=2-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
+                                    \arrow[from=2-2, to=3-2]
+                                    \arrow[from=3-2, to=3-3]
+                                    \arrow[from=2-3, to=3-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=3-3, to=2-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=3-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                \end{tikzcd}
+                            $$
+                        (note how this implies that the mapping spaces $\C(x, \loopspace x'')$ and $\C(\suspension x', x)$ are contractible, and hence $x' \in \C^{\geq 0}$ and $x'' \in \C_{< 0}$); in other words, $(\C^{\geq 0}, \C^{\leq 0})$ is a $t$-structure if $(\C_{> 0}, \C_{< 0})$ is a (homotopical) \href{https://ncatlab.org/joyalscatlab/published/Factorisation+systems}{\underline{factorisation system}}, and in fact, an epi-mono factorisation system thanks to the universal property of zero objects. Such a sequence is known as a \textbf{short exact sequence}. 
+                        
+                        Also, note that in the situation above, we have the following right and left-extensions:
+                            $$
+                                \begin{tikzcd}
+                                    0 & {x'} & 0 \\
+                                    0 & x & {x''}
+                                    \arrow[from=1-3, to=2-3]
+                                    \arrow[from=2-2, to=2-3]
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=1-2, to=1-3]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-3, to=1-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+                                \end{tikzcd}
+                            $$
+                            $$
+                                \begin{tikzcd}
+                                    {x'} & 0 \\
+                                    x & {x''} \\
+                                    0 & 0
+                                    \arrow[from=1-2, to=2-2]
+                                    \arrow[from=2-1, to=2-2]
+                                    \arrow[from=1-1, to=2-1]
+                                    \arrow[from=1-1, to=1-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                                    \arrow[from=2-2, to=3-2]
+                                    \arrow[from=2-1, to=3-1]
+                                    \arrow[from=3-1, to=3-2]
+                                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-1, to=3-2]
+                                \end{tikzcd}
+                            $$
+                    \end{enumerate}
+                \item \textbf{(Hearts of t-structures):} It is not hard to see that within a stable $\infty$-category $\C$ equipped with some choice of t-structure $(\C^{\geq 0}, \C^{\leq 0})$, short exact sequences would form an \textit{isomorphism-stable} full $\infty$-subcategory of $\C^{\simp[1] \x \simp[1]}$, which we shall call the \textbf{heart} of its t-structure. 
+            \end{enumerate}
+            Note how we are indexing \textit{homologically}.
+        \end{definition}
+        \begin{remark}
+            Let $\C$ be a stable $\infty$-category. Then, its $t$-structure can be thought of as consisting of two subcategories spanned, respectively, by \say{complexes} with vanishing positive cohomlogies (e.g. projective resolutions) and those with vanishing negative cohomologies (e.g. injective resolutions). The heart of that very $t$-structure, therefore, shall be spanned by \say{complexes} concentrated in (co)homological degree $0$, i.e. \say{exact sequences}. 
+        \end{remark}
+        
+        \begin{proposition}[t-structures and localisations] \label{prop: t_structures_and_localisations}
+            Let $\C$ be a stable $\infty$-category and let $(\C^{\geq 0}, \C^{\leq 0})$ be a t-structure thereon with corresponding canonical fully faithful exact embeddings $\iota^{\geq 0}$ and $\iota^{\leq 0}$. Then, there exists the following composable adjunctions exhibiting $\C^{\leq 0}$ and $\C^{\geq 0}$ as a reflective and a coreflective $\infty$-subcategory of $\C$ respectively:
+                $$
+                    \begin{tikzcd}
+                        {\C^{\leq 0}} & \C & {\C^{\geq 0}}
+                        \arrow[""{name=0, anchor=center, inner sep=0}, "{\iota^{\leq 0}}"', shift right=2, hook, from=1-1, to=1-2]
+                        \arrow[""{name=1, anchor=center, inner sep=0}, "{\tau^{\leq 0}}"', shift right=2, from=1-2, to=1-1]
+                        \arrow[""{name=2, anchor=center, inner sep=0}, "{\tau^{\geq 0}}"', shift right=2, from=1-2, to=1-3]
+                        \arrow[""{name=3, anchor=center, inner sep=0}, "{\iota^{\geq 0}}"', shift right=2, hook', from=1-3, to=1-2]
+                        \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                        \arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=3, to=2]
+                    \end{tikzcd}
+                $$
+            We call the functors $\tau^{\geq 0}$ and $\tau^{\leq 0}$ the \textbf{$\geq 0$-truncation} and the \textbf{$\leq 0$-truncation} respectively.
+        \end{proposition}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{corollary}[Cooking up short exact sequences using truncations] \label{coro: short_exact_sequences_and_truncations}
+            Suppose that $x$ is an object of a stable $\infty$-category $\C$, and let $(\C^{\geq 0}, \C^{\leq 0})$ be a t-structure thereon. Then, the heart of this t-structure can be given by:
+                $$
+                    \begin{aligned}
+                        \C^{\heart} & \cong \iota^{\leq 0} \circ \tau^{\geq 0} \C^{\leq 0}
+                        \\
+                        & \cong \iota^{\geq 0} \circ \tau^{\leq 0} \C^{\geq 0} 
+                        \\
+                        & \cong \tau^{\geq 0} \circ \iota^{\geq 0} \circ \tau^{\leq 0} \circ \iota^{\leq 0} \C 
+                        \\
+                        & \cong \tau^{\leq 0} \circ \iota^{\leq 0} \circ \tau^{\geq 0} \circ \iota^{\geq 0} \C
+                    \end{aligned}
+                $$
+            In other words, the composite adjunction $(\tau^{\leq 0} \circ \iota^{\geq 0} \ladjoint \tau^{\geq 0} \circ \iota^{\leq 0})$ is an adjoint equivalence over $\C^{\heart}$. 
+        \end{corollary}
+            \begin{proof}
+                
+            \end{proof}
+        
+        \begin{theorem}[Hearts are abelian] \label{theorem: hearts_are_abelian} \index{$\infty$-categories! stable! t-structures! hearts}
+            The heart of the t-structure of a stable $\infty$-category is an abelian $\infty$-category.
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+            
+    \subsection{Spectral sequences}
+
+    \subsection{Derived categories}

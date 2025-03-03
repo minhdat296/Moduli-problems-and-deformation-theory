@@ -1,0 +1,276 @@
+\section{A six-functor formalism for quasi-coherent modules on a scheme}
+    \subsection{The category of quasi-coherent modules on a scheme; compact generation}
+        Suppose that $X$ is a scheme - say, with a fixed Zariski cover:
+            $$\{ f_i: \Spec A_i \to X \}_{i \in I}$$
+        and that we are interested in somehow \say{patching} together the categories $A_i\mod$\footnote{... viewed as sheaves of modules on the affine schemes $\Spec A_i$ - we will explain this point of view in more details shortly.} into a global category of sheaves of modules on $X$. A \textit{na\"ive} guess might be that one should just consider the category $\scrO_X\mod$ and be done with it: after all, this is a rather good category for homological algebraic purposes, being abelian and having enough injectives.
+        
+        However, we can do better. Morally speaking, the category of quasi-coherent $\scrO_X$-modules - typically denoted by $\QCoh(X)$ - is obtained by taking the \say{$2$-limit} (whatever that might mean) along the pullbacks:
+            $$f^*_i: \scrO_X\mod \to A_i\mod$$
+        thus making it what one obtains by \say{gluing} together the module categories $A_i\mod$. As such, one of the first properties of the category $\QCoh(X)$ that more-or-less is by construction, is that locally, it has enough projectives, since each $A_i\mod$ has enough projectives; it should be noted that in general, $\QCoh(X)$ fails to have enough \say{global} projectives. Furthermore, unlike $\scrO_X\mod$, $\QCoh(X)$ is compactly generated. This is a somewhat non-trivial phenomenon, but it does mean that (co)limits of objects of $\QCoh(X)$ will be easier to handle than those of $\scrO_X\mod$. Of course, $\QCoh(X)$ retains all the nice properties of $\scrO_X\mod$, such as being abelian (in fact, $\QCoh(X)$ is AB5) and having enough injectives. We will also see that it is both complete and cocomplete, closed under extensions, and filtered colimits in $\QCoh(X)$ are exact.
+
+        \begin{convention}
+            Unless stated to be otherwise, all sites will be assumed to be small. 
+
+            If $X$ is a scheme and $\tau$ is a topology on the category of schemes, then we will write $X_{\tau} := (\Sch_{/X})_{\tau}$ to mean the category $\Sch_{/X}$ equipped with the topology $\tau$. 
+        \end{convention}
+
+        We begin by seeing how, for any commutative ring $A$, the category $A\mod$ is the same as that of $\scrO_X$-modules for $X := \Spec A$. 
+        \begin{lemma}[Sheafifying modules] \label{lemma: sheafifying_modules}
+            Let $A$ be a commutative ring and set $X := \Spec A$. There is a fully faithful exact functor:
+                $$A\mod \hookrightarrow \scrO_X\mod$$
+            sending each $A$-module $M$ to the $\scrO_X$-module ${}^{\sh}M$ on the (small) site $X_{\Zar}$ given by:
+                $${}^{\sh}M(\Spec A[1/f]) := M[1/f]$$
+            for every $f \in A$. 
+        \end{lemma}
+        \begin{corollary}
+            Let $A$ be a commutative, $X := \Spec A$, and consider a prime ideal $\p$ of $A$, defining a point $x \in |X|$. Then:
+                $${}^{\sh}M_x \cong M_{\p}$$
+        \end{corollary}
+        
+        Now, let us see the definition of the category of quasi-coherent modules. This can be stated more generally for any site, not simply the Zariski site of a scheme, but we will not need to work in this full generality.
+        \begin{definition}[Quasi-coherent modules] \label{def: quasi_coherent_modules}
+            If $A$ is a commutative ring then we define the category $\QCoh(\Spec A)$ of \textbf{quasi-coherent $\scrO_{\Spec A}$-modules} to be the essential image of the fully faithful functor $A\mod \hookrightarrow \scrO_X\mod$ from lemma \ref{lemma: sheafifying_modules}.
+
+            If $X$ is a scheme with a Zariski cover:
+                $$\{ f_i: \Spec A_i \to X \}_{i \in I}$$
+            then the category $\QCoh(X)$ of quasi-coherent $\scrO_X$-modules will be the subcategory of $\scrO_X\mod$ consisting of those objects $\scrM$ such that for every $i \in I$, one has that:
+                $$f_i^*\scrM \cong {}^{\sh}M_i$$
+            for some $A_i$-module $M_i$.
+        \end{definition}
+        \begin{remark}
+            $\QCoh(X)$ is a full subcategory of $\scrO_X\mod$.
+        \end{remark}
+        \begin{theorem}[$\QCoh$ global section functor admits right-adjoint] \label{theorem: qcoh_global_section_functor_admits_right_adjoint}
+            Suppose that $X$ is a scheme with a Zariski covering:
+                $$\{f_i: \Spec A_i \to X\}_{i \in I}$$
+            Then, for each $i \in I$, there is an adjunction\footnote{In fact, since the functor ${}^{\sh}(-): A\mod \to \scrO_{\Spec A}\mod$ is fully faithful (cf. lemma \ref{lemma: sheafifying_modules}), this adjunction is a reflective localisation. This means that in a certain technical sense, for any scheme $X$ with a Zariski cover $\{f_i: \Spec A_i \to X\}_{i \in I}$, the process of taking local sections via the functors $\Gamma(\Spec A_i, f_i^*(-)): f_i^*\scrO_X\mod \to A_i\mod$ really is localising the category $\scrO_X\mod$ to yield $A_i\mod$.}:
+                $${}^{\sh}(-): A_i\mod \leftrightarrows \scrO_X\mod: \Gamma(\Spec A_i, f_i^*(-))$$
+                
+            When $X := \Spec A$ is affine, these adjunctions yield us adjoint equivalences of the form:
+                $${}^{\sh}(-): A\mod \leftrightarrows \QCoh(X): \Gamma(X, -)$$
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+
+        Now that we have a working definition of what a quasi-coherent module over the structure sheaf of a scheme is, let us investigate the homological properties of the category of such modules. 
+
+        Our first agenda item is Gabber's Theorem, which tells us that for $X$ a scheme, the category $\QCoh(X)$ is a Grothendieck AB5 category - i.e. it is an abelian category that is complete and cocomplete, closed under extensions, wherein filtered colimits are exact, and it has a small generating \textit{set} - and has enough injectives. This is a non-trivial result, but very necessary as we would like to be assured that homological algebra within $\QCoh(X)$ is possible. Along the way, we will also be discussing the failure of $\QCoh(X)$ to globally possess enough projective objects; this will entail looking at locally projective modules. 
+        \begin{remark}[A historical aside]
+            Before complex geometry \textit{\`a la} Serre and especially before scheme theory, the kind of linear-algebraic objects that were considered over spaces were not general sheaves of modules over the structure sheaf of a space, but merely vector bundles, which we now view as finite locally free modules over the structure sheaf. 
+
+            Let us briefly remind ourselves of some shortcomings of vector bundles. Consider a general commutative ring $A$ and the category $\Vect(A)$ of finite locally free $A$-modules., i.e. $A$-modules $\scrE$ such that for every $\p \in |\Spec A|$, the localisation $\scrE_{\p}$ is finite and free over $A_{\p}$. In general, this category fails to be abelian: e.g. \todo{Find a counter-example}
+        \end{remark}
+
+        \begin{definition}[Locally projective modules] \label{def: locally_projective_modules}
+            Let $X$ be a scheme with a Zariski cover:
+                $$\{f_i: \Spec A_i \to X\}_{i \in I}$$
+            We say that a quasi-coherent $\scrO_X$-module $\scrM$ is \textbf{locally projective} if and only if the $A_i$-module $M_i := \Gamma(\Spec A_i, f_i^*\scrM)$ is projective for every $i \in I$. Note that this definition only makes sense for $\scrM$ being quasi-coherent, since otherwise $M_i$ might fail to be an object of $A_i\mod$.
+        \end{definition}
+        \begin{remark}[$\QCoh$ has enough local projectives]
+            Let $X$ be a scheme with a Zariski cover:
+                $$\{f_i: \Spec A_i \to X\}_{i \in I}$$
+            Since each of the categories $A_i\mod$ has enough projectives, it is clear that $\QCoh(X)$ locally has enough projectives, in the sense that for every object $\scrM \in \Ob( \QCoh(X) )$, there is an epimorphism:
+                $$\scrP \to \scrM$$
+            from some \textit{locally} projective object $\scrP \in \Ob( \QCoh(X) )$. 
+        \end{remark}
+        
+        \begin{definition}[Small quasi-coherent modules] \label{def: small_quasi_coherent_modules}
+            Let $X$ be a scheme with a Zariski cover:
+                $$\{f_i: \Spec A_i \to X\}_{i \in I}$$
+            and fix some cardinal $\aleph$. Also, let $\scrM$ be a quasi-coherent $\scrO_X$-module. If each $A_i$-module $\Gamma(\Spec A_i, f_i^*\scrM)$ is generated by a set of cardinality $\leq \aleph$, then we shall say that $\scrM$ is \textbf{$\aleph$-small}. 
+
+            Denote the full subcategory of $\QCoh(X)$ consisting of $\aleph$-small objects by $\QCoh(X)_{\leq \aleph}$.
+        \end{definition}
+        \begin{lemma}[Closure properties of small modules] \label{lemma: closure_properties_of_small_quasi_coherent_modules}
+            Let $X$ be a scheme and fix an infinite cardinal $\aleph$. Then, $\QCoh(X)_{\leq \aleph}$ will be closed under direct sums and tensor products over $\scrO_X$.
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{theorem}[Gabber's Theorem: Homological properties of $\QCoh$] \label{theorem: qcoh_homological_properties}
+            Let $X$ be a scheme. Then $\QCoh(X)$ will be an AB5 category and hence will have enough injectives and all limits. 
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{corollary}
+            Let $X$ be a scheme. Then, the canonical fully faithful embedding:
+                $$\QCoh(X) \hookrightarrow \scrO_X\mod$$
+            admits a quasi-inverse right-adjoint $Q_X: \scrO_X\mod \to \QCoh(X)$, usually called the \textbf{coherator}.
+        \end{corollary}
+        
+        Before we move on, let us consider the following meta-definition, which in itself is not quite a well-defined mathematical notion, but nevertheless is a good schematic for what a \say{good} cohomology theory should look like. Over the course of the rest of this section, we shall see how quasi-coherent modules enjoy one such cohomology theory.
+        \begin{definition}[Six-functor formalisms] \label{def: six_functor_formalisms}
+            A six-functor formalism is a datum satisfying the following hypotheses:
+            \begin{itemize}
+                \item A pair $(\C, E)$ of a finitely complete $(\infty, 1)$-category $\C$ (e.g. $\C := \Sch$) and a specified class $E \subseteq \Mor(\C)$ of morphisms which:
+                \begin{itemize}
+                    \item contains all isomorphisms,
+                    \item is closed under pullbacks, and
+                    \item is closed under compositions.
+                \end{itemize}
+                \item \textbf{(Functoriality):} Two $(\infty, 2)$-functors:
+                    $$\Shv^*, \Shv^!: \C^{\op} \to (\infty, 1)\-\Stab\Cat_2$$
+                which assign to each object $X \in \Ob(\C)$ a stable $(\infty, 1)$-category $\Shv(X)$ and to each morphism $(f: X \to Y) \in \Mor(\C)$, two respective adjunctions:
+                    $$f_*: \Shv(X) \leftrightarrows \Shv(Y): f_*$$
+                    $$f^!: \Shv(Y) \leftrightarrows \Shv(X): f_!$$
+                At this point, we have a \textbf{four-functor formalism}; the functors $f_*$ and $f_!$ respectively, are called the \textbf{$*$- and $!$-pushforwards} respectively, whereas the functors $f^*$ and $f^!$ are the \textbf{$*$- and $!$-pullbacks}. 
+                \item \textbf{(Base-change):} For each $(f: X \to Y) \in E$, the $!$-pushforward:
+                    $$f_!: \Shv(X) \to \Shv(Y)$$
+                is to satisfy the following property: for each $(\infty, 1)$-pullback square:
+                    $$
+                        \begin{tikzcd}
+                        {X'} & X \\
+                        {Y'} & Y
+                        \arrow["{f'}"', from=1-1, to=2-1]
+                        \arrow["q", from=2-1, to=2-2]
+                        \arrow["p", from=1-1, to=1-2]
+                        \arrow["f", from=1-2, to=2-2]
+                        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                        \end{tikzcd}
+                    $$
+                there is a natural isomorphism of $(\infty, 1)$-functors $\Shv(X) \to \Shv(Y')$:
+                    $$q^* f_! \xrightarrow[]{\cong} f'_! p^*$$
+                and these natural isomorphisms should be compatible with pasting $(\infty, 1)$-pullbacks. 
+                \item \textbf{(Duality):} As a stable $(\infty, 1)$-category, each $\Shv(X)$ ought to be self-dual in the sense of Lurie. Moreover, this duality ought to exchange the adjunctions $(f^* \ladjoint f_*)$ and $(f_! \ladjoint f^!)$ with one another. 
+                \item \textbf{(Tensoriality):} For each $X, Y \in \Ob(\C)$, there ought to be an $(\infty, 1)$-functor:
+                    $$\boxtimes_{X, Y}: \Shv(X) \tensor \Shv(Y) \to \Shv(X \x Y)$$
+                (with $\Shv(X) \tensor \Shv(Y)$ being in the sense of Lurie) natural in $X, Y$, which is such that for every $X \in \Ob(\C)$ (and let us write $\Delta_X: X \to X^2$ for the diagonal thereof), the following composition defines a closed symmetric monoidal structure on $\Shv(X)$:
+                    $$\Shv(X)^{\tensor 2} \xrightarrow[]{\boxtimes_{X, X}} \Shv(X^2) \xrightarrow[]{\Delta_X^*} \Shv(X)$$
+                These tensor products and their corresponding internal hom-functors are the remaining two functors in the six-functor formalism. 
+                    
+                Furthermore, we require that the $*$-pullback:
+                    $$f^*: \Shv(Y) \to \Shv(X)$$
+                is $(\infty, 1)$-monoidal for each $(f: X \to Y) \in \Mor(\C)$ with respect to the aforementioned closed symmetric monoidal structures on $\Shv(Y), \Shv(X)$.
+
+                Finally, we require that with respect to any $(f: X \to Y) \in \Mor(\C)$, $\Shv(X)$ becomes a module over the closed symmetric monoidal category $\Shv(Y)$ in the following way.  
+            \end{itemize}
+        \end{definition}
+        \begin{example}
+            Take $\C$ to be the $1$-category $\Sch_{/S}$ of schemes (viewed as a trivial $(\infty, 1)$-category) - or even the $(\infty, 1)$-category of derived schemes - over a fixed base scheme $S$. Next, consider $E$ to either be the class of open immersions or of proper morphisms; we shall write $E_{\open}$ and $E_{\proper}$ to denote these classes, respectively.
+
+            Consider firstly:
+                $$\QCoh^*: \Sch_{/S}^{\op} \to (\infty, 1)\-\Cat_2$$
+            to be the $(\infty, 2)$-functor as in proposition \ref{prop: qcoh_*_pullbacks}, sending $S$-schemes $X$ to the categories of quasi-coherent $\scrO_X$-modules and sending morphisms of $S$-schemes:
+                $$f: X \to Y$$
+            to (t-exact) left-derived $*$-pullbacks:
+                $$Lf^*: D(\QCoh(Y)) \to D(\QCoh(X))$$
+            between the derived categories of $\scrO_Y, \scrO_X$-modules with quasi-coherent cohomologies, viewed as stable $(\infty, 1)$-categories; the heart of the standartd t-structures on these categories are nothing but the abelian categories $\QCoh(Y)$ and $\QCoh(X)$. 
+        \end{example}
+
+    \subsection{Functorial characterisations of properties of morphisms of schemes; the pull-push yoga for quasi-coherent modules}
+        \begin{convention}
+            We write $(\infty, 1)-\Stab\Cat_r$ to mean the $(\infty, r)$-category ($r = 1, 2$) of stable $(\infty, 1)$-categories, $(\infty, 1)$-functors between them, and natural transformations between said functors when $r = 2$.
+        \end{convention}
+    
+        As all good constructions in algebraic geometry are, the creation of quasi-coherent modules is also functorial, albeit in a slightly weak sense. 
+        \begin{proposition}[$*$-pullbacks and pushforwards of quasi-coherent modules] \label{prop: qcoh_*_pullbacks}
+            Fix a base scheme $S$. There is a weak $(\infty, 2)$-functor:
+                $$\QCoh^*: \Sch_{/S}^{\op} \to (\infty, 1)\-\Cat_2$$
+            assigning to each $X \in \Ob(\Sch_{/S})$ the category $\QCoh(X)$ as in definition \ref{def: quasi_coherent_modules} and to each $(f: X \to Y) \in \Mor(\Sch_{/S})$ the colimit-preserving pullback functor:
+                $$f^*: \QCoh(Y) \to \QCoh(X)$$
+            This functor admits a right-adjoint $f_*$ per the Adjoint Functor Theorem. 
+        \end{proposition}
+
+        \begin{definition}[Dual stable $(\infty, 1)$-categories] \label{def: dual_stable_(infinity, 1)_categories}
+            
+        \end{definition}
+        
+        Pushing forward along proper morphisms is rather special. For convenience, let us recall the definition of properness in the context of morphisms of schemes:
+        \begin{definition}[Proper morphisms] \label{def: proper_morphisms}
+            
+        \end{definition}
+        One should keep in mind that:
+        \begin{example}
+            Closed immersions are proper.
+        \end{example}
+        \begin{lemma}[Dualising complexes and properly supported cohomology] \label{lemma: dualising_complexes_and_properly_supported_cohomology}
+            
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{theorem}[Proper pushforwards] \label{theorem: proper_pushforwards}
+            If $f: X \to Y$ is morphism of schemes then there shall exist a natural transformation of functors $D(\QCoh(X)) \to D(\QCoh(Y))$:
+                $$Lf_! \to Rf_*$$
+            which will be a natural isomorphism when $f: X \to Y$ is proper. Equivalently, there is a natural transformation:
+                $$\id \to Rf^! \circ Rf_*$$
+            that becomes the unit of adjunction when $f: X \to Y$ is proper. 
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+
+        The first application of functoriality is the so-called Serre's Affineness Criterion, which gives a cohomological characterisation of affine morphisms amongst all qcqs morphisms $f: X \to Y$ of schemes via a verification of whether or not the pushforward $f_*\scrO_X$ is a compact projective generator of $\QCoh(Y)$. The absolute version of this theorem - which of course does not rely on functoriality of $\QCoh$ - says that a qcqs scheme $X$ is affine if and only if $\scrO_X$ is a compact projective generator of $\QCoh(X)$.
+        
+        For convenience, let us firstly recall what it means for a morphism of schemes to be quasi-compact and quasi-separated.
+        \begin{definition}[Quasi-compactness and quasi-separatedness] \label{def: qcqs}
+            A morphism of schemes $f: X \to Y$ is \textbf{quasi-compact (qc)} if for every quasi-compact open subset $|V| \subset |Y|$, the inverse image $|f|^{-1}(|V|)$ is a quasi-compact open subset of $|X|$. Recall that a topological space $S$ is \textbf{quasi-compact} if and only if every open covering thereof is refined by a finite subcover. 
+
+            A morphism of schemes $f: X \to Y$ is \textbf{quasi-separated (qs)} if and only if its diagonal $\Delta_{X/Y}: X \to X \x_Y X$ is qc.
+        \end{definition}
+        \begin{remark}
+            Being qcqs for schemes is to be thought of as being analogous to being (quasi-)compact and Hausdorff in point-set topology. In particular, the notion of being qcqs is meant to mirror the fact that, only inside a Hausdorff topological space is one guaranteed that the intersection of two compact subsets is once again compact.  
+        \end{remark}
+        \begin{lemma} \label{lemma: affine_morphisms_are_qcqs}
+            Affine morphisms of schemes are qcqs.
+        \end{lemma}
+        \begin{lemma}
+            Let $\calA$ be a cocomplete abelian category with a compact projective generator $A$. Then $\calA$ will be equivalent to the category of left-modules over the endomorphism algebra $\calA(A, A)$:
+                $$\calA \cong {}^l\calA(A, A)\mod$$
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{theorem}[Compact generation of $\QCoh$ on affine schemes] \label{theorem: compact_generation_of_qcoh_on_affine_schemes}
+            Let $X$ be a qcqs scheme. Then $X$ is affine if and only if $\scrO_X$ is a compact projective generator of the cocomplete abelian category $\QCoh(X)$.
+        \end{theorem}
+            \begin{proof}
+                Clear from the fact that $\Gamma(X, \scrO_X) = \End_{\scrO_X}(\scrO_X)$ by definition.
+            \end{proof}
+        \begin{theorem}[Serre's Affineness Criteria] \label{theorem: serre_affineness_criteria}
+            For any qcqs morphism of schemes $f: X \to Y$, the following are equivalent:
+            \begin{enumerate}
+                \item For any $\scrM \in \Ob(\QCoh(X))$, one has that:
+                    $$i > 0 \implies R^i f_*\scrM \cong 0$$
+                \item $f_*\scrO_X$ is a compact projective generator of $\QCoh(Y)$. 
+                \item $f: X \to Y$ is affine\footnote{Note that $X$ is necessarily qcqs in this case (cf. lemma \ref{lemma: affine_morphisms_are_qcqs}).}.
+                \item For any ideal sheaf $\scrI \subset \scrO_X$ defined by a closed subscheme $Z \subset X$, one has that:
+                    $$R^1 f_*\scrI \cong 0$$
+            \end{enumerate}
+        \end{theorem}
+            \begin{proof}
+                \begin{enumerate}
+                    \item Assume that 1. holds and consider $\scrM \cong \scrO_X$. By hypothesis, we have that:
+                        $$i > 0 \implies R^i f_*\scrO_X \cong 0$$
+                    \item 
+                    \item 
+                    \item 
+                \end{enumerate}
+            \end{proof}
+        \begin{remark}
+            Amongst the criteria from theorem \ref{theorem: serre_affineness_criteria}, the condition that if any ideal sheaf $\scrI \subset \scrO_X$ defined by a closed subscheme $Z \subset X$, one has that:
+                $$R^1 f_*\scrI \cong 0$$
+            then the morphism $f: X \to Y$ is affine deserves some attention, as it is perhaps the most closely related to how affineness is perceived in classical algebraic geometry and complex geometry. 
+
+            A closed subscheme $Z \subset X$ consists of the vanishing loci of systems of polynomial equations generating the ideals $\Gamma(U, j^*\scrI) \subset \Gamma(U, j^*\scrO_X)$\footnote{\textit{A priori}, given a morphism of schemes $f: X \to Y$ and an ideal sheaf $\scrJ \subset \scrO_Y$, the pullback $f^*\scrJ$ is an $f^*\scrO_X$-ideal if and only if $f$ is flat, but not in general, since $f^*$ might fail to be left-exact. In this case, we are fine since open immersions are flat.}, for any open immersion $j: U \hookrightarrow X$. 
+        \end{remark}
+
+        \begin{theorem}[Extending $\QCoh$ from qc open subschemes] \label{theorem: extending_qcoh_from_qc_open_subschemes}
+            Let:
+                $$j: U \hookrightarrow X$$
+            be a qcqs\footnote{Technically, we only need to assume quasi-compactness, since open immersions are separated and hence quasi-separated \textit{a priori}.} open immersion. Then one has a natural isomorphism of functors $D(\QCoh(X)) \to D(\QCoh(U))$:
+                $$Rj^! \xrightarrow[]{\cong} Lj^*$$
+            Equivalently, there is an adjunction counit:
+                $$Rf^! \circ Rf_* \xrightarrow[]{\cong} \id$$
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+
+    \subsection{Cohomological base-change}
+
+    \subsection{Duality}
+
+    \subsection{Tensor structures}

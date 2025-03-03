@@ -1,0 +1,73 @@
+\section{Mapping spaces}
+    \subsection{Mapping spaces between proper algebraic spaces}
+        A natural question in algebraic geometry is as follows:
+        \begin{question}
+            Given two schemes/algebraic spaces/algebraic stacks $X, Y$ over $S$, when is the mapping space $\Maps(X, Y)$ representable by a scheme/algebraic space/algebraic stacks ? Recall that the functor of points of $\Maps(X, Y)$ is given by:
+                $$\Maps(X, Y)(T) := \Maps(X \x_S T, Y \x_S T)$$
+            for any $S$-scheme $T$.
+        \end{question}
+
+        Many attempts have been made towards this question, usually with various practical assumptions imposed upon $X$ and $Y$. The proof techniques can vary in complexity, depending on the assumptions on $X$ and $Y$, but in most cases, the general strategy is to use Artin's Criteria for Representability, which is a deformation-theoretic method. One salient advantage of using this method is that the tangent space at a given fibre of a point $f \in \Maps(X_y, y) := \Maps(X, Y)(y)$ - where $y \in |Y|$ is some point and $X_y := X \x_Y y$ - is relatively easy to describe: it is nothing but:
+            $$T_{\Maps(X_y, y), f} \cong H^0(X_{\Zar}, \Hom_{\scrO_{X_y}}( f^*\Omega^1_{X_y/y}, \scrO_{X_y} ))$$
+        
+        Grothendieck, for instance, was interested in maps between projective schemes, and made use of his Existence Theorem that was developed during his work on the Hilbert and Quot schemes in order to prove representability of mapping spaces. An easy but nevertheless important notion in this proof is that of the graph of a morphism in an arbitrary category. It is a natural generalisation of the definition of functions as certain ordered pairs as in material set theory. 
+        \begin{definition}[Graph of morphisms] \label{def: graphs_of_morphisms}
+            (Cf. \cite[\href{https://stacks.math.columbia.edu/tag/024T}{Tag 024T}]{stacks}) Let $\C$ be a category and $f: X \to Y$ be a morphism therein. Its \textbf{graph}, commonly denoted by $\Gamma(f)$ is then obtained via:
+                $$
+                    \begin{tikzcd}
+                    {\Gamma(f)} & Y \\
+                    {X \x Y} & {Y \x Y}
+                    \arrow[from=1-1, to=1-2]
+                    \arrow[from=1-1, to=2-1]
+                    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                    \arrow["{\Delta_Y}", from=1-2, to=2-2]
+                    \arrow["{f \x \id_Y}", from=2-1, to=2-2]
+                    \end{tikzcd}
+                $$
+            \textit{should the products and pullback exist in the first place}; here, $\Delta_Y: Y \to Y \x Y$ is the diagonal morphism.
+        \end{definition}
+        \begin{remark}
+            When $\C := \Sch_{/S}$, then we see that if $Y$ is separated over $S$, i.e. $\Delta_{Y/S}: Y \to Y \x_S Y$ is a closed immersion by definition, then because closed immersions are preserved by pullbacks, the canonical map:
+                $$\Gamma(f) \to X \x_S Y$$
+            coming from a morphism of $S$-schemes $f: X \to Y$ will also be a closed immersion. In other words, if $Y$ is separated, then the graph of $f$ will be a closed subscheme of the \say{plane} whose two \say{axes} are $X$ and $Y$.
+        \end{remark}
+        Recall firstly that the Hilbert moduli problem is given in the following manner. Suppose for a moment that $X, B$ are algebraic spaces over a fixed base scheme $S$ and that $f: X \to B$ is a morphism of finite presentation over $S$. Then, the \textbf{Hilbert moduli problem} will be the presheaf on $B_{\fpqc}$ given by:
+            $$
+                \Hilb_{X/S}(T) :=
+                \left\{
+                    \begin{array}{cc}
+                         & \text{closed immersions $Z \hookrightarrow X \x_{B} T$ such that}
+                         \\
+                         & \text{the canonical composition $Z \to X \x_{B} T \to T$ is}
+                         \\
+                         & \text{of finite presentation, flat, and proper}
+                    \end{array}
+                \right\}
+            $$
+        for all $T \in \Ob(B_{\fpqc})$.
+        \begin{theorem}[Grothendieck's theorem on mapping space between projective schemes]
+            Let $S$ be a base scheme, let $X, Y$ be projective $S$-scheme, and suppose that $X$ is flat over $S$. Then, $\Maps_{\Sch_{/S}}(X, Y)$ will be a quasi-projective $S$-scheme.
+        \end{theorem}
+            \begin{proof}[Proof sketch]
+                If we take for granted the representability of Hilbert schemes (\textit{the proof of which requires deformation theory}), then the strategy to prove that $\Maps_{\Sch_{/S}}(X, Y)$ is representable by an $S$-scheme (namely, a quasi-projective one) hinges on proving that there is a monomorphism of sheaves on $S_{\fpqc}$:
+                    $$\Gamma: \Maps_{\Sch_{/S}}(X, Y) \hookrightarrow \Hilb_{X \x_S Y/S}$$
+                that is representable by open immersions of schemes.
+
+                For any $T \in \Ob(S_{\fpqc})$, we claim that the corresponding component:
+                    $$\Gamma_T: \Maps_{\Sch_{/S}}(X, Y)(T) \hookrightarrow \Hilb_{X \x_S Y/S}(T)$$
+                of the natural transformation $\Gamma$ mentioned above maps morphisms of $T$-schemes $f \in \Maps_{\Sch_{/T}}(X \x_S T, Y \x_S T) =: \Maps_{\Sch_{/S}}(X, Y)(T)$ to their graphs $\Gamma_T(f)$ (in the sense of definition \ref{def: graphs_of_morphisms}); see \cite[\href{https://stacks.math.columbia.edu/tag/0D1A}{Tag 0D1A}]{stacks}. To see that this is well-defined, simply note that because $Y$ is projective and hence separated, of finite presentation, flat, and proper by definition, $\Gamma_T(f)$ will always be a closed subscheme of $(X \x_S T) \x_T (Y \x_S T) \cong (X \x_S Y) \x_S T$ that is of finite presentation, flat, and proper over $T$, i.e. $\Gamma_T(f)$ is indeed nothing but an element of $\Hilb_{X \x_S Y/S}(T)$.
+
+                Now, to see that $\Gamma$ is representable by open immersions, we will need to show that given any morphism of schemes $t: T \to \Hilb_{X \x_S Y/S}$, the canonical projection:
+                    $$\Maps_{\Sch_{/S}}(X, Y) \x_{ \Gamma, \Hilb_{X \x_S Y/S}, t } T \to T$$
+                is an open immersion of schemes. To this end, choose some:
+                    $$(i: Z \hookrightarrow (X \x_S Y) \x_S T) \in \Hilb_{X \x_S Y/S}(T)$$
+                We now know that the closed immersion $i: Z \hookrightarrow (X \x_S Y) \x_S T$ is the graph of a morphism of $T$-schemes $f: X \x_S T \to Y \x_S T$, i.e. of an element $f \in \Maps_{\Sch_{/S}}(X, Y)(T)$, if and only if the canonical projection:
+                    $$\pr_{X \x_S T}: Z \to X \x_S T$$
+                is an isomorphism of $T$-schemes. Then, using the Factorisation Criterion for Isomorphisms \cite[\href{https://stacks.math.columbia.edu/tag/05XD}{Tag 05XD}]{stacks}, we will be able to conclude the argument.  
+
+                Lastly, note that because an open subsheaf of a scheme is itself a scheme, $\Maps_{\Sch_{/S}}(X, Y)$ is now necessarily representable by a scheme. \textit{A priori}, $\Hilb_{X \x_S Y/S}$ is a projective $S$-scheme, so $\Maps_{\Sch_{/S}}(X, Y)$ is quasi-projective over $S$ by definition.
+            \end{proof}
+        There is a mild generalisation of the above to the setting of algebraic spaces that does away with some of the unnecessary hypotheses, which is perhaps useful when one is concerned with mapping spaces between certain quotients (e.g. by finite group actions, which arise naturally over positive characteristics).
+        \begin{proposition}[Mapping spaces between proper algebraic spaces]
+            
+        \end{proposition}

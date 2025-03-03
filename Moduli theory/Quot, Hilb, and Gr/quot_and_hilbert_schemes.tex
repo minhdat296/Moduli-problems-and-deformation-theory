@@ -1,0 +1,33 @@
+\section{\texorpdfstring{$\Quot$ and $\Hilb$}{}}
+    \subsection{Sheaf hom between quasi-coherent modules}
+        \begin{convention}
+            Let $S$ be a scheme and $f: X \to B$ be a morphism of algebraic spaces over $S$. If $\scrM$ is a quasi-coherent $\scrO_X$-module, then we will be writing:
+                $$\scrM_T := \pr_1^*\scrM$$
+            where $\pr_1: X \x_{f, B} T \to X$ is the canonical projection onto the first factor, for any $T \in \Ob( \Sch_{/B} )$.
+        \end{convention}
+
+        The object of interest in this subsection is the following. Let $\scrF, \scrG$ be quasi-coherent and then consider the presheaf $\Maps_{\scrO_X}(\scrF, \scrG)$ on $\Sch_{/B}$ whose functor of points is given by:
+            $$\Maps_{\Sh(X_{\tau})}(\scrF, \scrG)(T) := \Hom_{\scrO_{X_T}}(\scrF_T, \scrG_T)$$
+        for all $T \in \Ob(\Sch_{/B})$. We write $\Maps$ to avoid confusion with the $\scrO_X$-module of $\scrO_X$-linear homomorphisms $\scrF \to \scrG$, which shall be denoted by $\Hom_{\scrO_X}(\scrF, \scrG)$ as usual; in other words, we are regarding $\scrF, \scrG$ as objects of $\Sh(X_{\tau})$, rather than those of $\QCoh(X)$. It is easy to see that $\Maps_{\Sh(X_{\tau})}(\scrF, \scrG)$ satisfies $\tau$-descent whenever $\tau$ is the fpqc topology or coarser.
+
+        \begin{question}
+            Does there exist a subcanonical topology $\tau$ finer than the fpqc topology, such that $\Maps_{\Sh(X_{\tau})}(\scrF, \scrG)$ is still a sheaf ?
+        \end{question}
+
+        A good first step in checking whether or not a given sheaf $F: B_{\tau}^{\op} \to \Sets$ is representable by a scheme or algebraic space is to check if said sheaf preserves \textit{cofiltered} limits, i.e. if given a cofiltered limit:
+            $$\projlim_{i \in \calI} T_i \in B_{\tau}$$
+        there will be a bijection:
+            $$\indlim_{i \in \calI} F(T_i) \xrightarrow[]{\cong} F( \projlim_{i \in \calI} T_i )$$
+        Without any loss of generality, one can also assume that each scheme $T_i$ is affine.
+        \begin{lemma}
+            Let $\scrF$ be of finite presentation and $f: X \to B$ be qcqs. $\Maps_{\Sh(X_{\tau})}(\scrF, \scrG)$ will then preserve cofiltered limits.
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
+
+    \subsection{\texorpdfstring{$\Isom$}{}}
+
+    \subsection{The scheme \texorpdfstring{$\Quot$}{}}
+
+    \subsection{The scheme \texorpdfstring{$\Hilb$}{}}

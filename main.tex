@@ -1,39 +1,51 @@
 \input{book preambles}
 
-\setcounter{section}{-1}
+\setcounter{chapter}{-1}
 
 \input{commands}
 
 \begin{document}
 
-	\title{Moduli problems and deformation theory}
-	
-	\author{Dat Minh Ha}
-	\maketitle
-	
-	\begin{abstract}
-	    
-	\end{abstract}
-	
-	{
+    \title{Techniques of algebraic geometry}
+    
+    \author{Dat Minh Ha}
+    \maketitle
+    
+    {
       \hypersetup{} 
       \dominitoc
       \tableofcontents %sort sections alphabetically
     }
+
+    \listoftodos
+
+    \input{introduction}
     
-    \chapter{Schemes, algebraic spaces, and algebraic stacks}
-        \begin{abstract}
+    \part{Some scheme theory}
+        \chapter{Schemes, algebraic spaces, and algebraic stacks}
+            \begin{abstract}
+                
+            \end{abstract}
             
-        \end{abstract}
+            \minitoc
+
+            \input{Algebraic geometry/Schemes, algebraic spaces, and algebraic stacks/schemes}
+
+            \input{Algebraic geometry/Schemes, algebraic spaces, and algebraic stacks/algebraic_spaces}
+
+            \input{Algebraic geometry/Schemes, algebraic spaces, and algebraic stacks/algebraic_stacks}
         
-        \minitoc
-    
-        \input{Chapters/Schemes and algebraic stacks/schemes}
-        
-        \input{Chapters/Schemes and algebraic stacks/algebraic spaces}
-        
-        \input{Chapters/Schemes and algebraic stacks/algebraic stacks}
-        
+        \chapter{Quasi-coherent modules}
+            \begin{abstract}
+                
+            \end{abstract}
+            
+            \minitoc
+
+            \input{Algebraic geometry/Quasi-coherent modules/6_functors_for_QCoh}
+
+            \input{Algebraic geometry/Quasi-coherent modules/QCoh_applications}
+            
         \begin{appendices}
             \chapter{Fibred categories, descent, and stacks}
                 \begin{abstract}
@@ -45,33 +57,92 @@
                 \input{Appendices/Fibred categories/fibrations}
                 
                 \input{Appendices/Fibred categories/descent}
+
+            \chapter{Spectral sequences}
+                \begin{abstract}
+                    I can't just handwave whenever someone asks me what a \say{spectral sequence} is anymore ... I've been avoiding writing these notes for long enough. We will be discussing spectral sequences here mostly from a higher-categorical POV.
+                \end{abstract}
+                
+                \minitoc
+
+                \input{Appendices/Spectral sequences/stable_infinity_categories}
+
+                \input{Appendices/Spectral sequences/spectral_sequences}
+            
         \end{appendices}
-        
-    \chapter{Deformation theory}
-        \begin{abstract}
+
+    \part{Formal geometry}
+        \chapter{Deformation theory}
+            \begin{abstract}
+                
+            \end{abstract}
             
-        \end{abstract}
-        
-        \minitoc
+            \minitoc
+
+            \input{Formal geometry/Commutative deformation theory/formal_deformation_problems}
+
+            \input{Formal geometry/Commutative deformation theory/cotangent_complexes}
+            
+        \chapter{Algebraisation}
+            \begin{abstract}
+                
+            \end{abstract}
+            
+            \minitoc
+
+            \input{Formal geometry/Algebraisation and formal geometry/formal_algebraic_spaces}
+
+            \input{Formal geometry/Algebraisation and formal geometry/formal_algebraic_stacks}
+
+            \input{Formal geometry/D-modules/algebraic_de_rham_cohomology}
+
+            \input{Formal geometry/D-modules/D_modules}
+
+    \part{Moduli problems and representability}
+        \begin{convention}
+            Fix a base scheme $S$ and consider a Grothendieck topology $\tau$ on $\Sch_{/S}$, and for technical reasons, we require that $\tau$ is \textit{subcanonical}\footnote{The reader can assume that it is either the fpqc topology or finer.}. For brevity, let us denote the resulting \textit{small} site by $S_{\tau}$.
     
-        \input{Chapters/Deformation theory and representability/deformation functors}
-        
-        \input{Chapters/Deformation theory and representability/cotangent complexes}
-        
-        \input{Chapters/Deformation theory and representability/criteria for representability}
-        
-    \chapter{Algebraisation and formal geometry}
-        \begin{abstract}
+            If $\calS$ is an algebraic space over $S$ then by $\Sch_{/\calS}$, we shall mean the full subcategory of $\Sh( S_{\fppf} )$ spanned by morphisms $X \to \calS$ from scheme $X$. Should $\Sch_{/S}$ be endowed with any subcanonical Grothendieck topology $\tau$, then that topology will also induce another on $\Sch_{/\calS}$. The resulting small site will be denoted by $\calS_{\tau}$.
+
+            Finally, write $\Sh(S_{\tau})$ for the sheaf topos on $S_{\tau}$ (with $S$ being either a scheme or algebraic space), and $\Stk(S_{\tau}) := \Grpd(\Sh(S_{\tau}))$ for the $(2, 1)$-category of $\Grpd$-valued stacks on $S_{\tau}$. 
+        \end{convention}
+
+        \chapter{\texorpdfstring{$\Quot, \Hilb$, and Grasmannians}{}}
+            \begin{abstract}
+                
+            \end{abstract}
             
-        \end{abstract}
-        
-        \minitoc
-        
-        \input{Chapters/Algebraisation and formal geometry/formal algebraic spaces}
-        
-        \input{Chapters/Algebraisation and formal geometry/formal algebraic stacks}
+            \minitoc
+
+            \input{Moduli theory/Quot, Hilb, and Gr/quot_and_hilbert_schemes}
+
+            \input{Moduli theory/Quot, Hilb, and Gr/mapping_spaces}
+
+            \input{Moduli theory/Quot, Hilb, and Gr/grassmannians}
+    
+        \chapter{Moduli stacks of principal bundles}
+            \begin{abstract}
+                
+            \end{abstract}
+            
+            \minitoc
+
+            \input{Moduli theory/Bun_G/algebraicity_of_Bun_G}
+
+            \input{Moduli theory/Bun_G/global_geometry_of_Bun_G}
+
+        \chapter{Equivariant geometry and geometric invariant theory}
+            \begin{abstract}
+                
+            \end{abstract}
+
+            \input{Moduli theory/Equivariant geometry/good_moduli_spaces}
+
+            \input{Moduli theory/Equivariant geometry/adequate_moduli_spaces}
+
+            \input{Moduli theory/Equivariant geometry/equivariance}
 	
-	\addcontentsline{toc}{section}{References}
-	\printbibliography
+    \addcontentsline{toc}{section}{References}
+    \printbibliography
 
 \end{document}

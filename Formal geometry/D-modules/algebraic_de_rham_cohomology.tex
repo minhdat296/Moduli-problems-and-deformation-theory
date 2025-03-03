@@ -1,0 +1,100 @@
+\section{Algebraic de Rham cohomology}
+    \subsection{de Rham spaces}
+        \begin{convention}
+            Given any commutative ring $R$, write $R_{\red} := R/\Nil(R)$ for the \say{underlying} reduced ring (the idea here is that $\Nil(R/\Nil(R)) = 0$).
+        \end{convention}
+    
+        \begin{definition}[Zariski-infinitesimally close points] \label{def: zariski_infinitesimally_close_points}
+            Let $X$ be a scheme and let $S$ be a test scheme. Two $S$-points $x, y \in X(S) := \Mor_{\Sch}(S, X)$ are said to be \textbf{Zariski-infinitesimally close} to one another if and only if their images under the canonical map $X(S) \to X(S_{\red})$ coincide.
+        \end{definition}
+        Here, $S_{\red}$ is the underlying reduced subscheme of $S$. As a locally ringed space, it is given by:
+            $$S_{\red} := (|S|, \scrO_{S^{\red}})$$
+        with the structure sheaf given by:
+            $$\scrO_{S^{\red}}(U) := \scrO_S(U)^{\red}$$
+        and in particular, when $S := \Spec R$, we have $S_{\red} \cong \Spec R_{\red}$. This construction stipulates that there is a canonical closed embedding $S_{\red} \subset S$ (cut out by the ideal sheaf $\Nil(\scrO_S) \subset \scrO_S$) and as such, the condition that two $S$-points $x, y: S \toto X$ are Zariski-infinitesimally close to one another is that the following two compositions are equal to one another:
+            $$
+                \begin{tikzcd}
+                {S_{\red}} & S & X
+                \arrow[from=1-1, to=1-2]
+                \arrow["y"', shift right, from=1-2, to=1-3]
+                \arrow["x", shift left, from=1-2, to=1-3]
+                \end{tikzcd}
+            $$
+
+        For what follows, it is useful to recall the universal property of formal completions. 
+        \begin{lemma}[Universal property of formal completion] \label{lemma: universal_property_of_formal_completion}
+            
+        \end{lemma}
+            \begin{proof}
+                Exercise.
+            \end{proof}
+
+        \begin{proposition}[Infinitesimality and the diagonal] \label{prop: infinitesimality_and_the_diagonal}
+            Let $X$ be a separated Noetherian scheme and let $S$ be a test scheme. Two $S$-points $x, y \in X(S)$ are Zariski-infinitesimally close to one another if and only if there is a factorisation in the category of formal schemes as follows:
+                $$
+                    \begin{tikzcd}
+                    S & {(X, \Delta_X)^{\wedge}} \\
+                    & {X^2}
+                    \arrow["(x \x y)^{\wedge}", dashed, from=1-1, to=1-2]
+                    \arrow["{x \x y}"', from=1-1, to=2-2]
+                    \arrow["{\Delta_X^{\wedge}}", from=1-2, to=2-2]
+                    \end{tikzcd}
+                $$
+            wherein $(X^2, \Delta_X)^{\wedge}$ is the formal completion\footnote{This is why we need $X$ to be separated and Noetherian. Otherwise, the formal completion will not be a formal scheme in the sense of \cite{hartshorne}.} of $X^2$ along the closed subscheme $\im \Delta_X$, and $\Delta_X^{\wedge}$ is the canonical immersion. 
+        \end{proposition}
+            \begin{proof}
+                By Zariski descent, it suffices to check that the result holds for $S \in \Ob(\Sch^{\aff})$, say $S := \Spec R$. Moreover, we can assume without any loss of generality that $X$ is affine, say $X := \Spec A$; affine schemes are separated \textit{a priori}, so we need only assume that $A$ is Noetherian. With these reduction steps in place, the problem now becomes to prove that given any two ring maps $f, g: A \to R$, we have that:
+                    $$\pi \circ f = \pi \circ g$$
+                with $\pi: R \to R_{\red}$ being the canonical quotient map, if and only if there is a factorisation in $\Cring$ as follows:
+                    \begin{equation} \label{diagram: formal_neighbourhood_of_diagonal_algebraic}
+                        \begin{tikzcd}
+                        R & {(A^{\tensor 2}, I)^{\wedge}} \\
+                        & {A^{\tensor 2}}
+                        \arrow["{(f \tensor g)^{\wedge}}"', dashed, from=1-2, to=1-1]
+                        \arrow["{f \tensor g}", from=2-2, to=1-1]
+                        \arrow["{\mu^{\wedge}}"', from=2-2, to=1-2]
+                        \end{tikzcd}
+                    \end{equation}
+                wherein:
+                    $$I := \ker(\mu: A^{\tensor 2} \to A)$$
+                is the kernel of the multiplication map on $A$, and:
+                    $$\mu^{\wedge}: A^{\tensor 2} \to (A^{\tensor 2}, I)^{\wedge}$$
+                is the composition $A^{\tensor 2} \xrightarrow[]{\mu} A \to (A^{\tensor 2}, I)^{\wedge}$, wherein the second arrow is given by $\projlim_{n \geq 1} (A^{\tensor 2} \to A^{\tensor 2}/I^n)$. Also, to be clear, by $f \tensor g: A^{\tensor 2} \to R$, we mean the map given by:
+                    $$(f \tensor g)(a \tensor b) := f(a) g(b)$$
+                for all $a, b \in A$. As a preliminary observation, note that because $I$ is generated by the subset $\{a \tensor 1 - 1 \tensor a\}_{a \in A}$, we have:
+                    \begin{equation} \label{equation: difference_of_points_along_diagonal}
+                        \begin{aligned}
+                            (\pi \circ (f \tensor g))(a \tensor 1 - 1 \tensor a) & = \pi(f(a) g(1) - f(1) g(a))
+                            \\
+                            & = \pi(f(a) - g(a))
+                            \\
+                            & = (\pi \circ (f - g))(a)
+                        \end{aligned}
+                    \end{equation}
+                for all $a \in A$. From this, we see that:
+                    $$\pi \circ f = \pi \circ g \iff (\pi \circ (f \tensor g))(I) = 0$$
+
+                Firstly, suppose that the factorisation \eqref{diagram: formal_neighbourhood_of_diagonal_algebraic} exists, and then simply consider:
+                    $$(\pi \circ (f \tensor g))(I) = ( (f \tensor g)^{\wedge} \circ \mu^{\wedge} )(I) = (f \tensor g)^{\wedge}(0) = 0$$
+                wherein the last equality is because $I := \ker \mu$, which implies that $\mu^{\wedge}(I) = 0$. Equation \eqref{equation: difference_of_points_along_diagonal} then tells us that $\pi \circ f = \pi \circ g$, as needed.
+
+                Conversely, suppose that $x, y \in X(S)$ are Zariski-infinitesimally close. By definition, this means that:
+                    $$\pi \circ (f - g) = 0$$
+                and through equation \eqref{equation: difference_of_points_along_diagonal}, we see therefore that:
+                    $$(\pi \circ (f \tensor g))(I) = 0$$
+                This tells us that $(f \tensor g)(I) \subseteq \Nil(R)$. 
+            \end{proof}
+
+        It can be shown that Zariski-infinitesimality between pairs of points $x, y: S \toto X$ is an equivalence relation on the set $X(S)$. The classifying space of this equivalence relation is known as the \say{de Rham space} of $X$, and in light of the Zariski-infinitesimality criterion of proposition \ref{prop: infinitesimality_and_the_diagonal}, we see that $X_{\dR}$ as in the following definition is equivalently given by the following colimit of presheaves on $(\Sch^{\aff})$:
+            $$X_{\dR} := \coeq( (X, \Delta_X)^{\wedge} \toto X )$$
+        wherein the arrows are composition of the immersion $\Delta_X^{\wedge}: (X, \Delta_X)^{\wedge} \to X$ with the two canonical  projections $X^2 \to X$, respectively.
+        \begin{definition}[de Rham spaces] \label{def: de_rham_spaces}
+            The \textbf{de Rham space} of a scheme $X$ is the presheaf $X_{\dR}: (\Sch^{\aff})^{\op} \to \Sets$ given by:
+                $$X_{\dR}(S) := X(S_{\red})$$
+            for all test schemes $S$.
+        \end{definition}
+
+        When $X$ is formally smooth, the canonical map $X(S) \to X_{\dR}(S)$ is surjective for all test schemes $S$, by the definition of formal smoothness. Thus, when $X$ is formally smooth, we can view $X_{\dR}$ as a quotient of $X$ by the equivalence relation identifying Zariski-infinitesimally close pairs of points of $X$. The geometry of $X_{\dR}$ in this case can therefore be understood by means of geometry of groupoids internal to $\Sch$, i.e. equivariant geometry.
+
+    \subsection{Algebraic de Rham cohomology as quasi-coherent cohomology}
+        The reason we care about $X_{\dR}$ is that when $X$ is over characteristic $0$, its big Zariski site is the same as the crystalline/infinitesimal site of $X$, and therefore its quasi-coherent cohomology coincides with the de Rham cohomology of $X$. Then, under certain conditions (e.g. $X$ smooth and proper over a field of characteristic $0$), the $5$-functor pull-push for quasi-coherent modules will automatically induce such a formalism for algebraic de Rham cohomology, thereby conceptually simplifying the latter. Applying cohomological duality then yields a pull-push formalism for D-modules on $X$.

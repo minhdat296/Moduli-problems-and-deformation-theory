@@ -1,0 +1,238 @@
+\section{Formal deformation theory}
+    \begin{convention}
+        Everything is derived.
+    \end{convention}
+
+    \subsection{Moduli problems}
+        \begin{definition}
+            Let $\scrS$ be an $(\infty, n)$-category. A $\scrS$-valued \textbf{moduli problem} is then nothing but a $\S$-valued $(n - 1)$-prestack, i.e. a functor:
+                $$\scrF: (\Sch^{\aff})^{\op} \to \scrS$$
+        \end{definition}
+        While this definition might seem nonsensically purely categorical, the point of moduli theory is to find out if such moduli problems might be representable by any kind of a geomtric entity, e.g. a (formal) scheme or algebraic stack.
+        \begin{example}
+            Any scheme is a $\Sets$-valued moduli problem, which from our point of view should be regarded as a $0$-truncated $0$-prestack. Any $1$-prestack is a $1\-\Grpd_2$-valued moduli problem, to be regarded as a $1$-truncated $1$-prestack.  
+        \end{example}
+        \begin{example}
+            More particularly, consider the following example.
+
+            Let:
+                $$\scrM_{\elliptic}: (\tau_{\leq 0}\Sch^{\aff})^{\op} \to 1\-\Grpd_2$$
+            denote the classical underived moduli prestack of elliptic curves, i.e. each:
+                $$\scrM_{\elliptic}(\Spec R)$$
+            is the $1$-groupoid of elliptic curves over $\Spec R$ and isomorphisms between them. If we were to consider, instead, the $\Sets$-valued moduli problem:
+                $$\tau_{\leq 0}\scrM_{\elliptic}: (\tau_{\leq 0}\Sch^{\aff})^{\op} \to \Sets$$
+            sending each $\Spec R$ to the set of isomorphism classes of elliptic curves over it, then one problem will be that $\tau_{\leq 0}\scrM_{\elliptic}$ fails to satisfy flat descent, while the original $\scrM_{\elliptic}$ does. 
+        \end{example}
+        \begin{example}
+            Another example of a moduli problem is the construction of quasi-coherent modules. If $X$ is a scheme, the stable $(\infty, 1)$-category of quasi-coherent $\scrO_X$-modules can then be taken as:
+                $$\QCoh(X) := (\infty, 2)\-\projlim_{\Spec R \to X} R\mod$$
+            wherein the weak $(\infty, 2)$-limit is taken along the $*$-pullback functors. This suggests that there is a moduli problem:
+                $$\QCoh: (\Sch^{\aff})^{\op} \to (\infty, 1)\-\Cat^{\stab}_{\co\cont}$$
+            valued in the $(\infty, 2)$-category $(\infty, 1)\-\Cat^{\stab}_{\co\cont}$ of stable $(\infty, 1)$-categories and cocontinuous functors between them. 
+        \end{example}
+
+    \subsection{Local Artinian algebras and deformation contexts}
+        We beign our exposition of deformation theory with a discussion of so-called \say{deformation contexts}. These are to be thought of as categories whose objects are \say{formal neighbourhoods} around a chosen point of some moduli functor, and using these \say{formal neighbourhoods}, we shall be able to study the local geometry of said moduli space. In order to be able to be slightly more precise as to what we meant by \say{local geometry}, let us first note that historically, deformation theory started with Grothendieck's systematic study of the representability of the Hilbert moduli functor (see \cite{grothendieck_fga_2}) using the conormal sheaves associated to closed immersions (after all, the Hilbert functor parametrises closed subschemes of a certain kind); from there, it became apparent that it was possible to systematically analyse the representability and algebraicity of general moduli functors via studying their (co)tangent spaces, whatever this notion might end up meaning for abstract functors. (Co)tangent spaces are, however, local in nature, so before we could even try to analyse them, we must first have a good notion of \say{neighbourhoods} around points of general moduli functors. This is why we need the notion of \say{deformation contexts}.
+        
+        As motivation for general abstract deformation contexts, we will firstly be studying that of local Artinian algebras. To see why we might care about such rings, recall firstly that if $X$ is a scheme and $x \in |X|$ is a Zariski point inside $X$ with residue field $\kappa_x$, then one can consider the affine scheme $\Spec \scrO_{X, x}$ associated to the local ring $\scrO_{X, x}$ with residue field $\kappa_x$, which can be easily shown to be a (affine) Zariski-open subscheme inside any Zariski-open subscheme $U \subseteq X$ containing $x$. With this in mind, one sees that any local ring $\Lambda$ with residue field $\kappa_x$ corresponds to some \say{formal} Zariski-open neighbourhood around $x \in |X|$, and if these local rings are furthermore Artinian then the corresponding \say{formal neighbourhoods} can be thought of as being analogous to open balls of finite \say{radii} centered around $x$. If $X$ is furthermore a (locally Noetherian) scheme over some field $k$ and $x \in X(k)$ is a $k$-rational point of $X$ (i.e. $\kappa_x \cong k$) then $\scrO_{X, x}$ will be a local (Artinian) $k$-algebra whose residue field is $k$, and any local (Artinian) $k$-algebra whose residue field is $k$ can as such be thought of as \say{formal} Zariski-open neighbourhoods (of finite \say{radius}, which corresponds to the rank of $\m_A$ as an $A$-module) around the $k$-rational point $x \in X(k)$. 
+        \begin{definition}[Artinian rings] \label{def: artinian_rings} \index{Artinian rings}
+            A commutative ring $\Lambda$ is said to be \textbf{Artinian} if and only if there exist no non-terminating descending chain of ideals (up to bijections, of course). Alternatively, since ideals of commutative rings corespond to Zariski-closed sets, one can define Artinian rings $\Lambda$ as those such that the underlying topological spaces of their corresponding affine schemes $\Spec \Lambda$ have no non-terminating \textit{ascending} chains of closed subsets. 
+            
+            It is not hard to see that for every given base commutative ring $\Lambda$ there is a category whose objects are local Artinian $\Lambda$-algebras and whose morphisms are local homomorphisms between them. We shall denote this category by $\C_{\Lambda}$. Furthermore, for each $R$-algebra $k$ that is a field, there is a corresponding full subcategory of $\C_{\Lambda}$, which we shall denote by $\C_{\Lambda, k}$ spanned by local Artinian $\Lambda$-algebras whose residue field is $k$. 
+        \end{definition}
+        
+        \begin{lemma}[Basic properties of local Artinian rings] \label{lemma: artinian_rings_properties}
+            \noindent
+            \begin{enumerate}
+                \item Quotients and localisations of Artinian rings are also Artinian.
+                \item \cite[\href{https://stacks.math.columbia.edu/tag/00J6}{Tag 00J6}]{stacks} Finitely generated algebras over fields are Artinian.
+                \item A local Artinian ring $(\Lambda, \m)$ with residue field $\kappa$ is a finitely generated $\kappa$-algebra and admits a splitting $\Lambda \cong \kappa \oplus \m$.
+                \item \cite[\href{https://stacks.math.columbia.edu/tag/00J7}{Tag 00J7}]{stacks} Artinian rings only have finitely many maximal ideals.
+                \item \cite[\href{https://stacks.math.columbia.edu/tag/00J8}{Tag 00J8}]{stacks} Let $\Lambda$ be an Artinian ring. Then, its Jacobson radical is nilpotent. In fact, its Jacobson radical shall be the same as its nilradical.
+                \item \cite[\href{https://stacks.math.columbia.edu/tag/00JA}{Tag 00JA}]{stacks} Any commutative ring with finitely many maximal ideals and locally nilpotent Jacobson radical (such as Artinian rings) can be decomposed into the direct sum of its localisations at the maximal ideals. Furthermore, any prime ideal in such a ring is automatically maximal.
+                \item \cite[\href{https://stacks.math.columbia.edu/tag/00JB}{Tag 00JB}]{stacks} A commutative ring $A$ is simultaneously Artinian and Noetherian if and only if $A$ has finite length as a module over itself. 
+            \end{enumerate}
+        \end{lemma}
+        
+        \begin{convention}[Categories of local Artinian algebras] \label{conv: categories_of_local_artinian_algebras}
+             Let $(\Lambda, \m, k)$ is the data of a Noetherian local ring with maximal ideal $\m$ and residue field $k$. We denote by $\C_{\Lambda, k}$ the category whose objects are local Artinian $\Lambda$-algebras whose residue fields are isomorphic to $k$ and whose morphisms are local $\Lambda$-algebra homomorphisms between them.
+        \end{convention}
+        \begin{proposition}[Finite completeness of categories of local Artinian algebras] \label{prop: finite_completeness_of_categories_of_local_artinian_algebras}
+            Let $(\Lambda, \m, k)$ is the data of a Noetherian local ring with maximal ideal $\m$ and residue field $k$. Then, $\C_{\Lambda, k}$ is a finitely complete Artinian category.
+        \end{proposition}
+            \begin{proof}
+                That the category $\C_{\Lambda, k}$ is Artinian is obvious, and that it is finitely complete is a trivial consequence of lemma \ref{lemma: artinian_rings_properties}(3).
+            \end{proof}
+            
+        \begin{definition}[Epic pro-objects] \label{def: epic_pro_objects}
+            The \textbf{epic pro-completion} $\Pro
+            _>(\C)$ of a small $1$-category $\C$ is the full subcategory of $\Pro(\C)$ consisting of cofiltered limits in which the transition maps are epimorphisms. Equivalently, $\Pro
+            _>(\C)$ consists of $\C$ and the limits of such cofiltered diagrams.  
+        \end{definition}
+        \begin{example}[Completed Artinian local algebras] \label{example: completed_artinian_local_algebras}
+            Let $(\Lambda, \m, k)$ is the data of a Noetherian local ring with maximal ideal $\m$ and residue field $k$. Then, the epic pro-completion $\hat{\C}_{\Lambda, k}$ shall be spanned by pro-objects of $\C_{\Lambda, k}$ which are of the form $\{\cdots \to A/\m_A^n \to \cdots \to A/\m_A^2 \to A/\m_A\}$ for some $(A, \m_A, k) \in \Ob(\C_{\Lambda, k})$. 
+            
+            Because limits commute, and because $\C_{\Lambda, k}$ is finitely complete and Artinian (cf. proposition \ref{prop: finite_completeness_of_categories_of_local_artinian_algebras}), its epic pro-completion:
+                $$\hat{\C}_{\Lambda, k} := \Pro_>(\C_{\Lambda, k})$$
+            must also be finitely complete and Artinian. It is also not hard to see that via taking limits of the cofiltered diagrams that are objects of $\hat{\C}_{\Lambda, k}$ is equivalent to the category of \textit{complete} Noetherian local $\hat{\Lambda}$-algebras with residue fields isomorphic to $k$.
+        \end{example}
+        The following is an easy exercise. 
+        \begin{proposition}[Pushouts and coproducts of completed Artinian local algebras] \label{prop: pushouts_and_coproducts_of_completed_artinian_local_algebras}
+            Let $(\Lambda, \m, k)$ is the data of a Noetherian local ring with maximal ideal $\m$ and residue field $k$. Then, the category $\hat{\C}_{\Lambda, k}$ admits pushouts and initial objects\footnote{.. and as a result, all coproducts}.
+        \end{proposition}
+        \begin{corollary}
+            Let $(\Lambda, \m, k)$ is the data of a Noetherian local ring with maximal ideal $\m$ and residue field $k$. Then, the category $\hat{\C}_{\Lambda, k}$ is cocomplete.
+        \end{corollary}
+            \begin{proof}
+                This is a direct consequence of the fact that a category is cocomplete if and only if it has all coproducts and coequalisers (cf. \cite[Theorem V.2.1]{maclane}).
+            \end{proof}
+            
+        Let us now attempt to define so-called deformation contexts as abstract categorical constructions, using the deformation context of local Artinian algebras as a template.
+        \begin{definition}[Deformation contexts] \label{def: deformation_context}
+            A \textbf{deformation context} is a finitely complete category whose epic pro-completion (cf. definition \ref{def: epic_pro_objects}) is cocomplete. 
+        \end{definition}
+        Even though we state the following definition for an arbitrary $n$ (pre-supposing that a theory of $n$-categories is granted), we will only need the cases where $n = 1, 2$. 
+        \begin{definition}[Predeformation functors] \label{def: predeformation_functors}
+            For $\C$ a deformation context and $\scrS$ an arbitrary $n$-category, let us define the $n$-category $\Pre\Def(\C, \scrS)$ as the full $n$-subcategory of $n\-\Func(\C, \scrS)_n$ consisting of $n$-functors:
+                $$\scrF: \C \to \scrS$$
+            that maps finite epic $1$-limits in $\C$ to finite $n$-limits in $\scrS$. Objects of $\Pre\Def(\C, \scrS)$ are called \textbf{predeformation functors} valued in $\scrS$. 
+        \end{definition}
+        \begin{remark}
+            For $\C$ a deformation context and $\scrS$ an arbitrary $n$-category, one can equivalently think of an $\scrS$-valued predeformation functor:
+                $$\scrF: \C \to \scrS$$
+            as a Grothendieck op-fibration (also called a co-Cartesian fibration) whose fibres are objects of $\scrS$. 
+        \end{remark}
+        \begin{remark}
+            Suppose that $\C$ is a deformation context and that:
+                $$\scrF: \C \to \scrS$$
+            is a predeformation functor into some $n$-category $\scrS$. Also, let us denote the terminal object of $\C$ by $\pt$. An easy consequences of definition \ref{def: predeformation_functors} is that $\scrF(\pt)$ is $n$-contractible. In particular, when:
+                $$\scrS \in \{\Sets, 1\-\Grpd_2\}$$
+            this means that:
+                $$\scrF(\pt)$$
+            is a contractible set (i.e. the singleton $\{*\}$) and a contractible groupoid (i.e. equivalent to the trivial groupoid $\{*\}$), respectively. Heuristically, this is the idea that one needs to look at infinitesimal neighbourhoods to start seeing deformations, which are invisible over a point.
+        \end{remark}
+        The following theorem of Grothendieck informs us of the necessity of working with $\hat{\C}_{\Lambda, k}$ as opposed to $\C_{\Lambda, k}$, which in essence means that instead of checking how an object deforms sequentially over each finite-order infinitesimal neighbourhood, one should firstly perform formal completion, do deformation theory over formal neighbourhoods, and then truncate (examples will clarify this idea further). 
+        \begin{theorem}[Predeformation functors are pro-corepresentable]  \label{theorem: predeformation_functors_are_pro_corepresentable}
+            (Cf. \cite[Proposition 3.1]{grothendieck_fga_2}) Let $\C$ be a deformation context. Predeformation functors:
+                $$\scrF: \C \to \scrS$$
+            with values in either a small $1$-topos (e.g. $\Sets$) or a small $(2, 1)$-topos (e.g. $1\-\Grpd_2$), respectively, epic $1$-pro-corepresentable and epic $(2, 1)$-pro-corepresentable (i.e. weakly $2$-pro-corepresentable), in the sense that they are $1$-corepresentable and $(2, 1)$-corepresentable, respectively, by an object $\frakX \in \Ob(\Pro_{>}(\C))$, i.e.:
+                $$\scrF \cong \Maps(-, \frakX)$$t
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{corollary}
+            Let $\C$ be a deformation context and let:
+                $$\scrF: \C \to \scrS$$
+            be a predeformation functor with values in either a small $1$-topos (e.g. $\Sets$) or a small $(2, 1)$-topos (e.g. $1\-\Grpd_2$). 
+        \end{corollary}
+        \begin{convention}
+            Let $\C$ be a deformation context and let:
+                $$\scrF: \C \to \scrS$$
+            be a predeformation functor with values in either a small $1$-topos (e.g. $\Sets$) or a small $(2, 1)$-topos (e.g. $1\-\Grpd_2$). 
+        \end{convention}
+
+    \subsection{Cotangent complexes, tangent spaces, and obstruction; versal, miniversal, and universal deformations}
+        \begin{definition}[Thickenings] \label{def: thickenings}
+            A homomorphism of commutative rings:
+                $$\phi: R \to S$$
+            is said to be a \textbf{thickening of order $n \geq 1$} if it is surjective and:
+                $$(\ker \phi)^{n + 1} = 0$$
+        \end{definition}
+        \begin{convention}[Categories of thickenings]
+            Let $\C$ be either $\C_{\Lambda, k}$ for some Noetherian local ring $\Lambda$ with residue field isomorphic to $k$, or $R\-\Comm\Alg$ for some arbitrary commutative ring $R$. Denote by:
+                $$\C^{\nilp}$$
+            the subcategory of $\C$ consisting of the same class of objects, but whose for morphisms we consider only thickenings.
+        \end{convention}
+        \begin{remark}
+            Any surjective homomorphism of Artinian rings is necessary a thickening: indeed, if $A, B$ are Artinian rings and:
+                $$\phi: A \to B$$
+            is a surjective ring homomorphism, then $I := \ker \phi$, by only be able to contain finitely many proper $A$-submodules (per Artinian-ity), must be nilpotent, as we have the canonical decreasing filtration:
+                $$I \supset I^2 \supset ...$$
+            As such, $\C_{\Lambda, k}^{\nilp}$ is equivalent to the subcategory of $\C_{\Lambda, k}$ with the same objects, but for the morphisms, we consider only the surjective ones.
+
+            In particular, this means that:
+                $$\Pro(\C_{\Lambda, k}^{\nilp}) \cong \Pro_{>}(\C_{\Lambda, k})$$
+        \end{remark}
+        \begin{definition}[Formally smooth, unramified, and \'etale prestacks] \label{def: formally_smooth_unramified_and_etale_prestacks}
+            Let $\C$ be either $\C_{\Lambda, k}$ for some Noetherian local ring $\Lambda$ with residue field isomorphic to $k$, or $R\-\Comm\Alg$ for some arbitrary commutative ring $R$.
+            
+            A prestack:
+                $$p: \scrF \to (\C^{\nilp})^{\op}$$
+            is then said to be \textbf{formally smooth/unramified/\'etale} if respectively, the canonical functor between fibres:
+                $$\scrF_B \to \scrF_A$$
+            is essentially surjective/fully faithful/quasi-invertible for every thickening $A \to B$.
+        \end{definition}
+        \begin{lemma}[Local characterisations of formal smoothness]
+            
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
+        The following lemma is the key link between the conceptual formulation of deformation theory (at least of schemes) and how said theory is controlled by cotangent complexes.
+        \begin{lemma}[Characteristing formally smooth, unramified, and \'etale morphisms in terms of cotangent complexes] \label{lemma: formally_smooth_unramified_and_etale_morphisms_via_cotangent_complexes}
+            Suppose that $R \to S$ is a homomorphism of commutative rings and denote the associated cotangent complex by $\L_{S/R} \in \Ob( D^{\leq 0}(S\mod) )$. 
+            \begin{enumerate}
+                \item $R \to S$ is then formally smooth if and only if $\L_{S/R}$ is quasi-isomorphic to a projective $S$-module in homological degree $0$. Equivalently, it is formally smooth if and only if $\Omega^1_{S/R}$ is a projective $S$-module.
+                \item $R \to S$ is then formally unramified if and only if:
+                    $$\Omega^1_{S/R} \cong 0$$
+                \item By definition, $R \to S$ is formally \'etale if and only if it is simultaneously formally smooth and formally unramified. 
+            \end{enumerate}
+        \end{lemma}
+            \begin{proof}
+                \begin{enumerate}
+                    \item 
+                    \item 
+                    \item 
+                \end{enumerate}
+            \end{proof}
+        \begin{example}[Formally unramified but not flat]
+            
+        \end{example}
+        \begin{example}[Formally \'etale with non-zero cotangent complex]
+            This example captures a peculiar non-Noetherian phenomenon.
+
+            Suppose that $k$ is a field and $R := k[\{x_n\}_{n \geq 1}]$. Clearly, there is a surjective ring map:
+                $$\pi: R \to k$$
+            whose kernel $I := \ker \pi$ is such that:
+                $$I^2 = I$$
+            This implies that
+        \end{example}
+
+        \begin{definition}[Formal schemes] \label{def: formal_schemes}
+            The category of \textbf{formal schemes} $\Sch_{/S}^{\wedge}$ over a fixed base scheme $S$ is the ind-completion of the category whose objects are $S$-schemes and whose morphisms are thickenings.
+        \end{definition}
+        \begin{definition}[Versal, miniversal, and universal deformations] \label{def: versal_miniversal_and_universal_deformations}
+            
+        \end{definition}
+
+    \subsection{Examples of deformation problems}
+        The first and arguably most natural example of a deformation problem has roots in the classical practice of finding integer solutions for a system of polynomial equations with coefficients in $\Z$ by first finding solutions modulo $p$ and then lifting said solutions to $\Z$. We examine what happens locally around a prime $p$.
+        \begin{example}
+            Fix a prime $p$.
+        
+            Let $X$ be a smooth projective variety over $\Spec \F_p$.  
+        \end{example}
+
+        Secondly, let us consider the problem of deforming vector bundles. Actually, it is helpful to consider the slightly more general problem of deforming finite projective modules, as over local rings, finite projective modules are the same as (locally) free modules (i.e. vector bundles) anyway.
+        \begin{example}
+            
+        \end{example}
+
+        Third is the famous construction of Galois deformations, i.e. deformations of Galois $\bar{\F}_p$-linear representations to $\bar{\Z}_p$-linear ones (and hence also $\bar{\Q}_p$-linear ones). As a precursor, let us consider the problem of deforming discrete representations of groups.
+        \begin{example}[Defomrations of discrete representations of groups]
+            
+        \end{example}
+        \begin{example}[Deformations of continuous representations of groups]
+            
+        \end{example}
+
+        Now, let us consider how the techniques of deformation theory can be used to aid in the study of singularities. 
+        \begin{example}
+            
+        \end{example}
+
+        Finally, let us consider the outline of a deformation problem (this one is complicated!) over a deformation context that is not of the form $\C_{\Lambda, k}$.
+        \begin{example}[Moduli spaces of $p$-divisible groups]
+            
+        \end{example}

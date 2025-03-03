@@ -1,5 +1,5 @@
-\section{The cotangent complexe formalism}
-    \subsection{Cotangent complexes in classical algebraic geometry}
+\section{The cotangent complex formalism}
+    \subsection{Construction and basic properties}
         \subsubsection{K\"ahler differentials} \label{subsubsection: kahler_differentials}
             \begin{definition}[K\"ahler differentials] \label{def: kahler_differentials}
                 Let $R$ be a commutative ring and let $\varphi: R \to S$ be a commutative $R$-algebra. An \textbf{$R$-derivation} (or simply \textbf{derivation} when the base ring $R$ is understood from context) from $S$ into an $S$-module $N$ is an $R$-linear map:
@@ -22,13 +22,13 @@
                 This could be viewed as a corollary to theorem \ref{theorem: kahler_differentials_universal_property}. 
                 
                 Let $R$ be a base commutative ring and let $\{S_i\}_{i \in I}$ be a diagram of $R$-algebras $S_i$. Then, due to $\Omega^1_{-/R}$ being a left-adjoint (which means, in particular, that it would preserve colimits \textit{a priori}), one has the following identity:
-                    $$\Omega^1_{\underset{i \in I}{\colim} S_i/R} \cong \underset{i \in I}{\colim} \Omega^1_{S_i/R}$$
+                    $$\Omega^1_{\underset{i \in I}{\indlim} S_i/R} \cong \underset{i \in I}{\indlim} \Omega^1_{S_i/R}$$
             \end{remark}
             \begin{example}[K\"ahler differentials and localisations] \label{example: differentials_and_localisations}
                 An example of a colimit of an infinite diagram of modules of K\"ahler differentials is how these modules interact with localisations of commutative rings. Let $S$ be a (possibly infinite) commutative ring let $\q \in |\Spec S|$ be a prime ideal thereof, and let $R \to S$ be a ring map. Then:
                     $$\Omega^1_{S_{\q}/R} \cong (\Omega^1_{S/R})_{\q}$$
                 Note that this exhibits the commutativity of $\Omega^1_{-/R}$ with an \textit{infinite} colimit because:
-                    $$S_{\q} \cong \underset{y \in S \setminus \q}{\colim} S[1/y]$$
+                    $$S_{\q} \cong \underset{y \in S \setminus \q}{\indlim} S[1/y]$$
             \end{example}
             Let us examine how K\"ahler differentials interact with colimits a bit closer through the following proposition, wherein we rely on the fact that finite colimits can be constructed out of finite coproducts and epimorphisms.
             \begin{proposition}[K\"ahler differentials and finite colimits] \label{prop: differentials_and_finite_colimits}
@@ -148,6 +148,6 @@
                     (note that the identity morphism $\id_C: C \to C$ is trivially surjective) then helps us show the surjectivity of the map $\Omega^1_{C/A} \to \Omega^1_{C/B}$. This concludes the proof.
                 \end{proof}
                 
-        \subsubsection{Cotangent complexes}
+        \subsubsection{Cotangent complexes of ring maps}
 
-    \subsection{Cotangent complexes in derived algebraic geometry}
+    \subsection{Obstruction theory via homology of cotangent complexes}

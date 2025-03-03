@@ -1,0 +1,46 @@
+\section{Good moduli spaces}
+    \subsection{Cohomologically affine morphisms}
+        \begin{definition}[Cohomologically affine morphisms] \label{def: cohomologically_affine_morphisms}
+            We say that a qcqs\footnote{We need this assumption so that $f_*: \scrO_{\scrX}\mod \to \scrO_{\scrY}\mod$ would preserve quasi-coherence.} morphism of algebraic stacks:
+                $$f: \scrX \to \scrY$$
+            is \textbf{cohomologically affine} if and only if the corresponding $\QCoh$-$*$-pushforward functor:
+                $$f_*: \QCoh(\scrX) \to \QCoh(\scrY)$$
+            is exact. 
+
+            An algebraic stack over a scheme is cohomologically affine if and only if its structural morphism is cohomologically affine.
+        \end{definition}
+        If $\calX, \calY$ are algebraic spaces, then a morphism $f: \calX \to \calY$ is cohomologically affine if and only if it is affine; this is Serre's Criterion for Affineness. However, for algebraic stacks $\scrX, \scrY$, the same equivalence might fail. Namely, one can have a cohomologically affine morphism:
+            $$f: \scrX \to \scrY$$
+        \textit{without} having that:
+            $$R^if_*\scrF \cong 0$$
+        for all quasi-coherent $\scrO_{\scrX}$-modules $\scrF$ and all $i > 0$, as the following example illustrates.
+        \begin{example}[Cohomologically affine but not affine] \label{example: cohomologically_affine_but_not_affine}
+            Suppose that $G \to \Spec k$ is a group scheme over some field $k$, and consider its classifying stack $[\Spec k/G]$, which is \textit{a priori} algebraic. Using the fact that there is an equivalence:
+                $$\Gamma: \QCoh([\Spec k/G]) \xrightarrow[]{\cong} kG\mod$$
+            given by taking global sections, one sees thus that:
+                $$H^i([\Spec k/G], \scrF) \cong \Ext^i_{kG}(k, \Gamma(\scrF))$$
+            where on the RHS, $k$ is regarded as a trivial $kG$-module. Next, let:
+                $$\scrF := \gamma_*\scrO_{\Spec k}$$
+            for some choice of a point $\gamma: \Spec k \to [\Spec k/G]$. The global section of this sheaf of $\scrO_{[\Spec k/G]}$-modules is nothing but $k$ but with some non-trivial $G$-action, depending on the choice of $\gamma$. From this, one infers that:
+                $$\Ext^i_{kG}(k, \Gamma(\gamma_*\scrO_{\Spec k}))$$
+            is generally non-zero when $i > 0$ (in particular, when $i = 1$). At the same time, the canonical functor:
+                $$\QCoh(\Spec k) \to kG\mod$$
+            realising $k$-vector spaces as trivial $kG$-modules is trivially exact, and hence so is the $\QCoh$-$*$-pushforward functor:
+                $$\gamma_*: \QCoh(\Spec k) \to \QCoh([\Spec k/G])$$
+            Thus, we have found morphisms:
+                $$\gamma: \Spec k \to [\Spec k/G]$$
+            that are cohomologically affine but not affine.
+        \end{example}
+        That said, a fairly large class of algebraic stacks do admit morphisms between them that are cohomologically affine if and only if they are affine.
+        \begin{proposition}[Affine when cohomologically affine ?]
+            Let $f: \scrX \to \scrY$ be a morphism of algebraic stacks. The condition that $f$ is cohomologically affine is equivalent to $f$ being affine if and only if $\scrX$ and $\scrY$ both have affine diagonals.
+        \end{proposition}
+        \begin{example}
+            If $G$ is an affine algebraic group over a field $k$, then $[\Spec k/G]$ will have affine diagonal, and hence any $k$-point $\Spec k \to [\Spec k/G]$ will be affine on top of being cohomologically affine.
+        \end{example}
+
+    \subsection{Cohomological ampleness and projectivity}
+
+    \subsection{Good moduli spaces}
+
+    \subsection{Tame stacks and tame moduli spaces}

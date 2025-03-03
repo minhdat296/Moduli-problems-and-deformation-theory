@@ -1,0 +1,88 @@
+\section{Equivariance via stacks}
+    Throughout, let $S$ be a base scheme.
+
+    The main theorem of this section is as follows:
+    \begin{theorem}
+        Let $G$ be an affine and (cohomologically) reductive group $S$-scheme acting on an algebraic space $\calX$ over $S$. Suppose also that there is a $G$-\textit{invariant} morphism:
+            $$f: \calX \to Z$$
+        of algebraic spaces over $S$. Then, there will exist a good quotient:
+            $$\pi: \calX \to Y$$
+        of algebraic spaces over $S$.
+    \end{theorem}
+
+    \subsection{Equivariant geometry vs. geometry of quotient stacks}
+        The equivariant-stack dictionary is as follows, at least when $S := \Spec k$ is the spectrum of an algebraically closed field $k$ (so that $k$-points and closed points will be the same) and when $G$ is an affine algebraic group $k$-scheme acting on a \textit{finite-type} $k$-scheme $X$. Note that in this case, we have that $[X/G]$ is an algebraic stack over $S$ (and in particular, the classifying $S$-stack $[\Spec k/G]$ is algebraic), so it makes sense to speak of $\QCoh([X/G])$.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{@{}|l|l|lll@{}}
+                \text{$G$-orbit of $x \in X(\Spec k)$} & \text{points $[x] \in [X/G](\Spec k)$} \\
+                \text{$G$-invariant morphisms $X \to Z$} & \text{morphisms to schemes $[X/G] \to Z$} \\
+                \text{invariant submodules $H^i(X, -)^G$} & \text{sheaf cohomologies $H^i([X/G], -)$} \\
+                \text{geometric/good quotients $X \to Y$} & \text{coarse/good moduli space $[X/G] \to Y$}
+            \end{tabular}
+            \caption{$G$-equivariant geometry vs. geometry of $[X/G]$. Note: the last comparison is only apt when the $G$-action on $X$ is proper.}
+            \label{table: equivariant_geometry_vs_stack_geometry}
+        \end{table}
+
+        \begin{example}[Representations as sheaves on classifying stacks] \label{example: representations_as_sheaves_on_classifying_stacks}
+            The category of $k$-linear $G$-representations, i.e. $G$-equivariant $k$-vector spaces, is equivalent to $\QCoh(\Spec k)^G$, which in turn is the same as $\QCoh([\Spec k/G])$. It can also be shown that $\QCoh([\Spec k/G])$ is equivalent to finite-dimensional $k$-linear representations of $G$.
+        \end{example}
+
+        Now, recall from example \ref{example: classifying_stacks} that if $H$ is any group $S$-scheme then $[S/H]$ will classify principal $H$-bundles, in the sense that if $T$ is any $S$-scheme, then:
+            $$[S/H](T)$$
+        will be the groupoid of principal $H$-bundles on $T$. Next, recall also that open subgroup schemes are closed, so when discussing subgroups of $G$, we can assume without loss of generality that they are closed. If $H \leq G$ is a closed subgroup of $G$,   
+
+        \begin{example}[Borel-Weil-Bott Theorem]
+            Let $k$ be an algebraically closed field of characteristic $0$ and let $G$ be a connected reductive group; for convenience, let us write:
+                $$\pt := \Spec k$$
+            
+            Choose a (positive) Borel subgroup $B^+ \leq G$ and denote the corresponding maximal torus of $G$ by $H$. We now know that the sheaf quotient $G/B^+$ arises from the $(2, 1)$-pullback:
+                $$
+                    \begin{tikzcd}
+                    	{G/B^+} & {[\pt/B^+]} \\
+                    	\pt & {[\pt/G]}
+                    	\arrow[from=1-1, to=1-2]
+                    	\arrow[from=1-1, to=2-1]
+                    	\arrow["{(2, 1)}"{description}, "\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                    	\arrow[from=1-2, to=2-2]
+                    	\arrow[from=2-1, to=2-2]
+                    \end{tikzcd}
+                $$
+            and that because the morphism of algebraic stacks $[\pt/B^+] \to [\pt/G]$ is representable by schemes, finitely presented, and quasi-projective, $G/B^+$ as a $k$-scheme is also finitely presented and quasi-projective. 
+        \end{example}
+
+        \begin{example}[Beilinson-Bernstein Localisation]
+            
+        \end{example}
+
+    \subsection{Recovering Matsushima's Theorem}
+        \begin{proposition}[Matsushima's Theorem via stacks]
+            Let $G$ be an affine and (cohomologically) reductive group $S$-scheme and let $H \leq G$ be a flat, finitely presented, and separated $S$-subgroup. In that case, the following statements are equivalent:
+            \begin{enumerate}
+                \item $H$ is cohomologically reductive.
+                \item $G/H$ is affine over $S$.
+                \item The induction functor $\Ind_H^G: \QCoh(S)^H \to \QCoh(S)^G$ is exact. 
+            \end{enumerate}
+        \end{proposition}
+
+    \subsection{Observable subgroups}
+        Recall that if $f: \calX \to \calY$ is a morphism of algebraic stacks representable by (affine) schemes, then it is \textbf{quasi-affine} if and only if the adjunction counit $f^* \circ f_* \Rightarrow \id_{\QCoh(\calX)}$ is a natural isomorphism.
+    
+        \begin{proposition}
+            Let $G$ be a flat, finitely presented, and quasi-affine group scheme and let $H \leq G$ be a flat, finitely presented, and quasi-affine $S$-subgroup. In that situation, the following are equivalent:
+            \begin{enumerate}
+                \item $H$ is observable.
+                \item The adjunction counit $\Ind_H^G \circ \Res_H^G \Rightarrow \id_{\QCoh(S)^G}$ is a surjective natural transformation.
+                \item The morphism of algebraic stacks $[S/H] \to [S/G]$ is quasi-affine. 
+                \item $G/H$ is quasi-affine over $S$.
+            \end{enumerate}
+            If, furthermore, the base scheme $S$ is Noetherian (in which case, the adjunction $\Ind_H^G \ladjoint \Res_H^G$ restricts down to between $\QCoh(S)^G$ and $\QCoh(S)^H$), then the statements above will also be equivalent to the following:
+            \begin{itemize}
+                \item The adjunction counit $\Ind_H^G \circ \Res_H^G \Rightarrow \id_{\Coh(S)^G}$ is a surjective natural transformation.
+            \end{itemize}
+        \end{proposition}
+
+    \subsection{Existence of good quotients}
+        \begin{proposition}
+            Let $G$ be a connected algebraic group over $S$ acting on an $S$-scheme $X$, and suppose that, for every pair of points $x, y \in |X|$, there exists a $G$-invariant open neighbourhood $U_{x, y} \subseteq X$ containing said points. Suppose furthermore that $U_{x, y}$ admits a good quotient. Then, $X$ itself will also admit a good quotient.
+        \end{proposition}
