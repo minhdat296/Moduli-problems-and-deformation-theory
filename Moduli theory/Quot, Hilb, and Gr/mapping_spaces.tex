@@ -12,7 +12,7 @@
         
         Grothendieck, for instance, was interested in maps between projective schemes, and made use of his Existence Theorem that was developed during his work on the Hilbert and Quot schemes in order to prove representability of mapping spaces. An easy but nevertheless important notion in this proof is that of the graph of a morphism in an arbitrary category. It is a natural generalisation of the definition of functions as certain ordered pairs as in material set theory. 
         \begin{definition}[Graph of morphisms] \label{def: graphs_of_morphisms}
-            (Cf. \cite[\href{https://stacks.math.columbia.edu/tag/024T}{Tag 024T}]{stacks}) Let $\C$ be a category and $f: X \to Y$ be a morphism therein. Its \textbf{graph}, commonly denoted by $\Gamma(f)$ is then obtained via:
+            (Cf. \cite[\href{https://stacks.math.columbia.edu/tag/024T}{Tag 024T}]{stacks-project}) Let $\C$ be a category and $f: X \to Y$ be a morphism therein. Its \textbf{graph}, commonly denoted by $\Gamma(f)$ is then obtained via:
                 $$
                     \begin{tikzcd}
                     {\Gamma(f)} & Y \\
@@ -55,7 +55,7 @@
 
                 For any $T \in \Ob(S_{\fpqc})$, we claim that the corresponding component:
                     $$\Gamma_T: \Maps_{\Sch_{/S}}(X, Y)(T) \hookrightarrow \Hilb_{X \x_S Y/S}(T)$$
-                of the natural transformation $\Gamma$ mentioned above maps morphisms of $T$-schemes $f \in \Maps_{\Sch_{/T}}(X \x_S T, Y \x_S T) =: \Maps_{\Sch_{/S}}(X, Y)(T)$ to their graphs $\Gamma_T(f)$ (in the sense of definition \ref{def: graphs_of_morphisms}); see \cite[\href{https://stacks.math.columbia.edu/tag/0D1A}{Tag 0D1A}]{stacks}. To see that this is well-defined, simply note that because $Y$ is projective and hence separated, of finite presentation, flat, and proper by definition, $\Gamma_T(f)$ will always be a closed subscheme of $(X \x_S T) \x_T (Y \x_S T) \cong (X \x_S Y) \x_S T$ that is of finite presentation, flat, and proper over $T$, i.e. $\Gamma_T(f)$ is indeed nothing but an element of $\Hilb_{X \x_S Y/S}(T)$.
+                of the natural transformation $\Gamma$ mentioned above maps morphisms of $T$-schemes $f \in \Maps_{\Sch_{/T}}(X \x_S T, Y \x_S T) =: \Maps_{\Sch_{/S}}(X, Y)(T)$ to their graphs $\Gamma_T(f)$ (in the sense of definition \ref{def: graphs_of_morphisms}); see \cite[\href{https://stacks.math.columbia.edu/tag/0D1A}{Tag 0D1A}]{stacks-project}. To see that this is well-defined, simply note that because $Y$ is projective and hence separated, of finite presentation, flat, and proper by definition, $\Gamma_T(f)$ will always be a closed subscheme of $(X \x_S T) \x_T (Y \x_S T) \cong (X \x_S Y) \x_S T$ that is of finite presentation, flat, and proper over $T$, i.e. $\Gamma_T(f)$ is indeed nothing but an element of $\Hilb_{X \x_S Y/S}(T)$.
 
                 Now, to see that $\Gamma$ is representable by open immersions, we will need to show that given any morphism of schemes $t: T \to \Hilb_{X \x_S Y/S}$, the canonical projection:
                     $$\Maps_{\Sch_{/S}}(X, Y) \x_{ \Gamma, \Hilb_{X \x_S Y/S}, t } T \to T$$
@@ -63,7 +63,7 @@
                     $$(i: Z \hookrightarrow (X \x_S Y) \x_S T) \in \Hilb_{X \x_S Y/S}(T)$$
                 We now know that the closed immersion $i: Z \hookrightarrow (X \x_S Y) \x_S T$ is the graph of a morphism of $T$-schemes $f: X \x_S T \to Y \x_S T$, i.e. of an element $f \in \Maps_{\Sch_{/S}}(X, Y)(T)$, if and only if the canonical projection:
                     $$\pr_{X \x_S T}: Z \to X \x_S T$$
-                is an isomorphism of $T$-schemes. Then, using the Factorisation Criterion for Isomorphisms \cite[\href{https://stacks.math.columbia.edu/tag/05XD}{Tag 05XD}]{stacks}, we will be able to conclude the argument.  
+                is an isomorphism of $T$-schemes. Then, using the Factorisation Criterion for Isomorphisms \cite[\href{https://stacks.math.columbia.edu/tag/05XD}{Tag 05XD}]{stacks-project}, we will be able to conclude the argument.  
 
                 Lastly, note that because an open subsheaf of a scheme is itself a scheme, $\Maps_{\Sch_{/S}}(X, Y)$ is now necessarily representable by a scheme. \textit{A priori}, $\Hilb_{X \x_S Y/S}$ is a projective $S$-scheme, so $\Maps_{\Sch_{/S}}(X, Y)$ is quasi-projective over $S$ by definition.
             \end{proof}

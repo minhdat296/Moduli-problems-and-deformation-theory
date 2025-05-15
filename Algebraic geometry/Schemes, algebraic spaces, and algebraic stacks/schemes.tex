@@ -219,9 +219,16 @@
                         \end{enumerate}
                     Thus, with open sets as in definition \ref{def: zariski_open}, the Zariski topology on prime spectra of commutative rings is well-defined.
                 \end{proof}
+
+            \begin{proposition}[Zariski-open subsets are large] \label{prop: zariski_open_subsets_are_large}
+                Let $R$ be a commutative ring and let $U, V$ be two Zariski-open subsets of $\Spec R$. Then, $U \cap V \not = \varnothing$ if and only if both $U$ and $V$ are non-empty.
+            \end{proposition}
+                \begin{proof}
+                    This is a consequence of the fact that the localisation of $R$ at a multiplicative subset containing zero-divisors is $0$.
+                \end{proof}
             
             \begin{proposition}[Unifying the two definitions] \label{prop: zariski_topology_equivalence}
-                By asuming the Law of Excluded Middle, one gets the same topology on spectra of commutative rings via the approaches presented in definitions \ref{def: zariski_closed} and \ref{def: zariski_open}.
+                By assuming the Law of Excluded Middle, one gets the same topology on spectra of commutative rings via the approaches presented in definitions \ref{def: zariski_closed} and \ref{def: zariski_open}.
             \end{proposition}
                 \begin{proof}
                     Let $R$ be a commutative ring. It is sufficient to show that for each element $f \in R$, the complement $\Spec R \setminus D(f)$ is closed in the sense of definition \ref{def: zariski_closed}, or equivalently, for each subset $\scrF \subset R$, the complement $\Spec R \setminus V(\scrF)$ is open in the sense of definition \ref{def: zariski_open}. We will be attempting the second approach. To that end, let us directly the following chain of logical equivalences:
@@ -298,28 +305,28 @@
                         \begin{figure}[H]
                             \centering
                             \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{Figures/complex affine plane.png}
-                            \caption{The complex affine plane $\A^2_{\bbC}$ (\cite{risingsea}, figure 3.3)}
+                            \caption{The complex affine plane $\A^2_{\bbC}$ (\cite[Figure 3.3]{risingsea})}
                             \label{fig: complex_affine_plane}
                         \end{figure}
                     \item \textbf{(Revisiting $\Spec \Z$):}
                         \begin{figure}[H]
                             \centering
                             \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{Figures/Spec Z.png}
-                            \caption{$\Spec \Z$ (\cite{risingsea}, figure 3.2)}
+                            \caption{$\Spec \Z$ (\cite[Figure 3.2]{risingsea})}
                             \label{fig: Spec_Z}
                         \end{figure}
                     \item \textbf{(A conic):}
                         \begin{figure}[H]
                             \centering
                             \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{Figures/conic.png}
-                            \caption{A conic which is Zariski-closed inside $\A^3_{\bbC}$ (\cite{risingsea}, figure 3.4)}
+                            \caption{A conic which is Zariski-closed inside $\A^3_{\bbC}$ (\cite[Figure 3.4]{risingsea})}
                             \label{fig: conic}
                         \end{figure}
                 \end{enumerate}
             \end{example}
             
             \begin{remark}[Comparing $\Spec$ and $\Spm$]
-                Historically (and only because mathematicians were more interested in complex algebraic geometry back in the days), it was not the set of prime ideals of a commutative ring that was considered, but rather, the set of \textit{maximal} ideals. This was not out of \textit{na\"ivet\'e}, though. Maximal ideals enjoy being closed points in prime spectra of commutative rings (one can prove this by first looking at varieties $V(\m)$ associated to maximal ideals $\m$ of some commutative ring $R$, and then applying the definition of the (underlying set of) these varieties as spaces whose points are prime ideals containing $\m$, and then lastly, applying the usual definition of topological closures; as a corollary, one gets that prime ideals that are not maximal get sent by $\Spec$ to non-closed points in $\Spec R$), and so doing geometry with them is a lot more intuitive (albeit more restrictive as well) then doing so with all prime ideals. For instance, the underlying set of $\Spm \bbC[x]$ is precisely $\bbC$, whereas that of $\Spec \bbC[x]$ can be thought of as $\bbC \cup \{\infty\}$, i.e. as the Riemann sphere; in particular, the zero ideal $(0)$ corresponds to the point \say{at infinity}, which we denote by $\infty$. 
+                Historically, because mathematicians were more interested in complex algebraic geometry back in the days, it was not the set of prime ideals of a commutative ring that was considered, but rather, the set of \textit{maximal} ideals. This was not out of \textit{na\"ivet\'e}, though. Maximal ideals enjoy being closed points in prime spectra of commutative rings (one can prove this by first looking at varieties $V(\m)$ associated to maximal ideals $\m$ of some commutative ring $R$, and then applying the definition of the (underlying set of) these varieties as spaces whose points are prime ideals containing $\m$, and then lastly, applying the usual definition of topological closures; as a corollary, one gets that prime ideals that are not maximal get sent by $\Spec$ to non-closed points in $\Spec R$), and so doing geometry with them is a lot more intuitive (albeit more restrictive as well) then doing so with all prime ideals. For instance, the underlying set of $\Spm \bbC[x]$ is precisely $\bbC$, whereas that of $\Spec \bbC[x]$ can be thought of as $\bbC \cup \{\infty\}$, i.e. as the Riemann sphere; in particular, the zero ideal $(0)$ corresponds to the point \say{at infinity}, which we denote by $\infty$. 
             \end{remark}
             
             \begin{example}[Non-isomorphic rings with homeomorphic spectra] \label{example: nonisomorphic_rings_with_the_same_spectra}
@@ -345,8 +352,8 @@
             
             Having defined sheaves that might take values categories other than $\Sets$, let us now try to define affine schemes as locally ringed spaces whose underlying topological spaces are spectra of commutative rings, and whose structure presheaves have a certain condition imposed upon them, which happens to guarantee that:
                 \begin{enumerate}
-                    \item these structure presheaves are indeed sheaves (proposition \ref{prop: structure_sheaf}) with local stalks (corollary \ref{coro: structure_sheaf_properties}), and
-                    \item they are unique (proposition \ref{prop: structure_sheaf_uniqueness}), which is an important feature, because ringed spaces are uniquely defined by their structure sheaves; this fact will also be used to establish the fully faithfulness of $\Spec$ as a functor from $\Cring^{\op}$ to the category $\Loc\Ringed\Spc$ of locally ringed spaces. 
+                    \item these structure presheaves are indeed sheaves (proposition \ref{prop: structure_sheaf}) with local stalks (corollary \ref{coro: locality_of_stalks_of_structure_sheaves}), and
+                    \item they are unique (proposition \ref{prop: structure_sheaf_uniqueness}), which is an important feature, because ringed spaces are uniquely defined by their structure sheaves; this fact will also be used to establish the fully faithfulness of $\Spec$ as a functor from $\Cring^{\op}$ to the category $\LRS$ of locally ringed spaces. 
                 \end{enumerate}
             Our efforts will culminate in definition \ref{def: affine_schemes}.
                 
@@ -355,7 +362,7 @@
                     $$\scrO_{\Spec R}(D_R(f)) \cong R_f$$
                 for all element $f \in R$. Any presheaf on $\Ouv(\Spec R)$ that are defined this way is a Zariski sheaf (i.e. a sheaf on the site $\Ouv(\Spec R)$ of Zariski-open subsets of $\Spec R$), and is called \textit{a} \textbf{structure sheaf} on $\Spec R$.
             \end{proposition}
-            \begin{corollary}[On the locality of stalks] \label{coro: structure_sheaf_properties}
+            \begin{corollary}[Locality of stalks] \label{coro: locality_of_stalks_of_structure_sheaves}
                 Let $R$ be a commutative ring and let $\p$ be an arbitrary prime ideal of $R$. Then one has the following characterisation of the stalk $\scrO_{\Spec R, \p}$ at $\p$ of the structure sheaf $\scrO_{\Spec R}$:
                     $$\scrO_{\Spec R, \p} \cong R_{\p}$$
                 This shows that affine schemes are, in fact, \textit{locally} ringed spaces and not just ringed spaces. 
@@ -407,7 +414,7 @@
 				        \label{fig: complex_affine_line_stalks}
 				    \end{figure}
 			    \noindent
-			    Now, as an affine scheme, $\A^1_{\bbC}$ comes equipped with a structure sheaf $\scrO_{\A^1_{\bbC}}$, whose stalks, as shown in corollary \ref{coro: structure_sheaf_properties}, are precisely the localisations of $\bbC[t]$ at its prime ideals. There are thus two cases:
+			    Now, as an affine scheme, $\A^1_{\bbC}$ comes equipped with a structure sheaf $\scrO_{\A^1_{\bbC}}$, whose stalks, as shown in corollary \ref{coro: locality_of_stalks_of_structure_sheaves}, are precisely the localisations of $\bbC[t]$ at its prime ideals. There are thus two cases:
 			        \begin{enumerate}
 			            \item The stalk at $(0)$ is given by:
 			                $$\scrO_{\A^1_{\bbC}, (0)} \cong \bbC[t]_{(0)} \cong \bbC(t)$$
@@ -421,28 +428,33 @@
             \end{example}
         
             \begin{definition}[Affine schemes] \label{def: affine_schemes}
-                An \textbf{affine scheme} is a locally ringed space that is isomorphic to one of the form $(|\Spec R|, \scrO_{\Spec R})$ for some commutative ring $R$. Morphisms of affine schemes are morphisms of locally ringed spaces, and as such, one has a full subcategory $\Sch^{\aff}$ of affine schemes within the category of locally ringed spaces. 
+                An \textbf{affine scheme} is a locally ringed space that is isomorphic to one of the form:
+                    $$(|\Spec R|, \scrO_{\Spec R})$$
+                for some commutative ring $R$. Morphisms of affine schemes are morphisms of locally ringed spaces, and as such, one has a full subcategory $\Sch^{\aff}$ of affine schemes within the category of locally ringed spaces. 
             \end{definition}
             
-            \begin{theorem}[Isbell Duality for locally ringed spaces] \label{theorem: isbell_duality_for_locally_ringed_spaces}
+            \begin{theorem}[Duality between spaces and algebras] \label{theorem: duality_between_spaces_and_algebras}
                 There is an adjunction as follows:
-                    $$
-                        \begin{tikzcd}
-                        	{\Cring^{\op}} & \Loc\Ringed\Spc
-                        	\arrow[""{name=0, anchor=center, inner sep=0}, "\Spec"', bend right, from=1-1, to=1-2]
-                        	\arrow[""{name=1, anchor=center, inner sep=0}, "\Gamma"', bend right, from=1-2, to=1-1]
-                        	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-                        \end{tikzcd}
-                    $$
+                    $$\Spec: \Cring^{\op} \leftrightarrows \LRS: \Gamma$$
             \end{theorem}
-            \begin{corollary}
-                The adjunction from theorem \ref{theorem: isbell_duality_for_locally_ringed_spaces} restricts down to an adjoint equivalence $\Sch^{\aff} \cong \Cring^{\op}$.
+                \begin{proof}
+                    \todo[inline]{Space-algebra duality}
+                \end{proof}
+            \begin{corollary}[Duality between affine schemes and commutative rings] \label{coro: duality_between_affine_schemes_and_commutative_rings}
+                The adjunction from theorem \ref{theorem: duality_between_spaces_and_algebras} restricts down to an adjoint equivalence:
+                    $$\Spec: \Cring^{\op} \leftrightarrows \Sch^{\aff}: \Gamma$$
+                between the category of commutative rings and that of affine schemes.
             \end{corollary}
+                \begin{proof}
+                    The essential image of the functor $\Spec: \Cring^{\op} \to \LRS$, per the very construction of this functor, is equivalent to $\Sch^{\aff}$. 
+                \end{proof}
 
     \subsection{The category of schemes}
         \subsubsection{Schemes}
             \begin{definition}[Schemes] \label{def: schemes}
-                A \textbf{scheme} is a locally ringed space $(|X|, \scrO_X)$ such that every point $x \in |X|$ as a Zariski-open neighbourhood $U_x \ni x$ that is isomorphic to an affine scheme. Morphisms of schemes are nothing but morphisms of locally ringed spaces, meaning that schemes form a category $\Sch$ which embeds fully faithfully into the category of locally ringed spaces.
+                A \textbf{scheme} is a locally ringed space:
+                    $$(|X|, \scrO_X)$$
+                such that every point $x \in |X|$ as a Zariski-open neighbourhood $U_x \ni x$ that is isomorphic to an affine scheme. Morphisms of schemes are nothing but morphisms of locally ringed spaces, meaning that schemes form a category $\Sch$ which embeds fully faithfully into the category of locally ringed spaces.
             \end{definition}
             
             \begin{proposition}[Open subschemes are open locally ringed subspaces] \label{prop: open_subschemes_are_open_locally_ringed_subspaces}

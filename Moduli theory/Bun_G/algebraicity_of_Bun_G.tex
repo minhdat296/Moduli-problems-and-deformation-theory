@@ -83,7 +83,7 @@
             The same argument can be applied to say that extensions of group $S$-schemes $G$ give rise to principal $G$-bundles. One caveat is that affine group schemes might have non-affine extensions (e.g. \todo{What's an example ?}) and conversely, non-affine group schemes may have affine extensions (e.g. according to Chevalley's Theorem, given any algebraic group $G$ over a perfect field $k$, there shall exist a \textit{unique} normal affine algebraic closed subgroup $H < G$ along with an abelian variety $A$ such that $1 \to H \to G \to A \to 1$ is a group $k$-scheme extension, and recall that abelian varieties are projective by definition and hence not affine).
         \end{example}
         
-        One advantage of this definition over the usual one (cf. e.g. \cite[\href{https://stacks.math.columbia.edu/tag/044O}{Tag 044O}]{stacks}) is that it makes it clear that quotient stacks satisfy descent and that the existence of local trivialisations is hard-wired in the defining diagrams, which makes it easy to deal with such trivialisations using categorical procedures like taking pullbacks.
+        One advantage of this definition over the usual one (cf. e.g. \cite[\href{https://stacks.math.columbia.edu/tag/044O}{Tag 044O}]{stacks-project}) is that it makes it clear that quotient stacks satisfy descent and that the existence of local trivialisations is hard-wired in the defining diagrams, which makes it easy to deal with such trivialisations using categorical procedures like taking pullbacks.
         
         \begin{example}[Classifying stacks and universal principal bundles] \label{example: classifying_stacks}
             Since $S$ is terminal in $S_{\et}$, $G$ acts on it trivially. The \textbf{classifying stack} of $G$, often denoted by $BG$, is nothing but the quotient stacks $[S/G]$. For any $T \in \Ob(S_{\tau})$, its $T$-points (i.e. objects of $BG(T)$) are principal $G$-bundles $P \to T$ along with $G$-equivariant morphisms $P \to T$. If $T$ is furthermore acted on trivially by $G$ then we will have that:
@@ -152,7 +152,7 @@
                 $$\Vect_n(S) \to B\GL_n$$
             given for each $T \in \Ob(S_{\tau})$ (i.e. given as a natural transformation) by:
                 $$\scrE \mapsto \Isom_{\scrO_T}( \scrO_T^{\oplus n}, \scrE )$$
-            where $\Isom_{\scrO_T}(-, -)$ is as in \cite[\href{https://stacks.math.columbia.edu/tag/08K7}{Tag 08K7}]{stacks} (see \cite[\href{https://stacks.math.columbia.edu/tag/0D3T}{Tag 0D3T}]{stacks} in particular for a description of $\Isom_{\scrO_T}(\scrF, \scrF')$ as a geometric object for any $\scrF, \scrF' \in \Ob(\QCoh(T))$); this is well-defined because any $\Isom_{\scrO_T}( \scrO_T^{\oplus n}, \scrE )$ has a natural $\GL_n \x_S T$-action, as isomorphisms of finite-dimensional vector spaces are given by invertible matrices. From this, we get that:
+            where $\Isom_{\scrO_T}(-, -)$ is as in \cite[\href{https://stacks.math.columbia.edu/tag/08K7}{Tag 08K7}]{stacks-project} (see \cite[\href{https://stacks.math.columbia.edu/tag/0D3T}{Tag 0D3T}]{stacks-project} in particular for a description of $\Isom_{\scrO_T}(\scrF, \scrF')$ as a geometric object for any $\scrF, \scrF' \in \Ob(\QCoh(T))$); this is well-defined because any $\Isom_{\scrO_T}( \scrO_T^{\oplus n}, \scrE )$ has a natural $\GL_n \x_S T$-action, as isomorphisms of finite-dimensional vector spaces are given by invertible matrices. From this, we get that:
                 $$
                     \begin{aligned}
                         \Bun_{\GL_n}(X) & := \Maps_S(X, B\GL_n)
@@ -167,7 +167,7 @@
         
         Now, as a matter of fact, for any \textit{algebraic} $S$-stack $\scrY$, it makes sense to consider the moduli stack of rank-$n$ vector bundles on $\scrY$:
             $$\Vect_n(\scrY)(T) := \{ \text{locally free $\scrO_{\scrY}$-modules of rank $n$ and $\scrO_{\scrY}$-linear isomorphisms} \}$$
-        with quasi-coherent modules over the structure sheaf of an algebraic stack being understood in the sense of \cite[\href{https://stacks.math.columbia.edu/tag/06WU}{Tag 06WU}]{stacks}; in particular, this means that it makes sense to speak of:
+        with quasi-coherent modules over the structure sheaf of an algebraic stack being understood in the sense of \cite[\href{https://stacks.math.columbia.edu/tag/06WU}{Tag 06WU}]{stacks-project}; in particular, this means that it makes sense to speak of:
             $$\Bun_{\GL_n}(\scrY)$$
         as the moduli space of rank-$n$ vector bundles on $\scrY$. In light of example \ref{example: Bun_GL_n_classifies_rank_n_vector_bundles}, let us suppose that $\Bun_G(X)$ - and hence $\Bun_G(X) \x_S X$, since schemes are instances of algebraic stacks - is an algebraic stack (which can happen) and then consider the following:
             $$
@@ -200,7 +200,7 @@
             is an algebraic group over $\Spec k$, i.e. a finite-type group scheme over $\Spec k$. Also, when not specified, all geometric constructions such as schemes, stacks, etc. will be over $\Spec k$. Depending on the situation, we might also write:
                 $$\pt := \Spec k$$
             
-            Recall also that, over fields of characteristic $0$, algebraic groups are automatically smooth (cf. \cite[\href{https://stacks.math.columbia.edu/tag/047N}{Tag 047N}]{stacks}).
+            Recall also that, over fields of characteristic $0$, algebraic groups are automatically smooth (cf. \cite[\href{https://stacks.math.columbia.edu/tag/047N}{Tag 047N}]{stacks-project}).
         \end{convention}
 
         \begin{lemma}[Classifying stacks are algebraic] \label{lemma: classifying_stacks_are_algebraic}

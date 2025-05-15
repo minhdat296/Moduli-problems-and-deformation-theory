@@ -125,7 +125,7 @@
             will be a natural isomorphism of t-exact functors $D^+(\scrO_X\mod) \to D^+(\scrO_{Y^{\an}}\mod)$.
         \end{theorem}
             \begin{proof}
-                This is a result of proper base-change for general ringed spaces (see \cite[\href{https://stacks.math.columbia.edu/tag/09V4}{Tag 09V4}]{stacks} for now). 
+                This is a result of proper base-change for general ringed spaces (see \cite[\href{https://stacks.math.columbia.edu/tag/09V4}{Tag 09V4}]{stacks-project} for now). 
             \end{proof}
         \begin{corollary}[GAGA cohomological comparison] \label{coro: GAGA_cohomological_comparison}
             When $Y \cong \Spec \bbC$ (and hence $i_Y^*$ is just the identity functor), there are isomorphisms of $\bbC$-vector spaces:
@@ -137,13 +137,13 @@
 
         We shall now see that when we restrict our attention to coherent modules only, the module analytification functor $i_X^*$ (for any locally finite-type $\bbC$-scheme $X$) will furthermore be essentially surjective, thus giving rise to an adjoint equivalence:
             $$i_X^*: \Coh(X) \leftrightarrows \Coh(X^{\an}): i_{X *}$$
-        between the categories of coherent modules on $X$ and on $X^{\an}$, with the latter being given as the category of coherent modules on the ringed space $(X^{\an}, \scrO_{X^{\an}})$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01BU}{Tag 01BU}]{stacks}). The fact that:
+        between the categories of coherent modules on $X$ and on $X^{\an}$, with the latter being given as the category of coherent modules on the ringed space $(X^{\an}, \scrO_{X^{\an}})$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01BU}{Tag 01BU}]{stacks-project}). The fact that:
             $$i_X^*: \scrO_X\mod \to \scrO_{X^{\an}}\mod$$
         is fully faithful means that, should its restriction down to coherent modules:
            $$i_X^*: \Coh(X) \to \Coh(X^{\an})$$
        be well-defined (cf. lemma \ref{lemma: absolute_analytification_of_coherent_modules}) then we will be able to exploit the compact generation of $\Coh(X)$ to see that the set of (compact) generators via finite colimits of $\Coh(X^{\an})$ contains that of $\Coh(X)$ as a subset. The proof of essential surjectivity then reduces down to a proof of essential surjectivity on these generators. 
         \begin{remark}[A few reminders on coherent modules on ringed spaces]
-            Again, we refer the reader to \cite[\href{https://stacks.math.columbia.edu/tag/01BU}{Tag 01BU}]{stacks} for a more detailed discussion, but the following list of properties is important enough for our purposes to warrant at least a mention. Suppose for a moment that $(X, \scrO_X)$ is a general ringed space and write $\Coh(X)$ to denote the category of coherent $\scrO_X$-modules.
+            Again, we refer the reader to \cite[\href{https://stacks.math.columbia.edu/tag/01BU}{Tag 01BU}]{stacks-project} for a more detailed discussion, but the following list of properties is important enough for our purposes to warrant at least a mention. Suppose for a moment that $(X, \scrO_X)$ is a general ringed space and write $\Coh(X)$ to denote the category of coherent $\scrO_X$-modules.
             \begin{itemize}
                 \item $\Coh(X)$ is an abelian subcategory of $\scrO_X\mod$, and this is somewhat interesting, seeing how $\QCoh(X)$ is not generally even abelian for ringed spaces, unlike for schemes where quasi-coherent modules are extremely well-behaved (cf. theorem \ref{theorem: qcoh_homological_properties})
                 \item In fact, $\Coh(X)$ is closed under all extensions/short exacct sequences, and thus is a Serre subcategory of $\scrO_X\mod$ by definition.

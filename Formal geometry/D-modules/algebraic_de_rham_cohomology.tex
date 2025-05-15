@@ -21,23 +21,46 @@
                 \end{tikzcd}
             $$
 
-        For what follows, it is useful to recall the universal property of formal completions. 
-        \begin{lemma}[Universal property of formal completion] \label{lemma: universal_property_of_formal_completion}
-            
-        \end{lemma}
-            \begin{proof}
-                Exercise.
-            \end{proof}
+        Now, a relevant property of reduced subschemes is that their underlying topological spaces are homeomorphic to that of the larger ambient scheme, which is to say that the canonical embedding:
+            $$|S_{\red}| \hookrightarrow |S|$$
+        is in fact a homeomorphism. Thus, we have a bijection:
+            $$\Maps(|S|, |X|) \cong \Maps(|S_{\red}|, |X|)$$
+        and hence there is always a factorisation in $\Top$ as follows:
+            $$
+                \begin{tikzcd}
+                    {|S|} & {|\im \Delta_X|} \\
+                    & {|X|^2}
+                    \arrow["{\im(x \x y)}", dashed, from=1-1, to=1-2]
+                    \arrow["{x \x y}"', from=1-1, to=2-2]
+                    \arrow["{}", from=1-2, to=2-2]
+                \end{tikzcd}
+            $$
+        for any $x, y \in \Maps(|S|, |X|)$. If we assume furthermore that $X$ is separated, then by definition $|\im \Delta_X| \cong |X|$. This would then imply that:
+            $$x = \pr_1 \circ (x \x y) = \pr_2 \circ (x \x y) = y$$
+        wherein $\pr_1, \pr_2: |X|^2 \to |X|$ are the canonical projections, i.e. the $S$-points $x, y \in X(S)$ always agree at the level of the underlying topological spaces. It turns out that, at the level of schemes, \textit{two $S$-points $x, y \in X(S)$ are Zariski-infinitesimally close to one another if and only if they factor through the formal completion of $\im \Delta_X$} (proposition \ref{prop: infinitesimality_and_the_diagonal}). The idea is that, the scheme-valued points $x, y \in X(S)$ carry some \say{infinitesimality} encoded in nilpotent sections of the structure sheaf of the input scheme $S$, and to take these \say{infinitesimality} into account, we need to allow the image of $x \x y: S \to X^2$ to lie within the formal completion of $\im \Delta_X$, which is \say{infinitesimally larger} than $\im \Delta_X$ itself.
 
-        \begin{proposition}[Infinitesimality and the diagonal] \label{prop: infinitesimality_and_the_diagonal}
-            Let $X$ be a separated Noetherian scheme and let $S$ be a test scheme. Two $S$-points $x, y \in X(S)$ are Zariski-infinitesimally close to one another if and only if there is a factorisation in the category of formal schemes as follows:
+        For what follows, it is useful to recall the universal property of thickenings from lemma \ref{lemma: universal_property_of_thickenings}. We need only to concern ourselves with the affine case, and for clarity, let us state that version explicitly before proceeding.
+        \begin{lemma}[Universal property of thickenings (affine case)] \label{lemma: universal_property_of_thickenings_affine_case}
+            Suppose that $A$ is a Noetherian ring and $I \subset A$ is an ideal, and let $(A, I)^{\wedge} := \projlim_{n \geq 1} A/I^n$ be the formal completion of $A$ along $I$. The canonical ring map $(A, I)^{\wedge} \to (A/I)_{\red}$ - given by the canonical composition $(A, I)^{\wedge} \to A/I \to (A/I)_{\red}$ - is then initial amongst all ring maps $(A, I)^{\wedge} \to R$ to reduced rings $R$:
                 $$
                     \begin{tikzcd}
-                    S & {(X, \Delta_X)^{\wedge}} \\
-                    & {X^2}
-                    \arrow["(x \x y)^{\wedge}", dashed, from=1-1, to=1-2]
-                    \arrow["{x \x y}"', from=1-1, to=2-2]
-                    \arrow["{\Delta_X^{\wedge}}", from=1-2, to=2-2]
+                	{(A/I)_{\red}} & {(A, I)^{\wedge}} \\
+                	R
+                	\arrow["{\exists!}"', dashed, from=1-1, to=2-1]
+                	\arrow[two heads, from=1-2, to=1-1]
+                	\arrow["\forall", from=1-2, to=2-1]
+                    \end{tikzcd}
+                $$
+        \end{lemma}
+        \begin{proposition}[Infinitesimality and the diagonal] \label{prop: infinitesimality_and_the_diagonal}
+            Let $X$ be a separated Noetherian scheme and let $S$ be a test scheme. Two $S$-points $x, y \in X(S)$ are Zariski-infinitesimally close to one another if and only if there is a \underline{unique} factorisation in the category of formal schemes as follows:
+                $$
+                    \begin{tikzcd}
+                        S & {(X^2, \Delta_X)^{\wedge}} \\
+                        & {X^2}
+                        \arrow["(x \x y)^{\wedge}", dashed, from=1-1, to=1-2]
+                        \arrow["{x \x y}"', from=1-1, to=2-2]
+                        \arrow["{\Delta_X^{\wedge}}", from=1-2, to=2-2]
                     \end{tikzcd}
                 $$
             wherein $(X^2, \Delta_X)^{\wedge}$ is the formal completion\footnote{This is why we need $X$ to be separated and Noetherian. Otherwise, the formal completion will not be a formal scheme in the sense of \cite{hartshorne}.} of $X^2$ along the closed subscheme $\im \Delta_X$, and $\Delta_X^{\wedge}$ is the canonical immersion. 
@@ -45,7 +68,7 @@
             \begin{proof}
                 By Zariski descent, it suffices to check that the result holds for $S \in \Ob(\Sch^{\aff})$, say $S := \Spec R$. Moreover, we can assume without any loss of generality that $X$ is affine, say $X := \Spec A$; affine schemes are separated \textit{a priori}, so we need only assume that $A$ is Noetherian. With these reduction steps in place, the problem now becomes to prove that given any two ring maps $f, g: A \to R$, we have that:
                     $$\pi \circ f = \pi \circ g$$
-                with $\pi: R \to R_{\red}$ being the canonical quotient map, if and only if there is a factorisation in $\Cring$ as follows:
+                with $\pi: R \to R_{\red}$ being the canonical quotient map, if and only if there is a \underline{unique} factorisation in $\Cring$ as follows:
                     \begin{equation} \label{diagram: formal_neighbourhood_of_diagonal_algebraic}
                         \begin{tikzcd}
                         R & {(A^{\tensor 2}, I)^{\wedge}} \\
@@ -57,11 +80,21 @@
                     \end{equation}
                 wherein:
                     $$I := \ker(\mu: A^{\tensor 2} \to A)$$
-                is the kernel of the multiplication map on $A$, and:
-                    $$\mu^{\wedge}: A^{\tensor 2} \to (A^{\tensor 2}, I)^{\wedge}$$
-                is the composition $A^{\tensor 2} \xrightarrow[]{\mu} A \to (A^{\tensor 2}, I)^{\wedge}$, wherein the second arrow is given by $\projlim_{n \geq 1} (A^{\tensor 2} \to A^{\tensor 2}/I^n)$. Also, to be clear, by $f \tensor g: A^{\tensor 2} \to R$, we mean the map given by:
-                    $$(f \tensor g)(a \tensor b) := f(a) g(b)$$
-                for all $a, b \in A$. As a preliminary observation, note that because $I$ is generated by the subset $\{a \tensor 1 - 1 \tensor a\}_{a \in A}$, we have:
+                is the kernel of the multiplication map on $A$. Crucially, this multiplication map is surjective, so:
+                    $$A \cong A^{\tensor 2}/\ker \mu \cong A^{\tensor 2}/I$$
+                meaning that $\mu^{\wedge}: A^{\tensor 2} \to (A^{\tensor 2}, I)^{\wedge}$ is the unique map fitting into the following diagram in $\Cring$:
+                    \begin{equation} \label{diagram: formally_completed_multiplication}
+                        \begin{tikzcd}
+                    	{A^{\tensor 2}} & {(A^{\tensor 2}, I)^{\wedge}} \\
+                    	& {A/I}
+                    	\arrow["{\mu^{\wedge}}", dashed, from=1-1, to=1-2]
+                    	\arrow["\mu"', from=1-1, to=2-2]
+                    	\arrow[two heads, from=1-2, to=2-2]
+                        \end{tikzcd}
+                    \end{equation}
+                Also, to be clear, by $f \tensor g: A^{\tensor 2} \to R$, we mean the map given by:
+                    $$(f \tensor g)(a \tensor b) := \mu( f(a) \tensor g(b) ) = f(a) g(b)$$
+                for all $a, b \in A$. Additionally, note that because $I$ is generated by the subset $\{a \tensor 1 - 1 \tensor a\}_{a \in A}$, we have:
                     \begin{equation} \label{equation: difference_of_points_along_diagonal}
                         \begin{aligned}
                             (\pi \circ (f \tensor g))(a \tensor 1 - 1 \tensor a) & = \pi(f(a) g(1) - f(1) g(a))
@@ -71,18 +104,47 @@
                             & = (\pi \circ (f - g))(a)
                         \end{aligned}
                     \end{equation}
-                for all $a \in A$. From this, we see that:
-                    $$\pi \circ f = \pi \circ g \iff (\pi \circ (f \tensor g))(I) = 0$$
+                for all $a \in A$. Thus:
+                    $$\pi \circ f = \pi \circ g \iff (\pi \circ (f \tensor g) )(I) = 0$$
 
-                Firstly, suppose that the factorisation \eqref{diagram: formal_neighbourhood_of_diagonal_algebraic} exists, and then simply consider:
-                    $$(\pi \circ (f \tensor g))(I) = ( (f \tensor g)^{\wedge} \circ \mu^{\wedge} )(I) = (f \tensor g)^{\wedge}(0) = 0$$
-                wherein the last equality is because $I := \ker \mu$, which implies that $\mu^{\wedge}(I) = 0$. Equation \eqref{equation: difference_of_points_along_diagonal} then tells us that $\pi \circ f = \pi \circ g$, as needed.
+                Firstly, suppose that the factorisation \eqref{diagram: formal_neighbourhood_of_diagonal_algebraic} exists uniquely, meaning that:
+                    $$f \tensor g = (f \tensor g)^{\wedge} \circ \mu^{\wedge}$$
+                From equation \eqref{equation: difference_of_points_along_diagonal}, we know that we need to show that $(\pi \circ (f \tensor g) )(I) = 0$. From diagram \eqref{diagram: formally_completed_multiplication}, we know that $\mu^{\wedge}(a \tensor b) = \sum_{n \geq 1} ( a \tensor b + I^n )$ and because diagram \eqref{diagram: formal_neighbourhood_of_diagonal_algebraic} commutes, we have that:
+                    $$
+                        \begin{aligned}
+                            (f \tensor g)^{\wedge}\left( \sum_{n \geq 1} ( a \tensor b + I^n ) \right) & = \sum_{n \geq 1} ( (f \tensor g)(a \tensor b) + (f \tensor g)(I^n) )
+                            \\
+                            & = \sum_{n \geq 1} ( f(a) g(b) + (f \tensor g)(I)^n )
+                        \end{aligned}
+                    $$
+                The $A^{\tensor 2}$-ideal is generated by the subset $\{a \tensor 1 - 1 \tensor a\}_{a \in A}$, so let us consider the following for all $a \in A$:
+                    $$((f \tensor g)^{\wedge} \circ \mu^{\wedge})(a \tensor 1 - 1 \tensor a) = \sum_{n \geq 1} ( (f - g)(a) + (f \tensor g)(I)^n )$$
+                Now, since $\sum_{n \geq 1} ((f - g)(a) + (f \tensor g)(I)^n) \in R$, it must be a finite sum, meaning that there exists $n \gg 0$ sufficiently large so that $I^n = 0$, i.e. $(f \tensor g)(I) \subseteq \Nil(R)$. This clearly implies that $(\pi \circ (f \tensor g) )(I) = 0$, as needed, so we are done.
 
-                Conversely, suppose that $x, y \in X(S)$ are Zariski-infinitesimally close. By definition, this means that:
-                    $$\pi \circ (f - g) = 0$$
-                and through equation \eqref{equation: difference_of_points_along_diagonal}, we see therefore that:
-                    $$(\pi \circ (f \tensor g))(I) = 0$$
-                This tells us that $(f \tensor g)(I) \subseteq \Nil(R)$. 
+                Conversely, suppose that $x, y \in X(S)$ are Zariski-infinitesimally close. By definition, this means that $\pi \circ (f - g) = 0$ and through equation \eqref{equation: difference_of_points_along_diagonal}, we see therefore that $(\pi \circ (f \tensor g))(I) = 0$. This tells us that there exists a factorisation:
+                    $$
+                        \begin{tikzcd}
+                    	{A^{\tensor 2}/I} & {A^{\tensor 2}} \\
+                    	{R_{\red}}
+                    	\arrow[dashed, from=1-1, to=2-1]
+                    	\arrow[two heads, from=1-2, to=1-1]
+                    	\arrow["{\pi \circ (f \tensor g)}", from=1-2, to=2-1]
+                        \end{tikzcd}
+                    $$
+                wherein the first arrow is the canonical quotient map. Since there exists a factorisation $A^{\tensor 2} \xrightarrow[]{\mu^{\wedge}} (A^{\tensor 2}, I)^{\wedge} \to A^{\tensor 2}/I$, wherein the second arrow is the canonical projection, we can extend the diagram into:
+                    $$
+                        \begin{tikzcd}
+                    	& {(A^{\tensor 2}, I)^{\wedge}} \\
+                    	{A^{\tensor 2}/I} & {A^{\tensor 2}} \\
+                    	{R_{\red}}
+                    	\arrow[two heads, from=1-2, to=2-1]
+                    	\arrow[dashed, from=2-1, to=3-1]
+                    	\arrow["{\mu^{\wedge}}"', from=2-2, to=1-2]
+                    	\arrow[two heads, from=2-2, to=2-1]
+                    	\arrow["{\pi \circ (f \tensor g)}", from=2-2, to=3-1]
+                        \end{tikzcd}
+                    $$
+                and thus the factorisation \eqref{diagram: formal_neighbourhood_of_diagonal_algebraic} exists. To prove that this is unique, notice that there exists a canonical factorisation $A^{\tensor 2}/I \to (A^{\tensor 2}/I)_{\red} \to R_{\red}$, so we can invoke lemma \ref{lemma: universal_property_of_thickenings_affine_case}.
             \end{proof}
 
         It can be shown that Zariski-infinitesimality between pairs of points $x, y: S \toto X$ is an equivalence relation on the set $X(S)$. The classifying space of this equivalence relation is known as the \say{de Rham space} of $X$, and in light of the Zariski-infinitesimality criterion of proposition \ref{prop: infinitesimality_and_the_diagonal}, we see that $X_{\dR}$ as in the following definition is equivalently given by the following colimit of presheaves on $(\Sch^{\aff})$:

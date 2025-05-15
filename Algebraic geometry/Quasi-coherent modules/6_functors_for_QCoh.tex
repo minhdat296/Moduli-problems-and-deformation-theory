@@ -19,7 +19,7 @@
             Let $A$ be a commutative ring and set $X := \Spec A$. There is a fully faithful exact functor:
                 $$A\mod \hookrightarrow \scrO_X\mod$$
             sending each $A$-module $M$ to the $\scrO_X$-module ${}^{\sh}M$ on the (small) site $X_{\Zar}$ given by:
-                $${}^{\sh}M(\Spec A[1/f]) := M[1/f]$$
+                $${}^{\sh}M(\Spec A[f^{-1}]) := M[f^{-1}]$$
             for every $f \in A$. 
         \end{lemma}
         \begin{corollary}
@@ -161,7 +161,7 @@
 
     \subsection{Functorial characterisations of properties of morphisms of schemes; the pull-push yoga for quasi-coherent modules}
         \begin{convention}
-            We write $(\infty, 1)-\Stab\Cat_r$ to mean the $(\infty, r)$-category ($r = 1, 2$) of stable $(\infty, 1)$-categories, $(\infty, 1)$-functors between them, and natural transformations between said functors when $r = 2$.
+            We write $(\infty, 1)\-\Stab\Cat_r$ to mean the $(\infty, r)$-category ($r = 1, 2$) of stable $(\infty, 1)$-categories, $(\infty, 1)$-functors between them, and natural transformations between said functors when $r = 2$.
         \end{convention}
     
         As all good constructions in algebraic geometry are, the creation of quasi-coherent modules is also functorial, albeit in a slightly weak sense. 
